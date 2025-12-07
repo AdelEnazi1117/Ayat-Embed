@@ -11,6 +11,7 @@ import {
   faCopy,
   faCircleCheck,
   faPlay,
+  faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "@/components/LanguageToggle";
@@ -130,24 +131,15 @@ export default function HowToUsePage() {
             </div>
           </div>
 
-          <div className="bg-navy-900/50 backdrop-blur-md border border-white/5 rounded-3xl p-8 text-center relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none" />
-            <div className="relative z-10 flex flex-col items-center gap-6 py-8">
-              <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-accent-orange group-hover:border-accent-orange transition-all duration-300 shadow-2xl">
-                <FontAwesomeIcon
-                  icon={faPlay}
-                  className="w-6 h-6 text-white ml-1"
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  Watch Tutorial
-                </h2>
-                <p className="text-white/50 max-w-md mx-auto">
-                  Coming soon: A detailed video guide on how to create and
-                  customize your embeds.
-                </p>
-              </div>
+          <div className="bg-navy-900/50 backdrop-blur-md border border-white/5 rounded-3xl overflow-hidden shadow-2xl shadow-accent-orange/20">
+            <div className="aspect-video w-full">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/P64S5pfiCeE"
+                title="Ayat Embed Intro"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </div>
           </div>
 

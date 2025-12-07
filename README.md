@@ -17,10 +17,7 @@
 
 ## Video Introduction | شرح للأداة
 
-<!-- Replace VIDEO_ID_HERE with your YouTube video ID -->
-<!-- [![Watch the video](https://img.youtube.com/vi/VIDEO_ID_HERE/maxresdefault.jpg)](https://youtu.be/VIDEO_ID_HERE) -->
-
-_[YouTube Video: not nooooow]_
+[![Watch the video](https://img.youtube.com/vi/P64S5pfiCeE/maxresdefault.jpg)](https://youtu.be/P64S5pfiCeE)
 
 ---
 
@@ -226,7 +223,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 **Adel Enazi** (عادل العنزي)
 
 - Website: [adelenazi.dev](https://adelenazi.dev)
-- Twitter: [@AdelEnizy](https://x.com/AdelEnizy)
+- X (Twitter): [@AdelEnizy](https://x.com/AdelEnizy)
 - GitHub: [@AdelEnazi1117](https://github.com/AdelEnazi1117)
 - LinkedIn: [Adel Enazi](https://www.linkedin.com/in/adelenazi/)
 
