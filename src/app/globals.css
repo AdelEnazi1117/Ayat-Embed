@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Kitab Font - Optimized for Quranic text */
+@font-face {
+  font-family: "Kitab";
+  src: url("/fonts/Kitab-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kitab";
+  src: url("/fonts/Kitab-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent-color: #f97316;
+  --card-bg-dark: #1c2331;
+  --card-bg-light: #ffffff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* RTL Support */
+  html[dir="rtl"] {
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  }
+
+  html[dir="ltr"] {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  /* Quran Card Styles */
+  .quran-card {
+    @apply relative rounded-lg p-6 md:p-8 transition-all duration-300;
+  }
+
+  .quran-card-dark {
+    @apply bg-navy-800 text-white;
+  }
+
+  .quran-card-light {
+    @apply bg-white text-navy-800 shadow-lg;
+  }
+
+  /* RTL Border Accent - Always on right for Quran cards */
+  .quran-card.show-accent-line::before {
+    content: "";
+    @apply absolute top-0 bottom-0 w-1.5;
+    right: 0;
+    border-radius: 0 8px 8px 0;
+    background-color: var(--accent-color);
+  }
+
+  /* Transparent background support */
+  .quran-card.transparent-bg {
+    background-color: transparent !important;
+  }
+
+  /* LTR mode adjustments for UI elements */
+  html[dir="ltr"] .flip-rtl {
+    transform: scaleX(-1);
+  }
+
+  /* Arabic Text Styling - Using Kitab font for Quranic text */
+  .arabic-text {
+    font-family: "Kitab", serif;
+    @apply text-3xl md:text-4xl lg:text-5xl leading-loose;
+    direction: rtl;
+    text-align: right;
+    line-height: 2;
+  }
+
+  /* Translation Text */
+  .translation-text {
+    @apply text-base md:text-lg opacity-80 mt-4 pt-4 border-t;
+    border-color: currentColor;
+    border-top-color: rgba(128, 128, 128, 0.2);
+    direction: ltr;
+    text-align: left;
+  }
+
+  /* Surah Reference Badge */
+  .surah-badge {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium;
+    background-color: color-mix(in srgb, var(--accent-color) 15%, transparent);
+    color: var(--accent-color);
+  }
+
+  /* Copy Button Animation */
+  .copy-btn {
+    @apply relative overflow-hidden transition-all duration-200;
+  }
+
+  .copy-btn.copied::after {
+    content: "✓";
+    @apply absolute inset-0 flex items-center justify-center bg-green-500 text-white animate-fade-in;
+  }
+
+  /* Color Swatch */
+  .color-swatch {
+    @apply w-8 h-8 rounded-full cursor-pointer border-2 border-transparent transition-all duration-200;
+  }
+
+  .color-swatch:hover {
+    @apply scale-110;
+  }
+
+  .color-swatch.active {
+    @apply ring-2 ring-offset-2 ring-offset-navy-900;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply animate-pulse bg-navy-700/50 rounded;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-navy-900/50 rounded;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-navy-600 rounded hover:bg-navy-500;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
