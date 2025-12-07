@@ -357,7 +357,7 @@ export default function BuilderPage() {
               <span>{t.docTitle}</span>
             </Link>
             <a
-              href="https://github.com/AdelEnazi1117/Quranic-Verse-Embed-Generator"
+              href="https://github.com/AdelEnazi1117/Ayat-Embed"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2"

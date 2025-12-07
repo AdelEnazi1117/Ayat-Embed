@@ -157,7 +157,7 @@ export default function DocsPage() {
               </div>
             </div>
             <a
-              href="https://github.com/AdelEnazi1117/Quranic-Verse-Embed-Generator"
+              href="https://github.com/AdelEnazi1117/Ayat-Embed"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 bg-white text-navy-950 rounded-xl font-bold text-sm hover:scale-105 transition-transform"
