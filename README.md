@@ -195,13 +195,14 @@ src/
 
     - Paste it into your HTML or CMS.
 
-    (لصقه في كود HTML أو نظام إدارة المحتوى).
+    (لصقه في كود HTML أو مدونتك وموقعك).
 
 ---
 
 ## Contributing | المساهمة
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
 المساهمات مرحب بها! لا تتردد في إرسال طلب سحب (Pull Request).
 
 1.  Fork the project.
@@ -215,6 +216,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License | التراخيص
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
 موزع تحت رخصة MIT. انظر ملف `LICENSE` للمزيد من المعلومات.
 
 ---
@@ -232,5 +234,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Acknowledgments | شكر وتقدير
 
-- [AlQuran Cloud](https://alquran.cloud/) for the amazing API. (للواجهة البرمجية الرائعة).
-- [Kitab Font](https://github.com/nuqayah/kitab-font) for the beautiful Quranic typography. (للخط القرآني الجميل).
+- [AlQuran Cloud](https://alquran.cloud/) for the amazing API.
+
+(للواجهة البرمجية الرائعة).
+
+- [Kitab Font](https://github.com/nuqayah/kitab-font) for the beautiful Quranic typography.
+
+(للخط القرآني الجميل).
