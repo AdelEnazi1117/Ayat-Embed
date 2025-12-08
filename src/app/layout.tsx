@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://ayatembed.adelenazi.cloud";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "مضمّن الآيات | Ayat Embed",
   description:
     "مضمّن الآيات (Ayat Embed): أنشئ آيات قرآنية قابلة للتضمين في موقعك. Generate beautiful, embeddable Quranic verses for your website.",
@@ -28,7 +32,9 @@ export const metadata: Metadata = {
     title: "مضمّن الآيات | Ayat Embed",
     description:
       "مضمّن الآيات (Ayat Embed): أنشئ آيات قرآنية قابلة للتضمين في موقعك. Generate beautiful, embeddable Quranic verses for your website.",
+    url: siteUrl,
     type: "website",
+    siteName: "Ayat Embed",
     images: [
       {
         url: "/preview.jpg",
@@ -43,7 +49,10 @@ export const metadata: Metadata = {
     title: "مضمّن الآيات | Ayat Embed",
     description:
       "مضمّن الآيات (Ayat Embed): أنشئ آيات قرآنية قابلة للتضمين في موقعك. Generate beautiful, embeddable Quranic verses for your website.",
-    images: ["/preview.jpg"],
+    images: [`${siteUrl}/preview.jpg`],
+  },
+  other: {
+    "og:logo": `${siteUrl}/favicon.png`,
   },
 };
 
