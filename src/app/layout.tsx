@@ -29,6 +29,21 @@ export const metadata: Metadata = {
     description:
       "مضمّن الآيات (Ayat Embed): أنشئ آيات قرآنية قابلة للتضمين في موقعك. Generate beautiful, embeddable Quranic verses for your website.",
     type: "website",
+    images: [
+      {
+        url: "/preview.jpg",
+        width: 1200,
+        height: 630,
+        alt: "مضمّن الآيات | Ayat Embed",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "مضمّن الآيات | Ayat Embed",
+    description:
+      "مضمّن الآيات (Ayat Embed): أنشئ آيات قرآنية قابلة للتضمين في موقعك. Generate beautiful, embeddable Quranic verses for your website.",
+    images: ["/preview.jpg"],
   },
 };
 
