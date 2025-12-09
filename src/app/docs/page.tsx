@@ -14,9 +14,16 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "@/components/LanguageToggle";
 import Footer from "@/components/Footer";
+import {
+  trackCTA,
+  trackOutbound,
+  trackSocial,
+  usePageAnalytics,
+} from "@/lib/analytics";
 
 export default function DocsPage() {
   const { t } = useLanguage();
+  usePageAnalytics({ pageName: "docs" });
 
   return (
     <div className="h-screen flex flex-col bg-navy-950 overflow-hidden text-white relative">
@@ -35,6 +42,7 @@ export default function DocsPage() {
           <div className="flex items-center gap-4">
             <Link
               href="/"
+              onClick={() => trackCTA("nav_home_from_docs")}
               className="flex items-center gap-2 text-white/60 hover:text-white transition-colors group"
             >
               <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
@@ -99,6 +107,13 @@ export default function DocsPage() {
                 href="https://alquran.cloud/api"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackOutbound(
+                    "alquran_api_docs",
+                    "https://alquran.cloud/api",
+                    { page: "docs" }
+                  )
+                }
                 className="flex items-center gap-2 text-xs font-medium text-white/40 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg transition-all"
               >
                 <span>Read API Docs</span>
@@ -160,6 +175,13 @@ export default function DocsPage() {
               href="https://github.com/AdelEnazi1117/Ayat-Embed"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackSocial(
+                  "github",
+                  "https://github.com/AdelEnazi1117/Ayat-Embed",
+                  { page: "docs" }
+                )
+              }
               className="flex items-center gap-2 px-6 py-3 bg-white text-navy-950 rounded-xl font-bold text-sm hover:scale-105 transition-transform"
             >
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />

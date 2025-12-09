@@ -25,6 +25,12 @@ import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { fetchSurahs, fetchVersesRange, MAX_VERSES_LIMIT } from "@/lib/api";
 import {
+  trackCTA,
+  trackProfileInteraction,
+  trackSocial,
+  usePageAnalytics,
+} from "@/lib/analytics";
+import {
   COLOR_PRESETS,
   BACKGROUND_PRESETS,
   TEXT_COLOR_PRESETS,
@@ -38,6 +44,7 @@ import type { Surah, CardStyle, ExportFormat, VerseData } from "@/types";
 
 export default function BuilderPage() {
   const { t, isRTL } = useLanguage();
+  usePageAnalytics({ pageName: "builder" });
 
   const [surahs, setSurahs] = useState<Surah[]>([]);
   const [selectedSurah, setSelectedSurah] = useState(DEFAULT_SURAH);
@@ -63,6 +70,10 @@ export default function BuilderPage() {
 
   useEffect(() => {
     setBaseUrl(window.location.origin);
+  }, []);
+
+  useEffect(() => {
+    trackProfileInteraction("view", "builder_header_avatar");
   }, []);
 
   const currentSurah = surahs.find((s) => s.number === selectedSurah);
@@ -153,10 +164,21 @@ export default function BuilderPage() {
     try {
       await navigator.clipboard.writeText(getEmbedCode());
       setCopied(true);
+      trackCTA("copy_embed_code", {
+        format: exportFormat,
+        surah: selectedSurah,
+        from: fromAyah,
+        to: toAyah,
+      });
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
       console.error("Failed to copy:", error);
     }
+  };
+
+  const selectExportFormat = (format: ExportFormat) => {
+    setExportFormat(format);
+    trackCTA("choose_export_format", { format });
   };
 
   const updateStyle = (updates: Partial<CardStyle>) => {
@@ -192,6 +214,9 @@ export default function BuilderPage() {
         });
       }
       setActivePanel(panelName);
+      if (panelName === "colors") {
+        trackCTA("open_styles_panel");
+      }
     }
   };
 
@@ -217,7 +242,20 @@ export default function BuilderPage() {
           dir={isRTL ? "rtl" : "ltr"}
         >
           <div className="flex items-center gap-4 min-w-0 flex-shrink-0 z-10">
-            <div className="hidden xl:flex items-center gap-3 px-4 border-e border-white/10">
+            <div
+              className="hidden xl:flex items-center gap-3 px-4 border-e border-white/10"
+              role="button"
+              tabIndex={0}
+              onClick={() =>
+                trackProfileInteraction("click", "builder_header_avatar")
+              }
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  trackProfileInteraction("click", "builder_header_avatar");
+                }
+              }}
+            >
               <div className="relative w-8 h-8 rounded-lg overflow-hidden flex-shrink-0">
                 <Image
                   src="/favicon.png"
@@ -274,6 +312,10 @@ export default function BuilderPage() {
                           setSelectedSurah(surah.number);
                           setIsSurahDropdownOpen(false);
                           setSurahSearch("");
+                          trackCTA("select_surah", {
+                            surahNumber: surah.number,
+                            surahName: surah.englishName,
+                          });
                         }}
                         className={`w-full px-4 py-2.5 text-start text-sm hover:bg-white/5 transition-colors flex items-center justify-between group/item ${
                           selectedSurah === surah.number
@@ -341,6 +383,7 @@ export default function BuilderPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-3">
             <Link
               href="/how-to-use"
+              onClick={() => trackCTA("nav_how_to_use")}
               className="px-3 py-1.5 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2"
             >
               <FontAwesomeIcon
@@ -351,6 +394,7 @@ export default function BuilderPage() {
             </Link>
             <Link
               href="/docs"
+              onClick={() => trackCTA("nav_docs")}
               className="px-3 py-1.5 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2"
             >
               <FontAwesomeIcon icon={faBook} className="w-3.5 h-3.5" />
@@ -360,6 +404,15 @@ export default function BuilderPage() {
               href="https://github.com/AdelEnazi1117/Ayat-Embed"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackSocial(
+                  "github",
+                  "https://github.com/AdelEnazi1117/Ayat-Embed",
+                  {
+                    position: "header",
+                  }
+                )
+              }
               className="px-3 py-1.5 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2"
             >
               <FontAwesomeIcon icon={faGithub} className="w-3.5 h-3.5" />
@@ -370,7 +423,7 @@ export default function BuilderPage() {
           <div className="flex items-center gap-3 flex-shrink-0 z-10">
             <div className="hidden lg:flex bg-navy-800/50 rounded-lg p-1 border border-white/5">
               <button
-                onClick={() => setExportFormat("iframe")}
+                onClick={() => selectExportFormat("iframe")}
                 className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                   exportFormat === "iframe"
                     ? "bg-white/10 text-white"
@@ -380,7 +433,7 @@ export default function BuilderPage() {
                 {t.iframe}
               </button>
               <button
-                onClick={() => setExportFormat("html")}
+                onClick={() => selectExportFormat("html")}
                 className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                   exportFormat === "html"
                     ? "bg-white/10 text-white"

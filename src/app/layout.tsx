@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -64,6 +65,14 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className="dark">
       <body className="bg-navy-950 text-white min-h-screen font-arabic">
+        {process.env.NEXT_PUBLIC_UMAMI_URL &&
+          process.env.NEXT_PUBLIC_UMAMI_ID && (
+            <Script
+              src={process.env.NEXT_PUBLIC_UMAMI_URL}
+              data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
+              strategy="afterInteractive"
+            />
+          )}
         <Providers>{children}</Providers>
       </body>
     </html>

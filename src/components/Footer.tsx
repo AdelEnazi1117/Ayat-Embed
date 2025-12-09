@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
+import { trackProfileInteraction, trackSocial } from "@/lib/analytics";
 
 export default function Footer() {
   const { t, isRTL } = useLanguage();
@@ -13,8 +14,33 @@ export default function Footer() {
         <span>v1.2.0</span>
         </div>
         <div className="flex items-center gap-4">
-            <a href="https://github.com/AdelEnazi1117" className="hover:text-white transition-colors">GitHub</a>
-            <a href="https://adelenazi.dev" className="hover:text-white transition-colors">{t.developer}</a>
+            <a
+              href="https://github.com/AdelEnazi1117"
+              className="hover:text-white transition-colors"
+              onClick={() =>
+                trackSocial("github", "https://github.com/AdelEnazi1117", {
+                  position: "footer",
+                })
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://adelenazi.dev"
+              className="hover:text-white transition-colors"
+              onClick={() => {
+                trackSocial("personal_site", "https://adelenazi.dev", {
+                  position: "footer",
+                });
+                trackProfileInteraction("click", "developer_site");
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.developer}
+            </a>
         </div>
     </footer>
   );

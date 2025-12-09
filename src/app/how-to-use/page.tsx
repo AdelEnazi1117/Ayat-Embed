@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,9 +17,19 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "@/components/LanguageToggle";
 import Footer from "@/components/Footer";
+import {
+  trackCTA,
+  trackProfileInteraction,
+  usePageAnalytics,
+} from "@/lib/analytics";
 
 export default function HowToUsePage() {
   const { t } = useLanguage();
+  usePageAnalytics({ pageName: "how_to_use" });
+
+  useEffect(() => {
+    trackProfileInteraction("view", "how_to_hero_avatar");
+  }, []);
 
   return (
     <div className="h-screen flex flex-col bg-navy-950 overflow-hidden text-white relative">
@@ -37,6 +48,7 @@ export default function HowToUsePage() {
           <div className="flex items-center gap-4">
             <Link
               href="/"
+              onClick={() => trackCTA("nav_home_from_how_to_use_header")}
               className="flex items-center gap-2 text-white/60 hover:text-white transition-colors group"
             >
               <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
@@ -57,7 +69,20 @@ export default function HowToUsePage() {
       <main className="flex-1 relative overflow-y-auto custom-scrollbar pt-32 pb-4 px-4 w-full">
         <div className="max-w-4xl mx-auto space-y-12 pb-8">
           <div className="text-center space-y-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-tr from-accent-orange to-amber-500 shadow-2xl shadow-accent-orange/20 mb-4 animate-fade-in relative group overflow-hidden">
+            <div
+              className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-tr from-accent-orange to-amber-500 shadow-2xl shadow-accent-orange/20 mb-4 animate-fade-in relative group overflow-hidden"
+              role="button"
+              tabIndex={0}
+              onClick={() =>
+                trackProfileInteraction("click", "how_to_hero_avatar")
+              }
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  trackProfileInteraction("click", "how_to_hero_avatar");
+                }
+              }}
+            >
               <div className="absolute inset-0 bg-white/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
               <Image
                 src="/favicon.png"
@@ -184,6 +209,7 @@ export default function HowToUsePage() {
           <div className="text-center pt-8">
             <Link
               href="/"
+              onClick={() => trackCTA("nav_home_from_how_to_use_footer")}
               className="inline-flex items-center gap-3 px-8 py-4 bg-white text-navy-950 rounded-xl font-bold text-lg hover:bg-gray-100 hover:scale-105 transition-all shadow-xl shadow-white/10"
             >
               <span>{t.backToHome}</span>
