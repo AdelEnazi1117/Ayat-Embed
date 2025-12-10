@@ -18,6 +18,7 @@ interface EmbedClientProps {
   showVerseNumbers: boolean;
   showAccentLine: boolean;
   transparentBackground: boolean;
+  showBrackets: boolean;
   embedId?: string;
 }
 
@@ -34,6 +35,7 @@ export default function EmbedClient({
   showVerseNumbers,
   showAccentLine,
   transparentBackground,
+  showBrackets,
   embedId,
 }: EmbedClientProps) {
   const [verses, setVerses] = useState<VerseData[]>([]);
@@ -53,6 +55,7 @@ export default function EmbedClient({
     showVerseNumbers,
     showAccentLine,
     transparentBackground,
+    showBrackets,
   };
 
   // Notify parent iframe about the required height

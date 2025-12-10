@@ -34,6 +34,7 @@ export const DEFAULT_STYLE: CardStyle = {
   showVerseNumbers: false,
   showAccentLine: true,
   transparentBackground: false,
+  showBrackets: true,
 };
 
 export const DEFAULT_SURAH = 1;
@@ -61,6 +62,7 @@ export const getEmbedUrl = (
     verseNumbers: style.showVerseNumbers.toString(),
     accentLine: style.showAccentLine.toString(),
     transparentBg: style.transparentBackground.toString(),
+    brackets: style.showBrackets.toString(),
   });
 
   if (fromAyah === toAyah) {
