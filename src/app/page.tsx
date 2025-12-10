@@ -44,7 +44,7 @@ import {
 import type { Surah, CardStyle, ExportFormat, VerseData } from "@/types";
 
 export default function BuilderPage() {
-  const { t, isRTL } = useLanguage();
+  const { t, isRTL, language } = useLanguage();
   usePageAnalytics({ pageName: "builder" });
 
   const [surahs, setSurahs] = useState<Surah[]>([]);
@@ -147,7 +147,8 @@ export default function BuilderPage() {
         selectedSurah,
         fromAyah,
         toAyah,
-        style
+        style,
+        language
       );
     } else {
       return generateStaticHTML(
