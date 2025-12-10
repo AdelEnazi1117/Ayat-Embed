@@ -42,6 +42,7 @@ export interface CardStyle {
   showVerseNumbers: boolean;
   showAccentLine: boolean;
   transparentBackground: boolean;
+  showBrackets: boolean;
 }
 
 export interface ColorPreset {

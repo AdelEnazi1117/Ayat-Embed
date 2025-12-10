@@ -17,6 +17,7 @@ import {
   faPlus,
   faCircleQuestion,
   faBook,
+  faRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Footer from "@/components/Footer";
@@ -500,6 +501,29 @@ export default function BuilderPage() {
             </button>
 
             <button
+              onClick={() => updateStyle({ showBrackets: !style.showBrackets })}
+              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
+                style.showBrackets
+                  ? "bg-navy-700 text-white shadow-sm"
+                  : "text-white/40 hover:text-white"
+              }`}
+            >
+              <span
+                className="text-base font-bold leading-none"
+                dir="rtl"
+                style={{ unicodeBidi: "isolate" }}
+              >
+                ﴿﴾
+              </span>
+              <span className="hidden lg:inline">{t.showBrackets}</span>
+              <div
+                className={`w-1.5 h-1.5 rounded-full ${
+                  style.showBrackets ? "bg-accent-emerald" : "bg-white/10"
+                }`}
+              />
+            </button>
+
+            <button
               onClick={() =>
                 updateStyle({
                   transparentBackground: !style.transparentBackground,
@@ -708,6 +732,14 @@ export default function BuilderPage() {
                 </label>
               </div>
             </div>
+
+            <button
+              onClick={() => setStyle(DEFAULT_STYLE)}
+              className="w-full mt-2 px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-white/20"
+            >
+              <FontAwesomeIcon icon={faRotateLeft} className="w-3 h-3" />
+              <span>{t.resetStyles}</span>
+            </button>
           </div>
         </div>
       )}

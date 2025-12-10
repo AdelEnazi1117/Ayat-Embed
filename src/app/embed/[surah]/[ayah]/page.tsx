@@ -16,6 +16,7 @@ interface EmbedPageProps {
     verseNumbers?: string;
     accentLine?: string;
     transparentBg?: string;
+    brackets?: string;
     embedId?: string;
   }>;
 }
@@ -94,6 +95,7 @@ export default async function EmbedPage({
   const showVerseNumbers = resolvedSearchParams.verseNumbers !== "false";
   const showAccentLine = resolvedSearchParams.accentLine !== "false";
   const transparentBackground = resolvedSearchParams.transparentBg === "true";
+  const showBrackets = resolvedSearchParams.brackets !== "false";
 
   return (
     <EmbedClient
@@ -109,6 +111,7 @@ export default async function EmbedPage({
       showVerseNumbers={showVerseNumbers}
       showAccentLine={showAccentLine}
       transparentBackground={transparentBackground}
+      showBrackets={showBrackets}
       embedId={embedId}
     />
   );

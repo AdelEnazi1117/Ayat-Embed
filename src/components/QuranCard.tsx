@@ -31,6 +31,7 @@ export default function QuranCard({
     showVerseNumbers,
     showAccentLine = true,
     transparentBackground = false,
+    showBrackets = true,
   } = style;
 
   const isDark = isColorDark(backgroundColor);
@@ -99,19 +100,31 @@ export default function QuranCard({
         {verses.map((verse, index) => (
           <div key={verse.number}>
             <div className="arabic-text" dir="rtl">
-              <span
-                className="inline text-2xl md:text-3xl"
-                style={{ color: accentColor }}
-              >
-                ﴿
-              </span>
+              {showBrackets && (
+                <span
+                  className="inline text-2xl md:text-3xl"
+                  style={{ color: accentColor }}
+                >
+                  ﴿
+                </span>
+              )}
               {verse.arabicText}
-              <span
-                className="inline text-2xl md:text-3xl"
-                style={{ color: accentColor }}
-              >
-                {showVerseNumbers && verse.number.toLocaleString("ar-EG")}﴾
-              </span>
+              {showBrackets && (
+                <span
+                  className="inline text-2xl md:text-3xl"
+                  style={{ color: accentColor }}
+                >
+                  {showVerseNumbers && verse.number.toLocaleString("ar-EG")}﴾
+                </span>
+              )}
+              {!showBrackets && showVerseNumbers && (
+                <span
+                  className="inline text-lg md:text-xl opacity-60 mr-2"
+                  style={{ color: accentColor }}
+                >
+                  ({verse.number.toLocaleString("ar-EG")})
+                </span>
+              )}
             </div>
 
             {showTranslation && verse.translationText && (
@@ -187,6 +200,7 @@ export function generateStaticHTML(
     showVerseNumbers,
     showAccentLine,
     transparentBackground,
+    showBrackets = true,
   } = style;
 
   const finalBgColor = transparentBackground ? "transparent" : backgroundColor;
@@ -227,10 +241,16 @@ export function generateStaticHTML(
   const versesHtml = verses
     .map((verse, index) => {
       const ayahNumberArabic = verse.number.toLocaleString("ar-EG");
-      const openBrace = `<span style="color: ${accentColor}; font-size: 1.5rem;">﴿</span>`;
-      const closeBrace = showVerseNumbers
-        ? `<span style="color: ${accentColor}; font-size: 1.5rem;">${ayahNumberArabic}﴾</span>`
-        : `<span style="color: ${accentColor}; font-size: 1.5rem;">﴾</span>`;
+      const openBrace = showBrackets
+        ? `<span style="color: ${accentColor}; font-size: 1.5rem;">﴿</span>`
+        : "";
+      const closeBrace = showBrackets
+        ? showVerseNumbers
+          ? `<span style="color: ${accentColor}; font-size: 1.5rem;">${ayahNumberArabic}﴾</span>`
+          : `<span style="color: ${accentColor}; font-size: 1.5rem;">﴾</span>`
+        : showVerseNumbers
+        ? `<span style="color: ${accentColor}; font-size: 1.25rem; opacity: 0.6; margin-right: 8px;">(${ayahNumberArabic})</span>`
+        : "";
       const verseNumInTranslation = showVerseNumbers
         ? `<span style="opacity: 0.5; font-size: 0.875rem; margin-right: 8px;">(${verse.number})</span>`
         : "";

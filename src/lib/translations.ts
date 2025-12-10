@@ -30,6 +30,8 @@ export const translations = {
     showVerseNumbers: "إظهار أرقام الآيات",
     showAccentLine: "إظهار الخط الجانبي",
     transparentBackground: "خلفية شفافة",
+    showBrackets: "إظهار الأقواس",
+    resetStyles: "إعادة تعيين",
 
     customColor: "لون مخصص",
     styles: "الأنماط",
@@ -143,6 +145,8 @@ export const translations = {
     showVerseNumbers: "Show Verse Numbers",
     showAccentLine: "Show Accent Line",
     transparentBackground: "Transparent Background",
+    showBrackets: "Show Brackets",
+    resetStyles: "Reset",
 
     customColor: "Custom Color",
     styles: "Styles",
