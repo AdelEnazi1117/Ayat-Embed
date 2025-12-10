@@ -19,6 +19,7 @@ interface EmbedClientProps {
   showAccentLine: boolean;
   transparentBackground: boolean;
   showBrackets: boolean;
+  isArabicUI: boolean;
   embedId?: string;
 }
 
@@ -36,6 +37,7 @@ export default function EmbedClient({
   showAccentLine,
   transparentBackground,
   showBrackets,
+  isArabicUI,
   embedId,
 }: EmbedClientProps) {
   const [verses, setVerses] = useState<VerseData[]>([]);
@@ -161,7 +163,7 @@ export default function EmbedClient({
           surahNumber={surahNumber}
           style={style}
           isLoading={isLoading}
-          isArabicUI={false}
+          isArabicUI={isArabicUI}
         />
       </div>
     </div>

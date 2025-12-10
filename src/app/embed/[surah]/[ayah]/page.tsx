@@ -17,6 +17,7 @@ interface EmbedPageProps {
     accentLine?: string;
     transparentBg?: string;
     brackets?: string;
+    lang?: string;
     embedId?: string;
   }>;
 }
@@ -96,6 +97,7 @@ export default async function EmbedPage({
   const showAccentLine = resolvedSearchParams.accentLine !== "false";
   const transparentBackground = resolvedSearchParams.transparentBg === "true";
   const showBrackets = resolvedSearchParams.brackets !== "false";
+  const isArabicUI = resolvedSearchParams.lang === "ar";
 
   return (
     <EmbedClient
@@ -112,6 +114,7 @@ export default async function EmbedPage({
       showAccentLine={showAccentLine}
       transparentBackground={transparentBackground}
       showBrackets={showBrackets}
+      isArabicUI={isArabicUI}
       embedId={embedId}
     />
   );

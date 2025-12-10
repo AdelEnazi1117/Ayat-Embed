@@ -50,7 +50,8 @@ export const getEmbedUrl = (
   surah: number,
   fromAyah: number,
   toAyah: number,
-  style: CardStyle
+  style: CardStyle,
+  lang: "ar" | "en" = "en"
 ): string => {
   const params = new URLSearchParams({
     color: style.accentColor.replace("#", ""),
@@ -63,6 +64,7 @@ export const getEmbedUrl = (
     accentLine: style.showAccentLine.toString(),
     transparentBg: style.transparentBackground.toString(),
     brackets: style.showBrackets.toString(),
+    lang: lang,
   });
 
   if (fromAyah === toAyah) {
@@ -77,12 +79,13 @@ export const generateIframeCode = (
   surah: number,
   fromAyah: number,
   toAyah: number,
-  style: CardStyle
+  style: CardStyle,
+  lang: "ar" | "en" = "en"
 ): string => {
   const embedId = `qveg-${Date.now()}-${Math.random()
     .toString(36)
     .slice(2, 7)}`;
-  const embedUrl = getEmbedUrl(baseUrl, surah, fromAyah, toAyah, style);
+  const embedUrl = getEmbedUrl(baseUrl, surah, fromAyah, toAyah, style, lang);
   const embedUrlWithId = `${embedUrl}&embedId=${embedId}`;
   const verseCount = toAyah - fromAyah + 1;
   const basePadding = 32; // approximate card padding + heading space
