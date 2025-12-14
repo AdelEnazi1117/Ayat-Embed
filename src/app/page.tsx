@@ -63,6 +63,7 @@ export default function BuilderPage() {
   const [baseUrl, setBaseUrl] = useState("");
 
   const stylesButtonRef = useRef<HTMLButtonElement>(null);
+  const surahDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setBaseUrl(window.location.origin);
@@ -71,12 +72,27 @@ export default function BuilderPage() {
   const currentSurah = surahs.find((s) => s.number === selectedSurah);
   const maxAyahs = currentSurah?.numberOfAyahs || 7;
 
-  const filteredSurahs = surahs.filter(
-    (surah) =>
+  const removeArabicDiacritics = (text: string): string => {
+    return text
+      .normalize("NFD")
+      .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, "")
+      .normalize("NFC");
+  };
+
+  const filteredSurahs = surahs.filter((surah) => {
+    const normalizedSearch = removeArabicDiacritics(surahSearch);
+    const normalizedSurahName = removeArabicDiacritics(surah.name);
+
+    return (
       surah.englishName.toLowerCase().includes(surahSearch.toLowerCase()) ||
+      surah.englishNameTranslation
+        .toLowerCase()
+        .includes(surahSearch.toLowerCase()) ||
+      normalizedSurahName.includes(normalizedSearch) ||
       surah.name.includes(surahSearch) ||
       surah.number.toString().includes(surahSearch)
-  );
+    );
+  });
 
   useEffect(() => {
     const loadSurahs = async () => {
@@ -201,17 +217,28 @@ export default function BuilderPage() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+
       if (
         activePanel &&
-        !(event.target as Element).closest(".dashboard-panel") &&
-        !(event.target as Element).closest(".dashboard-trigger")
+        !target.closest(".dashboard-panel") &&
+        !target.closest(".dashboard-trigger")
       ) {
         setActivePanel(null);
+      }
+
+      if (
+        isSurahDropdownOpen &&
+        surahDropdownRef.current &&
+        !surahDropdownRef.current.contains(target)
+      ) {
+        setIsSurahDropdownOpen(false);
+        setSurahSearch("");
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [activePanel]);
+  }, [activePanel, isSurahDropdownOpen]);
 
   return (
     <div className="h-screen flex flex-col bg-navy-950 overflow-hidden text-white">
@@ -235,9 +262,14 @@ export default function BuilderPage() {
               </h1>
             </div>
 
-            <div className="relative group shrink-0">
+            <div className="relative group shrink-0" ref={surahDropdownRef}>
               <button
-                onClick={() => setIsSurahDropdownOpen(!isSurahDropdownOpen)}
+                onClick={() => {
+                  setIsSurahDropdownOpen(!isSurahDropdownOpen);
+                  if (!isSurahDropdownOpen) {
+                    setSurahSearch("");
+                  }
+                }}
                 className="dashboard-trigger flex items-center gap-3 px-3 py-2 bg-navy-800/50 hover:bg-navy-800 rounded-lg text-sm border border-white/5 hover:border-white/10 transition-all min-w-[160px] sm:min-w-[200px] justify-between"
               >
                 <div className="flex items-center gap-2 truncate">
@@ -268,34 +300,41 @@ export default function BuilderPage() {
                       onChange={(e) => setSurahSearch(e.target.value)}
                       className="w-full px-3 py-2 bg-navy-800 rounded-lg text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-accent-orange/50"
                       autoFocus
+                      dir={isRTL ? "rtl" : "ltr"}
                     />
                   </div>
                   <div className="max-h-[60vh] overflow-y-auto custom-scrollbar">
-                    {filteredSurahs.map((surah) => (
-                      <button
-                        key={surah.number}
-                        onClick={() => {
-                          setSelectedSurah(surah.number);
-                          setIsSurahDropdownOpen(false);
-                          setSurahSearch("");
-                        }}
-                        className={`w-full px-4 py-2.5 text-start text-sm hover:bg-white/5 transition-colors flex items-center justify-between group/item ${
-                          selectedSurah === surah.number
-                            ? "bg-accent-orange/10 text-accent-orange"
-                            : "text-white/80"
-                        }`}
-                      >
-                        <span className="flex items-center gap-3">
-                          <span className="font-mono text-xs opacity-50 w-6">
-                            {surah.number}
+                    {filteredSurahs.length > 0 ? (
+                      filteredSurahs.map((surah) => (
+                        <button
+                          key={surah.number}
+                          onClick={() => {
+                            setSelectedSurah(surah.number);
+                            setIsSurahDropdownOpen(false);
+                            setSurahSearch("");
+                          }}
+                          className={`w-full px-4 py-2.5 text-start text-sm hover:bg-white/5 transition-colors flex items-center justify-between group/item ${
+                            selectedSurah === surah.number
+                              ? "bg-accent-orange/10 text-accent-orange"
+                              : "text-white/80"
+                          }`}
+                        >
+                          <span className="flex items-center gap-3">
+                            <span className="font-mono text-xs opacity-50 w-6">
+                              {surah.number}
+                            </span>
+                            <span>{getSurahDisplayName(surah)}</span>
                           </span>
-                          <span>{getSurahDisplayName(surah)}</span>
-                        </span>
-                        <span className="text-xs opacity-30 group-hover/item:opacity-70 transition-opacity">
-                          {surah.numberOfAyahs}
-                        </span>
-                      </button>
-                    ))}
+                          <span className="text-xs opacity-30 group-hover/item:opacity-70 transition-opacity">
+                            {surah.numberOfAyahs}
+                          </span>
+                        </button>
+                      ))
+                    ) : (
+                      <div className="px-4 py-8 text-center text-white/40 text-sm">
+                        {t.noResultsFound}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
