@@ -794,6 +794,12 @@ export default function BuilderPage() {
                 onClick={() => {
                   const randomStyle = generateRandomStyle();
                   setStyle(randomStyle);
+                  trackCTA("apply_random_style", {
+                    accentColor: randomStyle.accentColor,
+                    backgroundColor: randomStyle.backgroundColor,
+                    textColor: randomStyle.textColor,
+                    theme: randomStyle.theme,
+                  });
                 }}
                 className="flex-1 px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-white/20"
               >
