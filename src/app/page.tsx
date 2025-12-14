@@ -18,6 +18,7 @@ import {
   faCircleQuestion,
   faBook,
   faRotateLeft,
+  faDice,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Footer from "@/components/Footer";
@@ -40,6 +41,7 @@ import {
   DEFAULT_FROM_AYAH,
   DEFAULT_TO_AYAH,
   generateIframeCode,
+  generateRandomStyle,
 } from "@/lib/constants";
 import type { Surah, CardStyle, ExportFormat, VerseData } from "@/types";
 
@@ -787,13 +789,25 @@ export default function BuilderPage() {
               </div>
             </div>
 
-            <button
-              onClick={() => setStyle(DEFAULT_STYLE)}
-              className="w-full mt-2 px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-white/20"
-            >
-              <FontAwesomeIcon icon={faRotateLeft} className="w-3 h-3" />
-              <span>{t.resetStyles}</span>
-            </button>
+            <div className="flex gap-2 mt-2">
+              <button
+                onClick={() => {
+                  const randomStyle = generateRandomStyle();
+                  setStyle(randomStyle);
+                }}
+                className="flex-1 px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-white/20"
+              >
+                <FontAwesomeIcon icon={faDice} className="w-3 h-3" />
+                <span>{t.randomStyle}</span>
+              </button>
+              <button
+                onClick={() => setStyle(DEFAULT_STYLE)}
+                className="flex-1 px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-white/20"
+              >
+                <FontAwesomeIcon icon={faRotateLeft} className="w-3 h-3" />
+                <span>{t.resetStyles}</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
