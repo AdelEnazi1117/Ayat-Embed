@@ -32,6 +32,7 @@ export const translations = {
     transparentBackground: "خلفية شفافة",
     showBrackets: "إظهار الأقواس",
     resetStyles: "إعادة تعيين",
+    randomStyle: "نمط عشوائي",
 
     customColor: "لون مخصص",
     styles: "الأنماط",
@@ -147,6 +148,7 @@ export const translations = {
     transparentBackground: "Transparent Background",
     showBrackets: "Show Brackets",
     resetStyles: "Reset",
+    randomStyle: "Random Style",
 
     customColor: "Custom Color",
     styles: "Styles",

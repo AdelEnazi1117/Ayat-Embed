@@ -37,6 +37,152 @@ export const DEFAULT_STYLE: CardStyle = {
   showBrackets: true,
 };
 
+const CURATED_STYLE_PRESETS: Omit<
+  CardStyle,
+  | "showTranslation"
+  | "showReference"
+  | "showVerseNumbers"
+  | "showAccentLine"
+  | "transparentBackground"
+  | "showBrackets"
+>[] = [
+  {
+    accentColor: "#f97316",
+    backgroundColor: "#1c2331",
+    textColor: "#ffffff",
+    theme: "dark",
+  },
+  {
+    accentColor: "#10b981",
+    backgroundColor: "#0a0a0a",
+    textColor: "#ffffff",
+    theme: "dark",
+  },
+  {
+    accentColor: "#3b82f6",
+    backgroundColor: "#1f2937",
+    textColor: "#ffffff",
+    theme: "dark",
+  },
+  {
+    accentColor: "#8b5cf6",
+    backgroundColor: "#1c2331",
+    textColor: "#e5e7eb",
+    theme: "dark",
+  },
+  {
+    accentColor: "#f59e0b",
+    backgroundColor: "#0a0a0a",
+    textColor: "#ffffff",
+    theme: "dark",
+  },
+  {
+    accentColor: "#f97316",
+    backgroundColor: "#ffffff",
+    textColor: "#000000",
+    theme: "light",
+  },
+  {
+    accentColor: "#3b82f6",
+    backgroundColor: "#fef3c7",
+    textColor: "#000000",
+    theme: "light",
+  },
+  {
+    accentColor: "#10b981",
+    backgroundColor: "#ffffff",
+    textColor: "#000000",
+    theme: "light",
+  },
+  {
+    accentColor: "#8b5cf6",
+    backgroundColor: "#fef3c7",
+    textColor: "#000000",
+    theme: "light",
+  },
+];
+
+const isLightColor = (color: string): boolean => {
+  return color === "#ffffff" || color === "#fef3c7";
+};
+
+const getTextColorForBackground = (backgroundColor: string): string => {
+  if (isLightColor(backgroundColor)) {
+    const darkTextOptions = ["#000000", "#1f2937"];
+    return darkTextOptions[Math.floor(Math.random() * darkTextOptions.length)];
+  } else {
+    const lightTextOptions = ["#ffffff", "#e5e7eb"];
+    return lightTextOptions[
+      Math.floor(Math.random() * lightTextOptions.length)
+    ];
+  }
+};
+
+const getAccentColorForScheme = (
+  backgroundColor: string,
+  textColor: string
+): string => {
+  if (!isLightColor(backgroundColor)) {
+    const vibrantAccents = COLOR_PRESETS.filter(
+      (c) => c.value !== textColor && c.value !== "#e5e7eb"
+    );
+    return vibrantAccents[Math.floor(Math.random() * vibrantAccents.length)]
+      .value;
+  } else {
+    const lightSchemeAccents = COLOR_PRESETS;
+    return lightSchemeAccents[
+      Math.floor(Math.random() * lightSchemeAccents.length)
+    ].value;
+  }
+};
+
+export const generateRandomStyle = (): CardStyle => {
+  const useCuratedPreset = Math.random() < 0.7;
+
+  let accentColor: string;
+  let backgroundColor: string;
+  let textColor: string;
+  let theme: "dark" | "light";
+
+  if (useCuratedPreset) {
+    const preset =
+      CURATED_STYLE_PRESETS[
+        Math.floor(Math.random() * CURATED_STYLE_PRESETS.length)
+      ];
+    accentColor = preset.accentColor;
+    backgroundColor = preset.backgroundColor;
+    textColor = preset.textColor;
+    theme = preset.theme;
+  } else {
+    backgroundColor =
+      BACKGROUND_PRESETS[Math.floor(Math.random() * BACKGROUND_PRESETS.length)]
+        .value;
+    textColor = getTextColorForBackground(backgroundColor);
+    accentColor = getAccentColorForScheme(backgroundColor, textColor);
+    theme = isLightColor(backgroundColor) ? "light" : "dark";
+  }
+
+  const randomShowTranslation = Math.random() > 0.1;
+  const randomShowReference = Math.random() > 0.15;
+  const randomShowVerseNumbers = Math.random() > 0.6;
+  const randomShowAccentLine = Math.random() > 0.2;
+  const randomTransparentBackground = Math.random() > 0.8;
+  const randomShowBrackets = Math.random() > 0.15;
+
+  return {
+    accentColor,
+    backgroundColor,
+    textColor,
+    theme,
+    showTranslation: randomShowTranslation,
+    showReference: randomShowReference,
+    showVerseNumbers: randomShowVerseNumbers,
+    showAccentLine: randomShowAccentLine,
+    transparentBackground: randomTransparentBackground,
+    showBrackets: randomShowBrackets,
+  };
+};
+
 export const DEFAULT_SURAH = 1;
 export const DEFAULT_FROM_AYAH = 1;
 export const DEFAULT_TO_AYAH = 1;
