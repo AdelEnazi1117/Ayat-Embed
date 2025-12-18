@@ -19,6 +19,7 @@ interface EmbedClientProps {
   showAccentLine: boolean;
   transparentBackground: boolean;
   showBrackets: boolean;
+  continuousLines: boolean;
   isArabicUI: boolean;
   embedId?: string;
 }
@@ -37,6 +38,7 @@ export default function EmbedClient({
   showAccentLine,
   transparentBackground,
   showBrackets,
+  continuousLines,
   isArabicUI,
   embedId,
 }: EmbedClientProps) {
@@ -58,6 +60,7 @@ export default function EmbedClient({
     showAccentLine,
     transparentBackground,
     showBrackets,
+    continuousLines,
   };
 
   // Notify parent iframe about the required height

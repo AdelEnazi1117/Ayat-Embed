@@ -32,6 +32,7 @@ export const translations = {
     showAccentLine: "إظهار الخط الجانبي",
     transparentBackground: "خلفية شفافة",
     showBrackets: "إظهار الأقواس",
+    continuousLines: "عرض متصل",
     resetStyles: "إعادة تعيين",
     randomStyle: "نمط عشوائي",
 
@@ -47,6 +48,7 @@ export const translations = {
     infoAccentColor: "اختر اللون المميز للأقواس والخط الجانبي والمرجع",
     infoBackgroundColor: "اختر لون خلفية البطاقة",
     infoExportCode: "انسخ الكود لتضمينه في موقعك",
+    infoContinuousLines: "عرض الآيات كنص واحد متصل بدلاً من آية في كل سطر",
 
     exportCode: "تصدير الكود",
     iframe: "إطار مضمن",
@@ -149,6 +151,7 @@ export const translations = {
     showAccentLine: "Show Accent Line",
     transparentBackground: "Transparent Background",
     showBrackets: "Show Brackets",
+    continuousLines: "Continuous Lines",
     resetStyles: "Reset",
     randomStyle: "Random Style",
 
@@ -170,6 +173,8 @@ export const translations = {
       "Choose the accent color for brackets, side line, and reference",
     infoBackgroundColor: "Choose the background color for the card",
     infoExportCode: "Copy the code to embed on your website",
+    infoContinuousLines:
+      "Show verses as a single continuous text block instead of one verse per line",
 
     exportCode: "Export Code",
     iframe: "iFrame",

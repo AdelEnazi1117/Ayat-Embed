@@ -35,6 +35,7 @@ export const DEFAULT_STYLE: CardStyle = {
   showAccentLine: true,
   transparentBackground: false,
   showBrackets: true,
+  continuousLines: false,
 };
 
 const CURATED_STYLE_PRESETS: Omit<
@@ -45,6 +46,7 @@ const CURATED_STYLE_PRESETS: Omit<
   | "showAccentLine"
   | "transparentBackground"
   | "showBrackets"
+  | "continuousLines"
 >[] = [
   {
     accentColor: "#f97316",
@@ -168,6 +170,7 @@ export const generateRandomStyle = (): CardStyle => {
   const randomShowAccentLine = Math.random() > 0.2;
   const randomTransparentBackground = Math.random() > 0.8;
   const randomShowBrackets = Math.random() > 0.15;
+  const randomContinuousLines = Math.random() > 0.8;
 
   return {
     accentColor,
@@ -180,6 +183,7 @@ export const generateRandomStyle = (): CardStyle => {
     showAccentLine: randomShowAccentLine,
     transparentBackground: randomTransparentBackground,
     showBrackets: randomShowBrackets,
+    continuousLines: randomContinuousLines,
   };
 };
 
@@ -210,6 +214,7 @@ export const getEmbedUrl = (
     accentLine: style.showAccentLine.toString(),
     transparentBg: style.transparentBackground.toString(),
     brackets: style.showBrackets.toString(),
+    continuousLines: style.continuousLines.toString(),
     lang: lang,
   });
 
@@ -235,7 +240,13 @@ export const generateIframeCode = (
   const embedUrlWithId = `${embedUrl}&embedId=${embedId}`;
   const verseCount = toAyah - fromAyah + 1;
   const basePadding = 32; // approximate card padding + heading space
-  const perVerseHeight = style.showTranslation ? 140 : 110;
+  const perVerseHeight = style.continuousLines
+    ? style.showTranslation
+      ? 100
+      : 70
+    : style.showTranslation
+    ? 140
+    : 110;
   const referenceHeight = style.showReference ? 56 : 0;
   const fallbackHeight = Math.min(
     basePadding + verseCount * perVerseHeight + referenceHeight,

@@ -620,6 +620,25 @@ export default function BuilderPage() {
 
             <button
               onClick={() =>
+                updateStyle({ continuousLines: !style.continuousLines })
+              }
+              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
+                style.continuousLines
+                  ? "bg-navy-700 text-white shadow-sm"
+                  : "text-white/40 hover:text-white"
+              }`}
+            >
+              <FontAwesomeIcon icon={faPlus} className="w-3.5 h-3.5" />
+              <span className="hidden lg:inline">{t.continuousLines}</span>
+              <div
+                className={`w-1.5 h-1.5 rounded-full ${
+                  style.continuousLines ? "bg-accent-emerald" : "bg-white/10"
+                }`}
+              />
+            </button>
+
+            <button
+              onClick={() =>
                 updateStyle({
                   transparentBackground: !style.transparentBackground,
                 })

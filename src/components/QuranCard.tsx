@@ -32,6 +32,7 @@ export default function QuranCard({
     showAccentLine = true,
     transparentBackground = false,
     showBrackets = true,
+    continuousLines = false,
   } = style;
 
   const isDark = isColorDark(backgroundColor);
@@ -96,58 +97,117 @@ export default function QuranCard({
 
   return (
     <div className={cardClasses} style={cardStyle}>
-      <div className="space-y-4">
-        {verses.map((verse, index) => (
-          <div key={verse.number}>
-            <div className="arabic-text" dir="rtl">
-              {showBrackets && (
-                <span
-                  className="inline text-2xl md:text-3xl"
-                  style={{ color: accentColor }}
-                >
-                  ﴿
-                </span>
-              )}
-              {verse.arabicText}
-              {showBrackets && (
-                <span
-                  className="inline text-2xl md:text-3xl"
-                  style={{ color: accentColor }}
-                >
-                  {showVerseNumbers && verse.number.toLocaleString("ar-EG")}﴾
-                </span>
-              )}
-              {!showBrackets && showVerseNumbers && (
-                <span
-                  className="inline text-lg md:text-xl opacity-60 mr-2"
-                  style={{ color: accentColor }}
-                >
-                  ({verse.number.toLocaleString("ar-EG")})
-                </span>
-              )}
+      <div className={continuousLines ? "flex flex-col" : "space-y-4"}>
+        {continuousLines ? (
+          <>
+            <div className="arabic-text leading-loose" dir="rtl">
+              {verses.map((verse) => (
+                <React.Fragment key={`ar-${verse.number}`}>
+                  {showBrackets && (
+                    <span
+                      className="inline text-2xl md:text-3xl"
+                      style={{ color: accentColor }}
+                    >
+                      ﴿
+                    </span>
+                  )}
+                  {verse.arabicText}
+                  {showBrackets && (
+                    <span
+                      className="inline text-2xl md:text-3xl"
+                      style={{ color: accentColor }}
+                    >
+                      {showVerseNumbers && verse.number.toLocaleString("ar-EG")}
+                      ﴾
+                    </span>
+                  )}
+                  {!showBrackets && showVerseNumbers && (
+                    <span
+                      className="inline text-lg md:text-xl opacity-60 mr-2"
+                      style={{ color: accentColor }}
+                    >
+                      ({verse.number.toLocaleString("ar-EG")})
+                    </span>
+                  )}{" "}
+                </React.Fragment>
+              ))}
             </div>
 
-            {showTranslation && verse.translationText && (
-              <p
-                className={`translation-text ${
-                  index < verses.length - 1 ? "mb-6 pb-4 border-b" : ""
-                }`}
+            {showTranslation && (
+              <div
+                className="translation-text mt-4 pt-4 border-t"
                 style={{
                   borderColor: isDark
                     ? "rgba(255,255,255,0.1)"
                     : "rgba(0,0,0,0.1)",
                 }}
               >
-                {showVerseNumbers && (
-                  <span className="opacity-50 text-sm mr-2">
-                    ({verse.number})
+                {verses.map((verse) => (
+                  <React.Fragment key={`tr-${verse.number}`}>
+                    {showVerseNumbers && (
+                      <span className="opacity-50 text-sm mr-1">
+                        ({verse.number})
+                      </span>
+                    )}
+                    {verse.translationText}{" "}
+                  </React.Fragment>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          verses.map((verse, index) => (
+            <div key={verse.number}>
+              <div className="arabic-text" dir="rtl">
+                {showBrackets && (
+                  <span
+                    className="inline text-2xl md:text-3xl"
+                    style={{ color: accentColor }}
+                  >
+                    ﴿
                   </span>
                 )}
-                {verse.translationText}
-              </p>
-            )}
-          </div>
-        ))}
+                {verse.arabicText}
+                {showBrackets && (
+                  <span
+                    className="inline text-2xl md:text-3xl"
+                    style={{ color: accentColor }}
+                  >
+                    {showVerseNumbers && verse.number.toLocaleString("ar-EG")}﴾
+                  </span>
+                )}
+                {!showBrackets && showVerseNumbers && (
+                  <span
+                    className="inline text-lg md:text-xl opacity-60 mr-2"
+                    style={{ color: accentColor }}
+                  >
+                    ({verse.number.toLocaleString("ar-EG")})
+                  </span>
+                )}
+              </div>
+
+              {showTranslation && verse.translationText && (
+                <p
+                  className={`translation-text ${
+                    index < verses.length - 1 ? "mb-6 pb-4 border-b" : ""
+                  }`}
+                  style={{
+                    borderColor: isDark
+                      ? "rgba(255,255,255,0.1)"
+                      : "rgba(0,0,0,0.1)",
+                  }}
+                >
+                  {showVerseNumbers && (
+                    <span className="opacity-50 text-sm mr-2">
+                      ({verse.number})
+                    </span>
+                  )}
+                  {verse.translationText}
+                </p>
+              )}
+            </div>
+          ))
+        )}
       </div>
 
       {showReference && (
@@ -201,6 +261,7 @@ export function generateStaticHTML(
     showAccentLine,
     transparentBackground,
     showBrackets = true,
+    continuousLines = false,
   } = style;
 
   const finalBgColor = transparentBackground ? "transparent" : backgroundColor;
@@ -238,24 +299,80 @@ export function generateStaticHTML(
     return `${surahName} (${surahNumber}:${fromAyah}-${toAyah})`;
   };
 
-  const versesHtml = verses
-    .map((verse, index) => {
-      const ayahNumberArabic = verse.number.toLocaleString("ar-EG");
-      const openBrace = showBrackets
-        ? `<span style="color: ${accentColor}; font-size: 1.5rem;">﴿</span>`
-        : "";
-      const closeBrace = showBrackets
-        ? showVerseNumbers
-          ? `<span style="color: ${accentColor}; font-size: 1.5rem;">${ayahNumberArabic}﴾</span>`
-          : `<span style="color: ${accentColor}; font-size: 1.5rem;">﴾</span>`
-        : showVerseNumbers
-        ? `<span style="color: ${accentColor}; font-size: 1.25rem; opacity: 0.6; margin-right: 8px;">(${ayahNumberArabic})</span>`
-        : "";
-      const verseNumInTranslation = showVerseNumbers
-        ? `<span style="opacity: 0.5; font-size: 0.875rem; margin-right: 8px;">(${verse.number})</span>`
-        : "";
+  let versesHtml = "";
 
-      return `
+  if (continuousLines) {
+    const arabicContent = verses
+      .map((verse) => {
+        const ayahNumberArabic = verse.number.toLocaleString("ar-EG");
+        const openBrace = showBrackets
+          ? `<span style="color: ${accentColor}; font-size: 1.5rem;">﴿</span>`
+          : "";
+        const closeBrace = showBrackets
+          ? showVerseNumbers
+            ? `<span style="color: ${accentColor}; font-size: 1.5rem;">${ayahNumberArabic}﴾</span>`
+            : `<span style="color: ${accentColor}; font-size: 1.5rem;">﴾</span>`
+          : showVerseNumbers
+          ? `<span style="color: ${accentColor}; font-size: 1.25rem; opacity: 0.6; margin-right: 8px;">(${ayahNumberArabic})</span>`
+          : "";
+        return `${openBrace}${verse.arabicText}${closeBrace}`;
+      })
+      .join(" ");
+
+    versesHtml = `
+    <p style="
+      font-size: 2rem;
+      line-height: 2;
+      direction: rtl;
+      text-align: right;
+      margin: 0;
+    ">
+      ${arabicContent}
+    </p>`;
+
+    if (showTranslation) {
+      const translationContent = verses
+        .map((verse) => {
+          const verseNumInTranslation = showVerseNumbers
+            ? `<span style="opacity: 0.5; font-size: 0.875rem; margin-right: 4px;">(${verse.number})</span>`
+            : "";
+          return `${verseNumInTranslation}${verse.translationText}`;
+        })
+        .join(" ");
+
+      versesHtml += `
+      <p style="
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        opacity: 0.9;
+        margin: 16px 0 0 0;
+        padding-top: 16px;
+        border-top: 1px solid ${borderColor};
+        text-align: left;
+      ">
+        ${translationContent}
+      </p>`;
+    }
+  } else {
+    versesHtml = verses
+      .map((verse, index) => {
+        const ayahNumberArabic = verse.number.toLocaleString("ar-EG");
+        const openBrace = showBrackets
+          ? `<span style="color: ${accentColor}; font-size: 1.5rem;">﴿</span>`
+          : "";
+        const closeBrace = showBrackets
+          ? showVerseNumbers
+            ? `<span style="color: ${accentColor}; font-size: 1.5rem;">${ayahNumberArabic}﴾</span>`
+            : `<span style="color: ${accentColor}; font-size: 1.5rem;">﴾</span>`
+          : showVerseNumbers
+          ? `<span style="color: ${accentColor}; font-size: 1.25rem; opacity: 0.6; margin-right: 8px;">(${ayahNumberArabic})</span>`
+          : "";
+        const verseNumInTranslation = showVerseNumbers
+          ? `<span style="opacity: 0.5; font-size: 0.875rem; margin-right: 8px;">(${verse.number})</span>`
+          : "";
+
+        return `
     <p style="
       font-size: 2rem;
       line-height: 2;
@@ -288,8 +405,9 @@ export function generateStaticHTML(
     `
         : ""
     }`;
-    })
-    .join("\n");
+      })
+      .join("\n");
+  }
 
   const accentLineHtml = showAccentLine
     ? `

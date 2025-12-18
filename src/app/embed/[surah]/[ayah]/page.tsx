@@ -17,6 +17,7 @@ interface EmbedPageProps {
     accentLine?: string;
     transparentBg?: string;
     brackets?: string;
+    continuousLines?: string;
     lang?: string;
     embedId?: string;
   }>;
@@ -88,15 +89,16 @@ export default async function EmbedPage({
   const textColor = resolvedSearchParams.text
     ? `#${resolvedSearchParams.text}`
     : "#ffffff";
-  const theme = (
-    resolvedSearchParams.theme === "light" ? "light" : "dark"
-  ) as "dark" | "light";
+  const theme = (resolvedSearchParams.theme === "light" ? "light" : "dark") as
+    | "dark"
+    | "light";
   const showTranslation = resolvedSearchParams.translation !== "false";
   const showReference = resolvedSearchParams.reference !== "false";
   const showVerseNumbers = resolvedSearchParams.verseNumbers !== "false";
   const showAccentLine = resolvedSearchParams.accentLine !== "false";
   const transparentBackground = resolvedSearchParams.transparentBg === "true";
   const showBrackets = resolvedSearchParams.brackets !== "false";
+  const continuousLines = resolvedSearchParams.continuousLines === "true";
   const isArabicUI = resolvedSearchParams.lang === "ar";
 
   return (
@@ -114,6 +116,7 @@ export default async function EmbedPage({
       showAccentLine={showAccentLine}
       transparentBackground={transparentBackground}
       showBrackets={showBrackets}
+      continuousLines={continuousLines}
       isArabicUI={isArabicUI}
       embedId={embedId}
     />
