@@ -7,15 +7,15 @@ This file provides guidance to agents when working with code in this repository.
 - **Dev**: `npm run dev`
 - **Build**: `npm run build`
 - **Start**: `npm run start`
-- **Lint**: `npm run lint`
+- **Lint**: `npx eslint .` (Uses ESLint v9 flat config)
 - **No Testing**: No test framework configured (Jest/Vitest not found)
 
 ## Project Stack
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript with strict mode enabled
-- **Styling**: Tailwind CSS with custom navy theme and `kitab` font
-- **UI**: React 18 with client components for embed functionality
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript with React 19 (Strict mode enabled)
+- **Styling**: Tailwind CSS v4 (CSS-based configuration in `src/app/globals.css`)
+- **UI**: React 19 with client components for embed functionality
 - **Fonts**: Kitab font files in `public/fonts/` for Uthmani rendering
 
 ## Project Specifics (Non-Obvious)
@@ -30,14 +30,15 @@ This file provides guidance to agents when working with code in this repository.
 
 - **Embed Protocol**: Embed iframes communicate height via `qveg:height` postMessage with `{id, height}` payload. See [`EmbedClient.tsx`](src/app/embed/[surah]/[ayah]/EmbedClient.tsx:68).
 - **Height Calculation**: Embed fallback height = `32 + (verseCount × perVerseHeight) + referenceHeight`, capped at 700px. See [`generateIframeCode`](src/lib/constants.ts:237).
-- **Dynamic Routes**: Embed pages use `src/app/embed/[surah]/[ayah]` pattern for iframe integration.
+- **Dynamic Routes**: Embed pages use `src/app/embed/[surah]/[ayah]` pattern for iframe integration. Params and searchParams are handled as Promises (Next.js 15/16 requirement).
 
 ### Styling & Fonts
 
+- **Tailwind v4 Configuration**: All theme configurations (colors, fonts, animations) are defined in [`src/app/globals.css`](src/app/globals.css) using the `@theme` block. `tailwind.config.js` does NOT exist.
 - **Color URL Params**: Embed colors must be passed as hex **without** `#` prefix (`ff97316` not `#f97316`). See [`getEmbedUrl`](src/lib/constants.ts:203).
-- **Font Requirement**: Arabic/Quranic text requires `kitab` font family (defined in Tailwind config) for proper Uthmani script rendering.
+- **Font Requirement**: Arabic/Quranic text requires `kitab` font family (defined in CSS theme) for proper Uthmani script rendering.
 - **Style Generation**: 70% chance of curated presets, 30% random generation. See [`generateRandomStyle`](src/lib/constants.ts:140).
-- **Custom Theme**: Navy color palette in Tailwind config (`navy-50` to `navy-950`) with accent colors.
+- **Custom Theme**: Navy color palette (`--color-navy-50` to `--color-navy-950`) with accent colors.
 
 ### Language & Internationalization
 
@@ -56,6 +57,7 @@ This file provides guidance to agents when working with code in this repository.
 - **Embed Dependencies**: Embed components require both `embedId` prop and postMessage implementation.
 - **API Coupling**: No caching layer - each request hits external AlQuran Cloud API directly.
 - **TypeScript Strict**: All components must satisfy strict type checking with no implicit any.
+- **ESLint v9**: Configuration is in [`eslint.config.mjs`](eslint.config.mjs).
 
 ## Architecture Overview
 
@@ -107,7 +109,7 @@ The application consists of:
 
 - **Next.js Standalone**: Configured for containerized deployments
 - **TypeScript Strict**: NoEmit enabled - no TypeScript compilation in build
-- **Tailwind Purge**: Unused styles automatically removed in production
+- **Tailwind 4 Engine**: Uses the new lightning-fast CSS-based engine.
 
 ## Error Handling Patterns
 
@@ -144,7 +146,7 @@ The application consists of:
 
 - **No Environment Variables**: API endpoints hardcoded
 - **Font Files**: Kitab fonts must be in `public/fonts/` directory
-- **Node.js**: Compatible with Node.js 18+ (Next.js 14 requirement)
+- **Node.js**: Compatible with Node.js 20+ (Next.js 16 recommended)
 
 ### Docker Support
 
@@ -171,7 +173,7 @@ src/
 - **Components**: Functional components with TypeScript interfaces
 - **Naming**: PascalCase for components, camelCase for functions/variables
 - **Imports**: Use `@/` path aliases from `tsconfig.json`
-- **Styling**: Tailwind classes with custom navy theme
+- **Styling**: Tailwind CSS v4 classes with CSS-based theme
 - **Hooks**: Custom hooks start with 'use' prefix
 
 ### Component Patterns
@@ -228,8 +230,8 @@ src/
 
 ### Styling Utilities
 
-- **Custom Colors**: Navy theme (`navy-50` to `navy-950`) with accent colors
-- **Font Classes**: `kitab` for Arabic, `sans` for UI text
+- **Custom Colors**: CSS Variables (e.g., `var(--color-navy-800)`)
+- **Font Classes**: `font-kitab` for Arabic, `font-sans` for UI text
 - **Responsive Classes**: Mobile-first responsive design
 
 ### Language Utilities

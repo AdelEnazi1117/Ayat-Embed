@@ -5,9 +5,9 @@
 > **أداة مفتوحة المصدر لإنشاء آيات قرآنية قابلة للتضمين في المواقع الإلكترونية.**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8)](https://tailwindcss.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8)](https://tailwindcss.com/)
 
 **Live Demo:** [https://ayatembed.adelenazi.cloud](https://ayatembed.adelenazi.cloud)
 
@@ -27,9 +27,9 @@
 
 **مضمّن الآيات** هو أداة مصغرة (Micro-SaaS) صممت لمساعدة المطورين وصناع المحتوى على تضمين الآيات القرآنية في مواقعهم بسهولة. توفر الأداة واجهة قابلة للتخصيص بالكامل لاختيار الآيات، وتعديل الأنماط، وتوليد أكواد التضمين (iFrame أو HTML) التي تظهر بشكل رائع على جميع الأجهزة.
 
-Built with **Next.js**, **Tailwind CSS**, and **TypeScript**, it priorities performance, accessibility, and aesthetics.
+Built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**, it priorities performance, accessibility, and aesthetics.
 
-تم بناؤه باستخدام **Next.js**، **Tailwind CSS**، و **TypeScript**، مع التركيز على الأداء، وإمكانية الوصول، والجماليات.
+تم بناؤه باستخدام **Next.js 16**، **Tailwind CSS v4**، و **TypeScript**، مع التركيز على الأداء، وإمكانية الوصول، والجماليات.
 
 ---
 
@@ -77,9 +77,9 @@ Built with **Next.js**, **Tailwind CSS**, and **TypeScript**, it priorities perf
 
 ## Tech Stack | التقنيات المستخدمة
 
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (React 19)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Icons**: [FontAwesome](https://fontawesome.com/) & [Lucide React](https://lucide.dev/)
 - **Fonts**:
   - _Kitab_ (Quranic Text | الخط القرآني)
@@ -93,7 +93,7 @@ Built with **Next.js**, **Tailwind CSS**, and **TypeScript**, it priorities perf
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - npm 9+
 
 ### Installation
@@ -148,7 +148,7 @@ src/
 ├── app/
 │   ├── page.tsx            # Main Builder Dashboard
 │   ├── layout.tsx          # Root Layout (Fonts, Metadata)
-│   ├── globals.css         # Global Styles & Tailwind
+│   ├── globals.css         # Global Styles & Tailwind v4 Theme
 │   ├── how-to-use/         # "How to Use" Page
 │   ├── docs/               # Documentation Page
 │   └── embed/

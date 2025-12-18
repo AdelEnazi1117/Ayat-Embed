@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
 
 /* Kitab Font - Optimized for Quranic text */
 @font-face {
@@ -15,9 +16,53 @@
   font-display: swap;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-navy-50: #e7e9ec;
+  --color-navy-100: #c3c7ce;
+  --color-navy-200: #9ba3af;
+  --color-navy-300: #737e90;
+  --color-navy-400: #556279;
+  --color-navy-500: #374662;
+  --color-navy-600: #313f5a;
+  --color-navy-700: #283550;
+  --color-navy-800: #1c2331;
+  --color-navy-900: #151b26;
+  --color-navy-950: #0d1117;
+
+  --color-accent-orange: #f97316;
+  --color-accent-gold: #f59e0b;
+  --color-accent-emerald: #10b981;
+  --color-accent-blue: #3b82f6;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-rose: #f43f5e;
+
+  --font-kitab: "Kitab", serif;
+  --font-arabic: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --animate-fade-in: fadeIn 0.3s ease-out;
+  --animate-slide-up: slideUp 0.4s ease-out;
+  --animate-pulse-once: pulse 0.5s ease-in-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
 
 :root {
   --accent-color: #f97316;
@@ -32,11 +77,11 @@
 
   /* RTL Support */
   html[dir="rtl"] {
-    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    font-family: var(--font-arabic);
   }
 
   html[dir="ltr"] {
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: var(--font-sans);
   }
 
   body {
@@ -60,8 +105,8 @@
 
   /* RTL Border Accent - Always on right for Quran cards */
   .quran-card.show-accent-line::before {
-    content: "";
     @apply absolute top-0 bottom-0 w-1.5;
+    content: "";
     right: 0;
     border-radius: 0 8px 8px 0;
     background-color: var(--accent-color);
@@ -79,8 +124,8 @@
 
   /* Arabic Text Styling - Using Kitab font for Quranic text */
   .arabic-text {
-    font-family: "Kitab", serif;
     @apply text-3xl md:text-4xl lg:text-5xl leading-loose;
+    font-family: var(--font-kitab);
     direction: rtl;
     text-align: right;
     line-height: 2;
@@ -108,8 +153,8 @@
   }
 
   .copy-btn.copied::after {
-    content: "✓";
     @apply absolute inset-0 flex items-center justify-center bg-green-500 text-white animate-fade-in;
+    content: "✓";
   }
 
   /* Color Swatch */
