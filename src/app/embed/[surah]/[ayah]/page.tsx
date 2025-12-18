@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import EmbedClient from "./EmbedClient";
 
 interface EmbedPageProps {
@@ -102,23 +103,41 @@ export default async function EmbedPage({
   const isArabicUI = resolvedSearchParams.lang === "ar";
 
   return (
-    <EmbedClient
-      surahNumber={surahNumber}
-      fromAyah={fromAyah}
-      toAyah={toAyah}
-      accentColor={accentColor}
-      backgroundColor={backgroundColor}
-      textColor={textColor}
-      theme={theme}
-      showTranslation={showTranslation}
-      showReference={showReference}
-      showVerseNumbers={showVerseNumbers}
-      showAccentLine={showAccentLine}
-      transparentBackground={transparentBackground}
-      showBrackets={showBrackets}
-      continuousLines={continuousLines}
-      isArabicUI={isArabicUI}
-      embedId={embedId}
-    />
+    <>
+      <EmbedClient
+        surahNumber={surahNumber}
+        fromAyah={fromAyah}
+        toAyah={toAyah}
+        accentColor={accentColor}
+        backgroundColor={backgroundColor}
+        textColor={textColor}
+        theme={theme}
+        showTranslation={showTranslation}
+        showReference={showReference}
+        showVerseNumbers={showVerseNumbers}
+        showAccentLine={showAccentLine}
+        transparentBackground={transparentBackground}
+        showBrackets={showBrackets}
+        continuousLines={continuousLines}
+        isArabicUI={isArabicUI}
+        embedId={embedId}
+      />
+      <Script id="embed-style-override" strategy="afterInteractive">
+        {`
+          // Override root layout styles for embed pages only after hydration
+          if (window.location.pathname.includes('/embed/')) {
+            document.body.classList.add('embed-page');
+
+            // Apply styles without causing hydration mismatch
+            Object.assign(document.body.style, {
+              background: 'transparent',
+              margin: '0',
+              padding: '0',
+              minHeight: 'auto'
+            });
+          }
+        `}
+      </Script>
+    </>
   );
 }

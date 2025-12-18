@@ -2,6 +2,7 @@
 
 import React from "react";
 import type { CardStyle, VerseData } from "@/types";
+import { escapeHtml } from "@/lib/sanitize";
 
 interface QuranCardProps {
   verses: VerseData[];
@@ -315,7 +316,7 @@ export function generateStaticHTML(
           : showVerseNumbers
           ? `<span style="color: ${accentColor}; font-size: 1.25rem; opacity: 0.6; margin-right: 8px;">(${ayahNumberArabic})</span>`
           : "";
-        return `${openBrace}${verse.arabicText}${closeBrace}`;
+        return `${openBrace}${escapeHtml(verse.arabicText)}${closeBrace}`;
       })
       .join(" ");
 
@@ -336,7 +337,7 @@ export function generateStaticHTML(
           const verseNumInTranslation = showVerseNumbers
             ? `<span style="opacity: 0.5; font-size: 0.875rem; margin-right: 4px;">(${verse.number})</span>`
             : "";
-          return `${verseNumInTranslation}${verse.translationText}`;
+          return `${verseNumInTranslation}${escapeHtml(verse.translationText)}`;
         })
         .join(" ");
 
@@ -380,7 +381,7 @@ export function generateStaticHTML(
       text-align: right;
       margin: 0 0 ${showTranslation ? "8px" : "0"};
     ">
-      ${openBrace}${verse.arabicText}${closeBrace}
+      ${openBrace}${escapeHtml(verse.arabicText)}${closeBrace}
     </p>
     ${
       showTranslation && verse.translationText
@@ -400,7 +401,7 @@ export function generateStaticHTML(
       text-align: left;
     ">
       ${verseNumInTranslation}
-      ${verse.translationText}
+      ${escapeHtml(verse.translationText)}
     </p>
     `
         : ""

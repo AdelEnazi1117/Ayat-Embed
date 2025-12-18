@@ -194,3 +194,16 @@
     text-wrap: balance;
   }
 }
+
+/* Embed-specific overrides - applied via JavaScript */
+body.embed-page {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: auto !important;
+}
+
+/* Remove potential spacing issues in embeds */
+.embed-page > * {
+  box-sizing: border-box;
+}

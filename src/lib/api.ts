@@ -1,4 +1,5 @@
-import type { Surah, Ayah, ApiResponse, VerseData } from "@/types";
+import type { Surah, Ayah, VerseData } from "@/types";
+import { validateApiResponse, validateAndSanitizeSurah, validateAyahStructure } from "./sanitize";
 
 const API_BASE = "https://api.alquran.cloud/v1";
 
@@ -12,13 +13,36 @@ export async function fetchSurahs(): Promise<Surah[]> {
       throw new Error(`API Error: ${response.status}`);
     }
 
-    const data: ApiResponse<Surah[]> = await response.json();
+    const data = await response.json();
 
-    if (data.code !== 200) {
-      throw new Error(`API returned code: ${data.code}`);
+    // Validate response structure
+    if (!data || typeof data !== 'object' || data.code !== 200) {
+      throw new Error(`Invalid API response structure`);
     }
 
-    return data.data;
+    if (!data.data || !Array.isArray(data.data)) {
+      throw new Error(`API response data is not an array`);
+    }
+
+    // Validate and sanitize each surah
+    const validatedSurahs: Surah[] = [];
+    const invalidCount = data.data.length;
+
+    for (const surah of data.data) {
+      if (validateAndSanitizeSurah(surah)) {
+        validatedSurahs.push(surah as Surah);
+      }
+    }
+
+    if (validatedSurahs.length === 0) {
+      throw new Error(`No valid surahs found in API response`);
+    }
+
+    if (validatedSurahs.length < invalidCount) {
+      console.warn(`${invalidCount - validatedSurahs.length} surahs were filtered out due to validation failures`);
+    }
+
+    return validatedSurahs;
   } catch (error) {
     console.error("Failed to fetch Surahs:", error);
     throw error;
@@ -48,20 +72,33 @@ export async function fetchAyah(
       throw new Error(`API Error: ${response.status}`);
     }
 
-    const data: ApiResponse<Ayah> = await response.json();
+    const data = await response.json();
 
-    if (data.code !== 200) {
-      throw new Error(`API returned code: ${data.code}`);
+    // Validate response structure
+    if (!data || typeof data !== 'object' || data.code !== 200) {
+      throw new Error(`Invalid API response structure`);
+    }
+
+    if (!data.data || typeof data.data !== 'object') {
+      throw new Error(`API response data is not an object`);
     }
 
     const ayah = data.data;
+
+    // Validate ayah structure
+    if (!validateAyahStructure(ayah)) {
+      throw new Error(`Invalid ayah structure in API response`);
+    }
+
+    // Validate API response text for security
+    const validatedText = validateApiResponse(ayah.text);
 
     // Some editions include the basmala in the first ayah of every surah.
     // We want the first verse content to start *after* the basmala except in Al-Fatiha.
     const sanitizedAyah =
       surahNumber !== 1 && ayah.numberInSurah === 1
-        ? { ...ayah, text: stripBasmala(ayah.text) }
-        : ayah;
+        ? { ...ayah, text: stripBasmala(validatedText) }
+        : { ...ayah, text: validatedText };
 
     return sanitizedAyah;
   } catch (error) {
@@ -83,13 +120,18 @@ export async function fetchTranslation(
       throw new Error(`API Error: ${response.status}`);
     }
 
-    const data: ApiResponse<Ayah> = await response.json();
+    const data = await response.json();
 
-    if (data.code !== 200) {
-      throw new Error(`API returned code: ${data.code}`);
+    // Validate response structure
+    if (!data || typeof data !== 'object' || data.code !== 200) {
+      throw new Error(`Invalid API response structure`);
     }
 
-    return data.data.text;
+    if (!data.data || typeof data.data !== 'object') {
+      throw new Error(`API response data is not an object`);
+    }
+
+    return validateApiResponse(data.data.text);
   } catch (error) {
     console.error("Failed to fetch translation:", error);
     throw error;

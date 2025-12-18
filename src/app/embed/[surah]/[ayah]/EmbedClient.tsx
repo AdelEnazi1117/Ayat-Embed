@@ -142,10 +142,11 @@ export default function EmbedClient({
   if (error) {
     return (
       <div
-        className="flex items-start justify-center p-0"
+        className="w-full p-4 text-center"
         style={{ background: "transparent" }}
+        ref={setRefEl}
       >
-        <div className="text-center bg-navy-800 p-6 rounded-lg">
+        <div className="bg-navy-800 p-6 rounded-lg">
           <p className="text-red-500">{error}</p>
         </div>
       </div>
@@ -154,21 +155,23 @@ export default function EmbedClient({
 
   return (
     <div
-      className="flex items-start justify-center p-0"
-      style={{ background: "transparent" }}
+      className="w-full p-4"
+      style={{
+        background: "transparent",
+        minHeight: "100%",
+        boxSizing: "border-box"
+      }}
       ref={setRefEl}
     >
-      <div className="w-full max-w-2xl">
-        <QuranCard
-          verses={verses}
-          surahName={surahName}
-          surahNameArabic={surahNameArabic}
-          surahNumber={surahNumber}
-          style={style}
-          isLoading={isLoading}
-          isArabicUI={isArabicUI}
-        />
-      </div>
+      <QuranCard
+        verses={verses}
+        surahName={surahName}
+        surahNameArabic={surahNameArabic}
+        surahNumber={surahNumber}
+        style={style}
+        isLoading={isLoading}
+        isArabicUI={isArabicUI}
+      />
     </div>
   );
 }
