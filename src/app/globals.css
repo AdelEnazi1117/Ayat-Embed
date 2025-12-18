@@ -201,9 +201,23 @@ body.embed-page {
   margin: 0 !important;
   padding: 0 !important;
   min-height: auto !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 /* Remove potential spacing issues in embeds */
 .embed-page > * {
   box-sizing: border-box;
+}
+
+/* Ensure no scrollbars in embed context */
+.embed-page #__next {
+  overflow: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.embed-page html {
+  overflow: hidden !important;
 }

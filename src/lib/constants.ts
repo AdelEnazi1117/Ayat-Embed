@@ -258,13 +258,14 @@ export const generateIframeCode = (
       ? `${surah}:${fromAyah}`
       : `${surah}:${fromAyah}-${toAyah}`;
 
-  return `<iframe 
+  return `<iframe
   id="${embedId}"
   src="${embedUrlWithId}"
   width="100%"
   height="${fallbackHeight}"
   frameborder="0"
-  style="max-width: 700px; border: none; background: transparent; display: block; margin: 0 auto; vertical-align: top; overflow: hidden;"
+  scrolling="no"
+  style="max-width: 700px; border: none; background: transparent; display: block; margin: 0 auto; vertical-align: top; overflow: hidden; resize: none;"
   title="Ayat Embed - Surah ${verseLabel}"
   loading="lazy"
 ></iframe>
@@ -272,12 +273,24 @@ export const generateIframeCode = (
 (function() {
   const iframe = document.getElementById("${embedId}");
   if (!iframe) return;
+
   const updateHeight = (event) => {
     if (!event || !event.data || event.data.type !== "qveg:height" || event.data.id !== "${embedId}") return;
     const newHeight = Math.max(1, Math.round(event.data.height));
     iframe.style.height = newHeight + "px";
+
+    // Force the iframe to recalculate its layout
+    if (iframe.contentWindow) {
+      iframe.contentWindow.document.body.style.overflow = 'hidden';
+    }
   };
+
+  // Listen for height updates
   window.addEventListener("message", updateHeight, false);
+
+  // Prevent scrolling on the iframe itself
+  iframe.style.overflow = 'hidden';
+  iframe.setAttribute('scrolling', 'no');
 })();
 </script>`;
 };

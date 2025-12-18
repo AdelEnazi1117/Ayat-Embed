@@ -67,22 +67,36 @@ export default function EmbedClient({
   useEffect(() => {
     const postHeight = () => {
       if (!embedId || !refEl) return;
-      const height = refEl.scrollHeight;
+
+      // Use getBoundingClientRect for more accurate height calculation
+      const rect = refEl.getBoundingClientRect();
+      const height = Math.ceil(rect.height);
+
+      // Also check scrollHeight as fallback
+      const scrollHeight = refEl.scrollHeight;
+      const finalHeight = Math.max(height, scrollHeight);
+
       window.parent?.postMessage(
-        { type: "qveg:height", id: embedId, height },
+        { type: "qveg:height", id: embedId, height: finalHeight },
         "*"
       );
     };
 
+    // Post height immediately and with delays to ensure accurate calculation
     postHeight();
-    const timer = setTimeout(postHeight, 300);
+
+    const timers = [
+      setTimeout(postHeight, 100),
+      setTimeout(postHeight, 300),
+      setTimeout(postHeight, 1000), // Final check after full render
+    ];
 
     if (embedId) {
       window.addEventListener("resize", postHeight);
     }
 
     return () => {
-      clearTimeout(timer);
+      timers.forEach(clearTimeout);
       if (embedId) {
         window.removeEventListener("resize", postHeight);
       }
@@ -159,7 +173,10 @@ export default function EmbedClient({
       style={{
         background: "transparent",
         minHeight: "100%",
-        boxSizing: "border-box"
+        boxSizing: "border-box",
+        overflow: "hidden",
+        width: "100%",
+        maxWidth: "100%"
       }}
       ref={setRefEl}
     >

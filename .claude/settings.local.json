@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm outdated:*)",
       "Bash(npm audit:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(npx eslint:*)",
+      "Skill(osgrep)",
+      "Bash(osgrep:*)"
     ]
   }
 }

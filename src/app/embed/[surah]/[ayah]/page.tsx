@@ -133,8 +133,28 @@ export default async function EmbedPage({
               background: 'transparent',
               margin: '0',
               padding: '0',
-              minHeight: 'auto'
+              minHeight: 'auto',
+              overflow: 'hidden',
+              width: '100%',
+              maxWidth: '100%'
             });
+
+            // Also apply to html element
+            Object.assign(document.documentElement.style, {
+              overflow: 'hidden',
+              width: '100%',
+              maxWidth: '100%'
+            });
+
+            // Apply to #__next container
+            const nextContainer = document.getElementById('__next');
+            if (nextContainer) {
+              Object.assign(nextContainer.style, {
+                overflow: 'hidden',
+                width: '100%',
+                maxWidth: '100%'
+              });
+            }
           }
         `}
       </Script>

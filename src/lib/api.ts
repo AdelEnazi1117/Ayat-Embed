@@ -15,7 +15,6 @@ export async function fetchSurahs(): Promise<Surah[]> {
 
     const data = await response.json();
 
-    // Validate response structure
     if (!data || typeof data !== 'object' || data.code !== 200) {
       throw new Error(`Invalid API response structure`);
     }
@@ -24,7 +23,6 @@ export async function fetchSurahs(): Promise<Surah[]> {
       throw new Error(`API response data is not an array`);
     }
 
-    // Validate and sanitize each surah
     const validatedSurahs: Surah[] = [];
     const invalidCount = data.data.length;
 
@@ -74,7 +72,6 @@ export async function fetchAyah(
 
     const data = await response.json();
 
-    // Validate response structure
     if (!data || typeof data !== 'object' || data.code !== 200) {
       throw new Error(`Invalid API response structure`);
     }
@@ -85,12 +82,10 @@ export async function fetchAyah(
 
     const ayah = data.data;
 
-    // Validate ayah structure
     if (!validateAyahStructure(ayah)) {
       throw new Error(`Invalid ayah structure in API response`);
     }
 
-    // Validate API response text for security
     const validatedText = validateApiResponse(ayah.text);
 
     // Some editions include the basmala in the first ayah of every surah.
@@ -122,7 +117,6 @@ export async function fetchTranslation(
 
     const data = await response.json();
 
-    // Validate response structure
     if (!data || typeof data !== 'object' || data.code !== 200) {
       throw new Error(`Invalid API response structure`);
     }
