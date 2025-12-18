@@ -4,12 +4,10 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
-  faBookOpen,
   faCode,
   faPalette,
   faCircleQuestion,
   faArrowUpRightFromSquare,
-  faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "@/components/LanguageToggle";

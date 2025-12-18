@@ -11,8 +11,6 @@ import {
   faCode,
   faCopy,
   faCircleCheck,
-  faPlay,
-  faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "@/components/LanguageToggle";

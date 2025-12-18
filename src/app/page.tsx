@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCopy,
   faCheck,
   faCode,
   faPalette,
@@ -25,7 +24,7 @@ import Footer from "@/components/Footer";
 import QuranCard, { generateStaticHTML } from "@/components/QuranCard";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { fetchSurahs, fetchVersesRange, MAX_VERSES_LIMIT } from "@/lib/api";
+import { fetchSurahs, fetchVersesRange } from "@/lib/api";
 import {
   trackCTA,
   trackProfileInteraction,
@@ -64,7 +63,7 @@ export default function BuilderPage() {
   const [activePanel, setActivePanel] = useState<string | null>(null);
   const [popoverPos, setPopoverPos] = useState({ top: 0, left: 0 });
 
-  const [isLoadingSurahs, setIsLoadingSurahs] = useState(true);
+  const [, setIsLoadingSurahs] = useState(true);
   const [isLoadingVerses, setIsLoadingVerses] = useState(false);
 
   const [baseUrl, setBaseUrl] = useState("");
