@@ -51,6 +51,15 @@ This file provides guidance to agents when working with code in this repository.
 - **Local State**: Verse selection and styling in main page state (not global) for performance.
 - **No Redux/Zustand**: Uses only React built-in state management.
 
+### Analytics & Tracking
+
+- **Umami Analytics**: Comprehensive tracking system in [`src/lib/analytics.ts`](src/lib/analytics.ts)
+- **Event Types**: CTA clicks, social interactions, page engagement, scroll depth
+- **Tracking Functions**: `trackCTA()`, `trackSocial()`, `trackEvent()`, `usePageAnalytics()`
+- **Scroll Tracking**: Automatic tracking at 25%, 50%, 75%, 90% scroll depths
+- **Engagement Timer**: 10-second engagement tracking for user interaction analysis
+- **Event Slugification**: Automatic slugification of event names for consistent reporting
+
 ### Critical Gotchas
 
 - **Font Files**: Kitab font files must be in `public/fonts/` directory, not imported via CSS.
@@ -144,7 +153,10 @@ The application consists of:
 
 ### Environment Requirements
 
-- **No Environment Variables**: API endpoints hardcoded
+- **Optional Environment Variables**:
+  - `NEXT_PUBLIC_UMAMI_URL` - Umami analytics script URL
+  - `NEXT_PUBLIC_UMAMI_ID` - Umami website ID
+  - `NEXT_PUBLIC_SITE_URL` - Site URL for metadata (defaults to ayatembed.adelenazi.cloud)
 - **Font Files**: Kitab fonts must be in `public/fonts/` directory
 - **Node.js**: Compatible with Node.js 20+ (Next.js 16 recommended)
 

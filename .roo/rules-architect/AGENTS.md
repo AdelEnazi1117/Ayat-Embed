@@ -5,3 +5,4 @@
 - **State Management Split**: Global language state via React Context, but verse selection and styling in main page state (not global) for performance.
 - **API Dependency Pattern**: Heavily coupled to AlQuran Cloud API - no caching layer, each request hits external service.
 - **Height Calculation Formula**: Embed fallback height uses `32 + (verseCount × perVerseHeight) + referenceHeight`, capped at 700px for consistent rendering.
+- **Analytics Architecture**: Umami analytics integrated throughout application with comprehensive event tracking, scroll depth monitoring, and user engagement measurement.
