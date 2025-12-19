@@ -1,0 +1,3020 @@
+@font-face {
+  font-family: "QPC Mushaf Page 1";
+  src: url("/fonts/qpc-v2/p1.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 10";
+  src: url("/fonts/qpc-v2/p10.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 100";
+  src: url("/fonts/qpc-v2/p100.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 101";
+  src: url("/fonts/qpc-v2/p101.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 102";
+  src: url("/fonts/qpc-v2/p102.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 103";
+  src: url("/fonts/qpc-v2/p103.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 104";
+  src: url("/fonts/qpc-v2/p104.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 105";
+  src: url("/fonts/qpc-v2/p105.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 106";
+  src: url("/fonts/qpc-v2/p106.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 107";
+  src: url("/fonts/qpc-v2/p107.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 108";
+  src: url("/fonts/qpc-v2/p108.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 109";
+  src: url("/fonts/qpc-v2/p109.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 11";
+  src: url("/fonts/qpc-v2/p11.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 110";
+  src: url("/fonts/qpc-v2/p110.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 111";
+  src: url("/fonts/qpc-v2/p111.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 112";
+  src: url("/fonts/qpc-v2/p112.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 113";
+  src: url("/fonts/qpc-v2/p113.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 114";
+  src: url("/fonts/qpc-v2/p114.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 115";
+  src: url("/fonts/qpc-v2/p115.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 116";
+  src: url("/fonts/qpc-v2/p116.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 117";
+  src: url("/fonts/qpc-v2/p117.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 118";
+  src: url("/fonts/qpc-v2/p118.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 119";
+  src: url("/fonts/qpc-v2/p119.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 12";
+  src: url("/fonts/qpc-v2/p12.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 120";
+  src: url("/fonts/qpc-v2/p120.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 121";
+  src: url("/fonts/qpc-v2/p121.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 122";
+  src: url("/fonts/qpc-v2/p122.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 123";
+  src: url("/fonts/qpc-v2/p123.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 124";
+  src: url("/fonts/qpc-v2/p124.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 125";
+  src: url("/fonts/qpc-v2/p125.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 126";
+  src: url("/fonts/qpc-v2/p126.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 127";
+  src: url("/fonts/qpc-v2/p127.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 128";
+  src: url("/fonts/qpc-v2/p128.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 129";
+  src: url("/fonts/qpc-v2/p129.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 13";
+  src: url("/fonts/qpc-v2/p13.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 130";
+  src: url("/fonts/qpc-v2/p130.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 131";
+  src: url("/fonts/qpc-v2/p131.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 132";
+  src: url("/fonts/qpc-v2/p132.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 133";
+  src: url("/fonts/qpc-v2/p133.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 134";
+  src: url("/fonts/qpc-v2/p134.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 135";
+  src: url("/fonts/qpc-v2/p135.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 136";
+  src: url("/fonts/qpc-v2/p136.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 137";
+  src: url("/fonts/qpc-v2/p137.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 138";
+  src: url("/fonts/qpc-v2/p138.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 139";
+  src: url("/fonts/qpc-v2/p139.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 14";
+  src: url("/fonts/qpc-v2/p14.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 140";
+  src: url("/fonts/qpc-v2/p140.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 141";
+  src: url("/fonts/qpc-v2/p141.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 142";
+  src: url("/fonts/qpc-v2/p142.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 143";
+  src: url("/fonts/qpc-v2/p143.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 144";
+  src: url("/fonts/qpc-v2/p144.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 145";
+  src: url("/fonts/qpc-v2/p145.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 146";
+  src: url("/fonts/qpc-v2/p146.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 147";
+  src: url("/fonts/qpc-v2/p147.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 148";
+  src: url("/fonts/qpc-v2/p148.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 149";
+  src: url("/fonts/qpc-v2/p149.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 15";
+  src: url("/fonts/qpc-v2/p15.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 150";
+  src: url("/fonts/qpc-v2/p150.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 151";
+  src: url("/fonts/qpc-v2/p151.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 152";
+  src: url("/fonts/qpc-v2/p152.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 153";
+  src: url("/fonts/qpc-v2/p153.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 154";
+  src: url("/fonts/qpc-v2/p154.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 155";
+  src: url("/fonts/qpc-v2/p155.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 156";
+  src: url("/fonts/qpc-v2/p156.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 157";
+  src: url("/fonts/qpc-v2/p157.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 158";
+  src: url("/fonts/qpc-v2/p158.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 159";
+  src: url("/fonts/qpc-v2/p159.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 16";
+  src: url("/fonts/qpc-v2/p16.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 160";
+  src: url("/fonts/qpc-v2/p160.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 161";
+  src: url("/fonts/qpc-v2/p161.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 162";
+  src: url("/fonts/qpc-v2/p162.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 163";
+  src: url("/fonts/qpc-v2/p163.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 164";
+  src: url("/fonts/qpc-v2/p164.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 165";
+  src: url("/fonts/qpc-v2/p165.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 166";
+  src: url("/fonts/qpc-v2/p166.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 167";
+  src: url("/fonts/qpc-v2/p167.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 168";
+  src: url("/fonts/qpc-v2/p168.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 169";
+  src: url("/fonts/qpc-v2/p169.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 17";
+  src: url("/fonts/qpc-v2/p17.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 170";
+  src: url("/fonts/qpc-v2/p170.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 171";
+  src: url("/fonts/qpc-v2/p171.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 172";
+  src: url("/fonts/qpc-v2/p172.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 173";
+  src: url("/fonts/qpc-v2/p173.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 174";
+  src: url("/fonts/qpc-v2/p174.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 175";
+  src: url("/fonts/qpc-v2/p175.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 176";
+  src: url("/fonts/qpc-v2/p176.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 177";
+  src: url("/fonts/qpc-v2/p177.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 178";
+  src: url("/fonts/qpc-v2/p178.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 179";
+  src: url("/fonts/qpc-v2/p179.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 18";
+  src: url("/fonts/qpc-v2/p18.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 180";
+  src: url("/fonts/qpc-v2/p180.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 181";
+  src: url("/fonts/qpc-v2/p181.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 182";
+  src: url("/fonts/qpc-v2/p182.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 183";
+  src: url("/fonts/qpc-v2/p183.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 184";
+  src: url("/fonts/qpc-v2/p184.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 185";
+  src: url("/fonts/qpc-v2/p185.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 186";
+  src: url("/fonts/qpc-v2/p186.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 187";
+  src: url("/fonts/qpc-v2/p187.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 188";
+  src: url("/fonts/qpc-v2/p188.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 189";
+  src: url("/fonts/qpc-v2/p189.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 19";
+  src: url("/fonts/qpc-v2/p19.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 190";
+  src: url("/fonts/qpc-v2/p190.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 191";
+  src: url("/fonts/qpc-v2/p191.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 192";
+  src: url("/fonts/qpc-v2/p192.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 193";
+  src: url("/fonts/qpc-v2/p193.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 194";
+  src: url("/fonts/qpc-v2/p194.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 195";
+  src: url("/fonts/qpc-v2/p195.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 196";
+  src: url("/fonts/qpc-v2/p196.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 197";
+  src: url("/fonts/qpc-v2/p197.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 198";
+  src: url("/fonts/qpc-v2/p198.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 199";
+  src: url("/fonts/qpc-v2/p199.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 2";
+  src: url("/fonts/qpc-v2/p2.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 20";
+  src: url("/fonts/qpc-v2/p20.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 200";
+  src: url("/fonts/qpc-v2/p200.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 201";
+  src: url("/fonts/qpc-v2/p201.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 202";
+  src: url("/fonts/qpc-v2/p202.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 203";
+  src: url("/fonts/qpc-v2/p203.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 204";
+  src: url("/fonts/qpc-v2/p204.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 205";
+  src: url("/fonts/qpc-v2/p205.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 206";
+  src: url("/fonts/qpc-v2/p206.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 207";
+  src: url("/fonts/qpc-v2/p207.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 208";
+  src: url("/fonts/qpc-v2/p208.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 209";
+  src: url("/fonts/qpc-v2/p209.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 21";
+  src: url("/fonts/qpc-v2/p21.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 210";
+  src: url("/fonts/qpc-v2/p210.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 211";
+  src: url("/fonts/qpc-v2/p211.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 212";
+  src: url("/fonts/qpc-v2/p212.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 213";
+  src: url("/fonts/qpc-v2/p213.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 214";
+  src: url("/fonts/qpc-v2/p214.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 215";
+  src: url("/fonts/qpc-v2/p215.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 216";
+  src: url("/fonts/qpc-v2/p216.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 217";
+  src: url("/fonts/qpc-v2/p217.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 218";
+  src: url("/fonts/qpc-v2/p218.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 219";
+  src: url("/fonts/qpc-v2/p219.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 22";
+  src: url("/fonts/qpc-v2/p22.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 220";
+  src: url("/fonts/qpc-v2/p220.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 221";
+  src: url("/fonts/qpc-v2/p221.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 222";
+  src: url("/fonts/qpc-v2/p222.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 223";
+  src: url("/fonts/qpc-v2/p223.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 224";
+  src: url("/fonts/qpc-v2/p224.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 225";
+  src: url("/fonts/qpc-v2/p225.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 226";
+  src: url("/fonts/qpc-v2/p226.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 227";
+  src: url("/fonts/qpc-v2/p227.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 228";
+  src: url("/fonts/qpc-v2/p228.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 229";
+  src: url("/fonts/qpc-v2/p229.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 23";
+  src: url("/fonts/qpc-v2/p23.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 230";
+  src: url("/fonts/qpc-v2/p230.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 231";
+  src: url("/fonts/qpc-v2/p231.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 232";
+  src: url("/fonts/qpc-v2/p232.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 233";
+  src: url("/fonts/qpc-v2/p233.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 234";
+  src: url("/fonts/qpc-v2/p234.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 235";
+  src: url("/fonts/qpc-v2/p235.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 236";
+  src: url("/fonts/qpc-v2/p236.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 237";
+  src: url("/fonts/qpc-v2/p237.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 238";
+  src: url("/fonts/qpc-v2/p238.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 239";
+  src: url("/fonts/qpc-v2/p239.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 24";
+  src: url("/fonts/qpc-v2/p24.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 240";
+  src: url("/fonts/qpc-v2/p240.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 241";
+  src: url("/fonts/qpc-v2/p241.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 242";
+  src: url("/fonts/qpc-v2/p242.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 243";
+  src: url("/fonts/qpc-v2/p243.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 244";
+  src: url("/fonts/qpc-v2/p244.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 245";
+  src: url("/fonts/qpc-v2/p245.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 246";
+  src: url("/fonts/qpc-v2/p246.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 247";
+  src: url("/fonts/qpc-v2/p247.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 248";
+  src: url("/fonts/qpc-v2/p248.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 249";
+  src: url("/fonts/qpc-v2/p249.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 25";
+  src: url("/fonts/qpc-v2/p25.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 250";
+  src: url("/fonts/qpc-v2/p250.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 251";
+  src: url("/fonts/qpc-v2/p251.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 252";
+  src: url("/fonts/qpc-v2/p252.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 253";
+  src: url("/fonts/qpc-v2/p253.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 254";
+  src: url("/fonts/qpc-v2/p254.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 255";
+  src: url("/fonts/qpc-v2/p255.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 256";
+  src: url("/fonts/qpc-v2/p256.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 257";
+  src: url("/fonts/qpc-v2/p257.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 258";
+  src: url("/fonts/qpc-v2/p258.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 259";
+  src: url("/fonts/qpc-v2/p259.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 26";
+  src: url("/fonts/qpc-v2/p26.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 260";
+  src: url("/fonts/qpc-v2/p260.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 261";
+  src: url("/fonts/qpc-v2/p261.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 262";
+  src: url("/fonts/qpc-v2/p262.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 263";
+  src: url("/fonts/qpc-v2/p263.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 264";
+  src: url("/fonts/qpc-v2/p264.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 265";
+  src: url("/fonts/qpc-v2/p265.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 266";
+  src: url("/fonts/qpc-v2/p266.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 267";
+  src: url("/fonts/qpc-v2/p267.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 268";
+  src: url("/fonts/qpc-v2/p268.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 269";
+  src: url("/fonts/qpc-v2/p269.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 27";
+  src: url("/fonts/qpc-v2/p27.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 270";
+  src: url("/fonts/qpc-v2/p270.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 271";
+  src: url("/fonts/qpc-v2/p271.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 272";
+  src: url("/fonts/qpc-v2/p272.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 273";
+  src: url("/fonts/qpc-v2/p273.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 274";
+  src: url("/fonts/qpc-v2/p274.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 275";
+  src: url("/fonts/qpc-v2/p275.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 276";
+  src: url("/fonts/qpc-v2/p276.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 277";
+  src: url("/fonts/qpc-v2/p277.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 278";
+  src: url("/fonts/qpc-v2/p278.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 279";
+  src: url("/fonts/qpc-v2/p279.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 28";
+  src: url("/fonts/qpc-v2/p28.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 280";
+  src: url("/fonts/qpc-v2/p280.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 281";
+  src: url("/fonts/qpc-v2/p281.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 282";
+  src: url("/fonts/qpc-v2/p282.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 283";
+  src: url("/fonts/qpc-v2/p283.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 284";
+  src: url("/fonts/qpc-v2/p284.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 285";
+  src: url("/fonts/qpc-v2/p285.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 286";
+  src: url("/fonts/qpc-v2/p286.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 287";
+  src: url("/fonts/qpc-v2/p287.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 288";
+  src: url("/fonts/qpc-v2/p288.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 289";
+  src: url("/fonts/qpc-v2/p289.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 29";
+  src: url("/fonts/qpc-v2/p29.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 290";
+  src: url("/fonts/qpc-v2/p290.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 291";
+  src: url("/fonts/qpc-v2/p291.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 292";
+  src: url("/fonts/qpc-v2/p292.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 293";
+  src: url("/fonts/qpc-v2/p293.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 294";
+  src: url("/fonts/qpc-v2/p294.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 295";
+  src: url("/fonts/qpc-v2/p295.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 296";
+  src: url("/fonts/qpc-v2/p296.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 297";
+  src: url("/fonts/qpc-v2/p297.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 298";
+  src: url("/fonts/qpc-v2/p298.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 299";
+  src: url("/fonts/qpc-v2/p299.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 3";
+  src: url("/fonts/qpc-v2/p3.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 30";
+  src: url("/fonts/qpc-v2/p30.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 300";
+  src: url("/fonts/qpc-v2/p300.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 301";
+  src: url("/fonts/qpc-v2/p301.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 302";
+  src: url("/fonts/qpc-v2/p302.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 303";
+  src: url("/fonts/qpc-v2/p303.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 304";
+  src: url("/fonts/qpc-v2/p304.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 305";
+  src: url("/fonts/qpc-v2/p305.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 306";
+  src: url("/fonts/qpc-v2/p306.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 307";
+  src: url("/fonts/qpc-v2/p307.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 308";
+  src: url("/fonts/qpc-v2/p308.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 309";
+  src: url("/fonts/qpc-v2/p309.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 31";
+  src: url("/fonts/qpc-v2/p31.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 310";
+  src: url("/fonts/qpc-v2/p310.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 311";
+  src: url("/fonts/qpc-v2/p311.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 312";
+  src: url("/fonts/qpc-v2/p312.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 313";
+  src: url("/fonts/qpc-v2/p313.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 314";
+  src: url("/fonts/qpc-v2/p314.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 315";
+  src: url("/fonts/qpc-v2/p315.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 316";
+  src: url("/fonts/qpc-v2/p316.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 317";
+  src: url("/fonts/qpc-v2/p317.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 318";
+  src: url("/fonts/qpc-v2/p318.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 319";
+  src: url("/fonts/qpc-v2/p319.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 32";
+  src: url("/fonts/qpc-v2/p32.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 320";
+  src: url("/fonts/qpc-v2/p320.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 321";
+  src: url("/fonts/qpc-v2/p321.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 322";
+  src: url("/fonts/qpc-v2/p322.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 323";
+  src: url("/fonts/qpc-v2/p323.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 324";
+  src: url("/fonts/qpc-v2/p324.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 325";
+  src: url("/fonts/qpc-v2/p325.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 326";
+  src: url("/fonts/qpc-v2/p326.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 327";
+  src: url("/fonts/qpc-v2/p327.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 328";
+  src: url("/fonts/qpc-v2/p328.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 329";
+  src: url("/fonts/qpc-v2/p329.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 33";
+  src: url("/fonts/qpc-v2/p33.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 330";
+  src: url("/fonts/qpc-v2/p330.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 331";
+  src: url("/fonts/qpc-v2/p331.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 332";
+  src: url("/fonts/qpc-v2/p332.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 333";
+  src: url("/fonts/qpc-v2/p333.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 334";
+  src: url("/fonts/qpc-v2/p334.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 335";
+  src: url("/fonts/qpc-v2/p335.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 336";
+  src: url("/fonts/qpc-v2/p336.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 337";
+  src: url("/fonts/qpc-v2/p337.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 338";
+  src: url("/fonts/qpc-v2/p338.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 339";
+  src: url("/fonts/qpc-v2/p339.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 34";
+  src: url("/fonts/qpc-v2/p34.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 340";
+  src: url("/fonts/qpc-v2/p340.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 341";
+  src: url("/fonts/qpc-v2/p341.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 342";
+  src: url("/fonts/qpc-v2/p342.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 343";
+  src: url("/fonts/qpc-v2/p343.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 344";
+  src: url("/fonts/qpc-v2/p344.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 345";
+  src: url("/fonts/qpc-v2/p345.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 346";
+  src: url("/fonts/qpc-v2/p346.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 347";
+  src: url("/fonts/qpc-v2/p347.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 348";
+  src: url("/fonts/qpc-v2/p348.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 349";
+  src: url("/fonts/qpc-v2/p349.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 35";
+  src: url("/fonts/qpc-v2/p35.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 350";
+  src: url("/fonts/qpc-v2/p350.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 351";
+  src: url("/fonts/qpc-v2/p351.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 352";
+  src: url("/fonts/qpc-v2/p352.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 353";
+  src: url("/fonts/qpc-v2/p353.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 354";
+  src: url("/fonts/qpc-v2/p354.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 355";
+  src: url("/fonts/qpc-v2/p355.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 356";
+  src: url("/fonts/qpc-v2/p356.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 357";
+  src: url("/fonts/qpc-v2/p357.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 358";
+  src: url("/fonts/qpc-v2/p358.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 359";
+  src: url("/fonts/qpc-v2/p359.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 36";
+  src: url("/fonts/qpc-v2/p36.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 360";
+  src: url("/fonts/qpc-v2/p360.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 361";
+  src: url("/fonts/qpc-v2/p361.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 362";
+  src: url("/fonts/qpc-v2/p362.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 363";
+  src: url("/fonts/qpc-v2/p363.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 364";
+  src: url("/fonts/qpc-v2/p364.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 365";
+  src: url("/fonts/qpc-v2/p365.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 366";
+  src: url("/fonts/qpc-v2/p366.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 367";
+  src: url("/fonts/qpc-v2/p367.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 368";
+  src: url("/fonts/qpc-v2/p368.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 369";
+  src: url("/fonts/qpc-v2/p369.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 37";
+  src: url("/fonts/qpc-v2/p37.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 370";
+  src: url("/fonts/qpc-v2/p370.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 371";
+  src: url("/fonts/qpc-v2/p371.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 372";
+  src: url("/fonts/qpc-v2/p372.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 373";
+  src: url("/fonts/qpc-v2/p373.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 374";
+  src: url("/fonts/qpc-v2/p374.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 375";
+  src: url("/fonts/qpc-v2/p375.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 376";
+  src: url("/fonts/qpc-v2/p376.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 377";
+  src: url("/fonts/qpc-v2/p377.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 378";
+  src: url("/fonts/qpc-v2/p378.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 379";
+  src: url("/fonts/qpc-v2/p379.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 38";
+  src: url("/fonts/qpc-v2/p38.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 380";
+  src: url("/fonts/qpc-v2/p380.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 381";
+  src: url("/fonts/qpc-v2/p381.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 382";
+  src: url("/fonts/qpc-v2/p382.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 383";
+  src: url("/fonts/qpc-v2/p383.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 384";
+  src: url("/fonts/qpc-v2/p384.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 385";
+  src: url("/fonts/qpc-v2/p385.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 386";
+  src: url("/fonts/qpc-v2/p386.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 387";
+  src: url("/fonts/qpc-v2/p387.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 388";
+  src: url("/fonts/qpc-v2/p388.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 389";
+  src: url("/fonts/qpc-v2/p389.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 39";
+  src: url("/fonts/qpc-v2/p39.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 390";
+  src: url("/fonts/qpc-v2/p390.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 391";
+  src: url("/fonts/qpc-v2/p391.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 392";
+  src: url("/fonts/qpc-v2/p392.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 393";
+  src: url("/fonts/qpc-v2/p393.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 394";
+  src: url("/fonts/qpc-v2/p394.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 395";
+  src: url("/fonts/qpc-v2/p395.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 396";
+  src: url("/fonts/qpc-v2/p396.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 397";
+  src: url("/fonts/qpc-v2/p397.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 398";
+  src: url("/fonts/qpc-v2/p398.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 399";
+  src: url("/fonts/qpc-v2/p399.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 4";
+  src: url("/fonts/qpc-v2/p4.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 40";
+  src: url("/fonts/qpc-v2/p40.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 400";
+  src: url("/fonts/qpc-v2/p400.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 401";
+  src: url("/fonts/qpc-v2/p401.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 402";
+  src: url("/fonts/qpc-v2/p402.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 403";
+  src: url("/fonts/qpc-v2/p403.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 404";
+  src: url("/fonts/qpc-v2/p404.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 405";
+  src: url("/fonts/qpc-v2/p405.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 406";
+  src: url("/fonts/qpc-v2/p406.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 407";
+  src: url("/fonts/qpc-v2/p407.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 408";
+  src: url("/fonts/qpc-v2/p408.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 409";
+  src: url("/fonts/qpc-v2/p409.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 41";
+  src: url("/fonts/qpc-v2/p41.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 410";
+  src: url("/fonts/qpc-v2/p410.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 411";
+  src: url("/fonts/qpc-v2/p411.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 412";
+  src: url("/fonts/qpc-v2/p412.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 413";
+  src: url("/fonts/qpc-v2/p413.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 414";
+  src: url("/fonts/qpc-v2/p414.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 415";
+  src: url("/fonts/qpc-v2/p415.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 416";
+  src: url("/fonts/qpc-v2/p416.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 417";
+  src: url("/fonts/qpc-v2/p417.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 418";
+  src: url("/fonts/qpc-v2/p418.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 419";
+  src: url("/fonts/qpc-v2/p419.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 42";
+  src: url("/fonts/qpc-v2/p42.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 420";
+  src: url("/fonts/qpc-v2/p420.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 421";
+  src: url("/fonts/qpc-v2/p421.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 422";
+  src: url("/fonts/qpc-v2/p422.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 423";
+  src: url("/fonts/qpc-v2/p423.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 424";
+  src: url("/fonts/qpc-v2/p424.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 425";
+  src: url("/fonts/qpc-v2/p425.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 426";
+  src: url("/fonts/qpc-v2/p426.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 427";
+  src: url("/fonts/qpc-v2/p427.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 428";
+  src: url("/fonts/qpc-v2/p428.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 429";
+  src: url("/fonts/qpc-v2/p429.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 43";
+  src: url("/fonts/qpc-v2/p43.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 430";
+  src: url("/fonts/qpc-v2/p430.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 431";
+  src: url("/fonts/qpc-v2/p431.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 432";
+  src: url("/fonts/qpc-v2/p432.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 433";
+  src: url("/fonts/qpc-v2/p433.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 434";
+  src: url("/fonts/qpc-v2/p434.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 435";
+  src: url("/fonts/qpc-v2/p435.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 436";
+  src: url("/fonts/qpc-v2/p436.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 437";
+  src: url("/fonts/qpc-v2/p437.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 438";
+  src: url("/fonts/qpc-v2/p438.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 439";
+  src: url("/fonts/qpc-v2/p439.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 44";
+  src: url("/fonts/qpc-v2/p44.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 440";
+  src: url("/fonts/qpc-v2/p440.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 441";
+  src: url("/fonts/qpc-v2/p441.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 442";
+  src: url("/fonts/qpc-v2/p442.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 443";
+  src: url("/fonts/qpc-v2/p443.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 444";
+  src: url("/fonts/qpc-v2/p444.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 445";
+  src: url("/fonts/qpc-v2/p445.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 446";
+  src: url("/fonts/qpc-v2/p446.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 447";
+  src: url("/fonts/qpc-v2/p447.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 448";
+  src: url("/fonts/qpc-v2/p448.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 449";
+  src: url("/fonts/qpc-v2/p449.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 45";
+  src: url("/fonts/qpc-v2/p45.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 450";
+  src: url("/fonts/qpc-v2/p450.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 451";
+  src: url("/fonts/qpc-v2/p451.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 452";
+  src: url("/fonts/qpc-v2/p452.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 453";
+  src: url("/fonts/qpc-v2/p453.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 454";
+  src: url("/fonts/qpc-v2/p454.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 455";
+  src: url("/fonts/qpc-v2/p455.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 456";
+  src: url("/fonts/qpc-v2/p456.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 457";
+  src: url("/fonts/qpc-v2/p457.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 458";
+  src: url("/fonts/qpc-v2/p458.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 459";
+  src: url("/fonts/qpc-v2/p459.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 46";
+  src: url("/fonts/qpc-v2/p46.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 460";
+  src: url("/fonts/qpc-v2/p460.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 461";
+  src: url("/fonts/qpc-v2/p461.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 462";
+  src: url("/fonts/qpc-v2/p462.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 463";
+  src: url("/fonts/qpc-v2/p463.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 464";
+  src: url("/fonts/qpc-v2/p464.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 465";
+  src: url("/fonts/qpc-v2/p465.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 466";
+  src: url("/fonts/qpc-v2/p466.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 467";
+  src: url("/fonts/qpc-v2/p467.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 468";
+  src: url("/fonts/qpc-v2/p468.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 469";
+  src: url("/fonts/qpc-v2/p469.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 47";
+  src: url("/fonts/qpc-v2/p47.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 470";
+  src: url("/fonts/qpc-v2/p470.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 471";
+  src: url("/fonts/qpc-v2/p471.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 472";
+  src: url("/fonts/qpc-v2/p472.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 473";
+  src: url("/fonts/qpc-v2/p473.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 474";
+  src: url("/fonts/qpc-v2/p474.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 475";
+  src: url("/fonts/qpc-v2/p475.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 476";
+  src: url("/fonts/qpc-v2/p476.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 477";
+  src: url("/fonts/qpc-v2/p477.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 478";
+  src: url("/fonts/qpc-v2/p478.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 479";
+  src: url("/fonts/qpc-v2/p479.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 48";
+  src: url("/fonts/qpc-v2/p48.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 480";
+  src: url("/fonts/qpc-v2/p480.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 481";
+  src: url("/fonts/qpc-v2/p481.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 482";
+  src: url("/fonts/qpc-v2/p482.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 483";
+  src: url("/fonts/qpc-v2/p483.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 484";
+  src: url("/fonts/qpc-v2/p484.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 485";
+  src: url("/fonts/qpc-v2/p485.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 486";
+  src: url("/fonts/qpc-v2/p486.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 487";
+  src: url("/fonts/qpc-v2/p487.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 488";
+  src: url("/fonts/qpc-v2/p488.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 489";
+  src: url("/fonts/qpc-v2/p489.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 49";
+  src: url("/fonts/qpc-v2/p49.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 490";
+  src: url("/fonts/qpc-v2/p490.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 491";
+  src: url("/fonts/qpc-v2/p491.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 492";
+  src: url("/fonts/qpc-v2/p492.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 493";
+  src: url("/fonts/qpc-v2/p493.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 494";
+  src: url("/fonts/qpc-v2/p494.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 495";
+  src: url("/fonts/qpc-v2/p495.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 496";
+  src: url("/fonts/qpc-v2/p496.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 497";
+  src: url("/fonts/qpc-v2/p497.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 498";
+  src: url("/fonts/qpc-v2/p498.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 499";
+  src: url("/fonts/qpc-v2/p499.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 5";
+  src: url("/fonts/qpc-v2/p5.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 50";
+  src: url("/fonts/qpc-v2/p50.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 500";
+  src: url("/fonts/qpc-v2/p500.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 501";
+  src: url("/fonts/qpc-v2/p501.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 502";
+  src: url("/fonts/qpc-v2/p502.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 503";
+  src: url("/fonts/qpc-v2/p503.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 504";
+  src: url("/fonts/qpc-v2/p504.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 505";
+  src: url("/fonts/qpc-v2/p505.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 506";
+  src: url("/fonts/qpc-v2/p506.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 507";
+  src: url("/fonts/qpc-v2/p507.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 508";
+  src: url("/fonts/qpc-v2/p508.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 509";
+  src: url("/fonts/qpc-v2/p509.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 51";
+  src: url("/fonts/qpc-v2/p51.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 510";
+  src: url("/fonts/qpc-v2/p510.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 511";
+  src: url("/fonts/qpc-v2/p511.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 512";
+  src: url("/fonts/qpc-v2/p512.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 513";
+  src: url("/fonts/qpc-v2/p513.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 514";
+  src: url("/fonts/qpc-v2/p514.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 515";
+  src: url("/fonts/qpc-v2/p515.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 516";
+  src: url("/fonts/qpc-v2/p516.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 517";
+  src: url("/fonts/qpc-v2/p517.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 518";
+  src: url("/fonts/qpc-v2/p518.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 519";
+  src: url("/fonts/qpc-v2/p519.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 52";
+  src: url("/fonts/qpc-v2/p52.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 520";
+  src: url("/fonts/qpc-v2/p520.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 521";
+  src: url("/fonts/qpc-v2/p521.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 522";
+  src: url("/fonts/qpc-v2/p522.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 523";
+  src: url("/fonts/qpc-v2/p523.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 524";
+  src: url("/fonts/qpc-v2/p524.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 525";
+  src: url("/fonts/qpc-v2/p525.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 526";
+  src: url("/fonts/qpc-v2/p526.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 527";
+  src: url("/fonts/qpc-v2/p527.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 528";
+  src: url("/fonts/qpc-v2/p528.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 529";
+  src: url("/fonts/qpc-v2/p529.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 53";
+  src: url("/fonts/qpc-v2/p53.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 530";
+  src: url("/fonts/qpc-v2/p530.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 531";
+  src: url("/fonts/qpc-v2/p531.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 532";
+  src: url("/fonts/qpc-v2/p532.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 533";
+  src: url("/fonts/qpc-v2/p533.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 534";
+  src: url("/fonts/qpc-v2/p534.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 535";
+  src: url("/fonts/qpc-v2/p535.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 536";
+  src: url("/fonts/qpc-v2/p536.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 537";
+  src: url("/fonts/qpc-v2/p537.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 538";
+  src: url("/fonts/qpc-v2/p538.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 539";
+  src: url("/fonts/qpc-v2/p539.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 54";
+  src: url("/fonts/qpc-v2/p54.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 540";
+  src: url("/fonts/qpc-v2/p540.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 541";
+  src: url("/fonts/qpc-v2/p541.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 542";
+  src: url("/fonts/qpc-v2/p542.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 543";
+  src: url("/fonts/qpc-v2/p543.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 544";
+  src: url("/fonts/qpc-v2/p544.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 545";
+  src: url("/fonts/qpc-v2/p545.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 546";
+  src: url("/fonts/qpc-v2/p546.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 547";
+  src: url("/fonts/qpc-v2/p547.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 548";
+  src: url("/fonts/qpc-v2/p548.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 549";
+  src: url("/fonts/qpc-v2/p549.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 55";
+  src: url("/fonts/qpc-v2/p55.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 550";
+  src: url("/fonts/qpc-v2/p550.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 551";
+  src: url("/fonts/qpc-v2/p551.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 552";
+  src: url("/fonts/qpc-v2/p552.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 553";
+  src: url("/fonts/qpc-v2/p553.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 554";
+  src: url("/fonts/qpc-v2/p554.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 555";
+  src: url("/fonts/qpc-v2/p555.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 556";
+  src: url("/fonts/qpc-v2/p556.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 557";
+  src: url("/fonts/qpc-v2/p557.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 558";
+  src: url("/fonts/qpc-v2/p558.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 559";
+  src: url("/fonts/qpc-v2/p559.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 56";
+  src: url("/fonts/qpc-v2/p56.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 560";
+  src: url("/fonts/qpc-v2/p560.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 561";
+  src: url("/fonts/qpc-v2/p561.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 562";
+  src: url("/fonts/qpc-v2/p562.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 563";
+  src: url("/fonts/qpc-v2/p563.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 564";
+  src: url("/fonts/qpc-v2/p564.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 565";
+  src: url("/fonts/qpc-v2/p565.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 566";
+  src: url("/fonts/qpc-v2/p566.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 567";
+  src: url("/fonts/qpc-v2/p567.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 568";
+  src: url("/fonts/qpc-v2/p568.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 569";
+  src: url("/fonts/qpc-v2/p569.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 57";
+  src: url("/fonts/qpc-v2/p57.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 570";
+  src: url("/fonts/qpc-v2/p570.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 571";
+  src: url("/fonts/qpc-v2/p571.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 572";
+  src: url("/fonts/qpc-v2/p572.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 573";
+  src: url("/fonts/qpc-v2/p573.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 574";
+  src: url("/fonts/qpc-v2/p574.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 575";
+  src: url("/fonts/qpc-v2/p575.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 576";
+  src: url("/fonts/qpc-v2/p576.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 577";
+  src: url("/fonts/qpc-v2/p577.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 578";
+  src: url("/fonts/qpc-v2/p578.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 579";
+  src: url("/fonts/qpc-v2/p579.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 58";
+  src: url("/fonts/qpc-v2/p58.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 580";
+  src: url("/fonts/qpc-v2/p580.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 581";
+  src: url("/fonts/qpc-v2/p581.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 582";
+  src: url("/fonts/qpc-v2/p582.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 583";
+  src: url("/fonts/qpc-v2/p583.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 584";
+  src: url("/fonts/qpc-v2/p584.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 585";
+  src: url("/fonts/qpc-v2/p585.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 586";
+  src: url("/fonts/qpc-v2/p586.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 587";
+  src: url("/fonts/qpc-v2/p587.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 588";
+  src: url("/fonts/qpc-v2/p588.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 589";
+  src: url("/fonts/qpc-v2/p589.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 59";
+  src: url("/fonts/qpc-v2/p59.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 590";
+  src: url("/fonts/qpc-v2/p590.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 591";
+  src: url("/fonts/qpc-v2/p591.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 592";
+  src: url("/fonts/qpc-v2/p592.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 593";
+  src: url("/fonts/qpc-v2/p593.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 594";
+  src: url("/fonts/qpc-v2/p594.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 595";
+  src: url("/fonts/qpc-v2/p595.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 596";
+  src: url("/fonts/qpc-v2/p596.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 597";
+  src: url("/fonts/qpc-v2/p597.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 598";
+  src: url("/fonts/qpc-v2/p598.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 599";
+  src: url("/fonts/qpc-v2/p599.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 6";
+  src: url("/fonts/qpc-v2/p6.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 60";
+  src: url("/fonts/qpc-v2/p60.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 600";
+  src: url("/fonts/qpc-v2/p600.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 601";
+  src: url("/fonts/qpc-v2/p601.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 602";
+  src: url("/fonts/qpc-v2/p602.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 603";
+  src: url("/fonts/qpc-v2/p603.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 604";
+  src: url("/fonts/qpc-v2/p604.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 61";
+  src: url("/fonts/qpc-v2/p61.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 62";
+  src: url("/fonts/qpc-v2/p62.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 63";
+  src: url("/fonts/qpc-v2/p63.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 64";
+  src: url("/fonts/qpc-v2/p64.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 65";
+  src: url("/fonts/qpc-v2/p65.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 66";
+  src: url("/fonts/qpc-v2/p66.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 67";
+  src: url("/fonts/qpc-v2/p67.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 68";
+  src: url("/fonts/qpc-v2/p68.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 69";
+  src: url("/fonts/qpc-v2/p69.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 7";
+  src: url("/fonts/qpc-v2/p7.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 70";
+  src: url("/fonts/qpc-v2/p70.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 71";
+  src: url("/fonts/qpc-v2/p71.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 72";
+  src: url("/fonts/qpc-v2/p72.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 73";
+  src: url("/fonts/qpc-v2/p73.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 74";
+  src: url("/fonts/qpc-v2/p74.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 75";
+  src: url("/fonts/qpc-v2/p75.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 76";
+  src: url("/fonts/qpc-v2/p76.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 77";
+  src: url("/fonts/qpc-v2/p77.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 78";
+  src: url("/fonts/qpc-v2/p78.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 79";
+  src: url("/fonts/qpc-v2/p79.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 8";
+  src: url("/fonts/qpc-v2/p8.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 80";
+  src: url("/fonts/qpc-v2/p80.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 81";
+  src: url("/fonts/qpc-v2/p81.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 82";
+  src: url("/fonts/qpc-v2/p82.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 83";
+  src: url("/fonts/qpc-v2/p83.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 84";
+  src: url("/fonts/qpc-v2/p84.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 85";
+  src: url("/fonts/qpc-v2/p85.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 86";
+  src: url("/fonts/qpc-v2/p86.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 87";
+  src: url("/fonts/qpc-v2/p87.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 88";
+  src: url("/fonts/qpc-v2/p88.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 89";
+  src: url("/fonts/qpc-v2/p89.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 9";
+  src: url("/fonts/qpc-v2/p9.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 90";
+  src: url("/fonts/qpc-v2/p90.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 91";
+  src: url("/fonts/qpc-v2/p91.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 92";
+  src: url("/fonts/qpc-v2/p92.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 93";
+  src: url("/fonts/qpc-v2/p93.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 94";
+  src: url("/fonts/qpc-v2/p94.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 95";
+  src: url("/fonts/qpc-v2/p95.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 96";
+  src: url("/fonts/qpc-v2/p96.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 97";
+  src: url("/fonts/qpc-v2/p97.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 98";
+  src: url("/fonts/qpc-v2/p98.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "QPC Mushaf Page 99";
+  src: url("/fonts/qpc-v2/p99.woff2") format("woff2");
+  font-display: swap;
+}

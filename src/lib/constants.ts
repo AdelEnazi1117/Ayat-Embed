@@ -31,7 +31,7 @@ export const DEFAULT_STYLE: CardStyle = {
   theme: "dark",
   showTranslation: true,
   showReference: true,
-  showVerseNumbers: false,
+  showVerseNumbers: true,
   showAccentLine: true,
   transparentBackground: false,
   showBrackets: true,
@@ -166,11 +166,12 @@ export const generateRandomStyle = (): CardStyle => {
 
   const randomShowTranslation = Math.random() > 0.1;
   const randomShowReference = Math.random() > 0.15;
-  const randomShowVerseNumbers = Math.random() > 0.6;
+  const randomShowVerseNumbers = Math.random() > 0.4;
   const randomShowAccentLine = Math.random() > 0.2;
   const randomTransparentBackground = Math.random() > 0.8;
   const randomShowBrackets = Math.random() > 0.15;
   const randomContinuousLines = Math.random() > 0.8;
+
 
   return {
     accentColor,

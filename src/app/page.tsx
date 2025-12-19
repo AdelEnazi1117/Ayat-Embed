@@ -24,7 +24,7 @@ import Footer from "@/components/Footer";
 import QuranCard, { generateStaticHTML } from "@/components/QuranCard";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { fetchSurahs, fetchVersesRange } from "@/lib/api";
+import { fetchSurahs, fetchVersesRange, MAX_VERSES_LIMIT } from "@/lib/api";
 import {
   trackCTA,
   trackProfileInteraction,
@@ -81,6 +81,10 @@ export default function BuilderPage() {
 
   const currentSurah = surahs.find((s) => s.number === selectedSurah);
   const maxAyahs = currentSurah?.numberOfAyahs || 7;
+  const maxSelectableToAyah = Math.min(
+    maxAyahs,
+    fromAyah + MAX_VERSES_LIMIT - 1
+  );
 
   const removeArabicDiacritics = (text: string): string => {
     return text
@@ -127,10 +131,10 @@ export default function BuilderPage() {
     if (fromAyah > maxAyahs) {
       setFromAyah(1);
     }
-    if (toAyah > maxAyahs) {
-      setToAyah(Math.min(fromAyah, maxAyahs));
+    if (toAyah > maxSelectableToAyah) {
+      setToAyah(maxSelectableToAyah);
     }
-  }, [maxAyahs, fromAyah, toAyah]);
+  }, [maxAyahs, maxSelectableToAyah, fromAyah, toAyah]);
 
   useEffect(() => {
     if (toAyah < fromAyah) {
@@ -203,6 +207,14 @@ export default function BuilderPage() {
   const updateStyle = (updates: Partial<CardStyle>) => {
     setStyle((prev) => ({ ...prev, ...updates }));
   };
+
+  // If user selects a range (multiple verses), automatically enable "Continuous Lines".
+  // This matches the expected UX for multi-verse embeds.
+  useEffect(() => {
+    if (toAyah > fromAyah && !style.continuousLines) {
+      setStyle((prev) => ({ ...prev, continuousLines: true }));
+    }
+  }, [fromAyah, toAyah, style.continuousLines]);
 
   const getSurahDisplayName = (surah: Surah) => {
     return isRTL ? surah.name : surah.englishName;
@@ -410,7 +422,7 @@ export default function BuilderPage() {
                   dir="ltr"
                 >
                   {Array.from(
-                    { length: maxAyahs - fromAyah + 1 },
+                    { length: maxSelectableToAyah - fromAyah + 1 },
                     (_, i) => fromAyah + i
                   ).map((num) => (
                     <option key={num} value={num} className="bg-navy-900">
@@ -602,13 +614,30 @@ export default function BuilderPage() {
                   : "text-white/40 hover:text-white"
               }`}
             >
-              <span
-                className="text-base font-bold leading-none"
-                dir="rtl"
-                style={{ unicodeBidi: "isolate" }}
-              >
-                ﴿﴾
-              </span>
+              <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6 text-current opacity-90"
+                  style={{
+                    fontFamily: "'Amiri Quran', UthmanicHafs, serif",
+                  }}
+                >
+                  <text
+                    x="50%"
+                    y="55%"
+                    dominantBaseline="middle"
+                    textAnchor="middle"
+                    fontSize="18"
+                    fill="currentColor"
+                    style={{
+                      direction: "rtl",
+                      unicodeBidi: "bidi-override",
+                    }}
+                  >
+                    ﴿﴾
+                  </text>
+                </svg>
+              </div>
               <span className="hidden lg:inline">{t.showBrackets}</span>
               <div
                 className={`w-1.5 h-1.5 rounded-full ${

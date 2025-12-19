@@ -66,9 +66,16 @@ export function validateAndSanitizeSurah(surah: any): boolean {
 
   const stringFields = ['name', 'englishName', 'englishNameTranslation'];
   for (const field of stringFields) {
-    if (typeof surah[field] !== 'string' || surah[field].length === 0 || surah[field].length > 200) {
+    // `englishNameTranslation` is optional-ish in upstream chapter payloads; allow empty string.
+    const allowEmpty = field === 'englishNameTranslation';
+    if (
+      typeof surah[field] !== 'string' ||
+      (!allowEmpty && surah[field].length === 0) ||
+      surah[field].length > 200
+    ) {
       return false;
     }
+    // Escape even if empty (no-op).
     surah[field] = escapeHtml(surah[field]);
   }
 

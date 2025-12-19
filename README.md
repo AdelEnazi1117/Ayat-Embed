@@ -27,7 +27,7 @@
 
 **مضمّن الآيات** هو أداة مصغرة (Micro-SaaS) صممت لمساعدة المطورين وصناع المحتوى على تضمين الآيات القرآنية في مواقعهم بسهولة. توفر الأداة واجهة قابلة للتخصيص بالكامل لاختيار الآيات، وتعديل الأنماط، وتوليد أكواد التضمين (iFrame أو HTML) التي تظهر بشكل رائع على جميع الأجهزة.
 
-Built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**, it priorities performance, accessibility, and aesthetics.
+Built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**, it prioritizes performance, accessibility, and aesthetics.
 
 تم بناؤه باستخدام **Next.js 16**، **Tailwind CSS v4**، و **TypeScript**، مع التركيز على الأداء، وإمكانية الوصول، والجماليات.
 
@@ -35,10 +35,15 @@ Built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**, it prioritie
 
 ## Features | المميزات
 
-- **Complete Quran Access | الوصول الكامل للقرآن**
-  Access all 114 Surahs with authentic Uthmanic script.
+- **High-Quality QPC V2 Script | الرسم العثماني (QPC V2)**
+  Uses the industry-standard QPC V2 (King Fahd Complex) fonts with dynamic loading for pixel-perfect Quranic script.
 
-  الوصول إلى جميع السور الـ 114 بالرسم العثماني.
+  استخدام خطوط مجمع الملك فهد (QPC V2) مع تحميل ديناميكي لضمان دقة الرسم العثماني.
+
+- **Complete Quran Access | الوصول الكامل للقرآن**
+  Access all 114 Surahs with authentic script.
+
+  الوصول إلى جميع السور الـ 114 بالرسم العثماني الأصيل.
 
 - **Verse Ranges | نطاق الآيات**
   Select single verses or a range of verses (e.g., Al-Fatiha 1-7).
@@ -55,23 +60,15 @@ Built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**, it prioritie
 
   شاهد تغييراتك في الوقت الفعلي أثناء التخصيص.
 
-- **Advanced Customization | تخصيص أكثر**
+- **Advanced Customization | تخصيص متطور**
 
   - **Colors | الألوان**: Custom presets and pickers for Accent, Background, and Text colors.
-
-  (إعدادات مسبقة ومنتقي ألوان).
-
-  - **Visibility Toggles | خيارات الإظهار**: Show/Hide translations, verse numbers, references, and decorative lines.
-
-  (إظهار/إخفاء الترجمة، أرقام الآيات، المراجع).
-
-  - **Transparent Mode | الوضع الشفاف**: Seamless integration with your website's background.
-
-  (دمج سلس مع خلفية موقعك).
+  - **Display Options | خيارات العرض**: Show/Hide translations, verse numbers, and references.
+  - **Dynamic Layout | تخطيط ديناميكي**: Support for continuous verse display or one verse per line.
 
 - **Smart Export | تصدير ذكي**
-  - **iFrame**: specific auto-resizing script to prevent scrollbars. (سكربت تغيير حجم تلقائي لمنع ظهور أشرطة التمرير).
-  - **Pure HTML**: Static HTML for full control. (كود HTML ثابت للتحكم الكامل).
+  - **iFrame**: Specific auto-resizing script to prevent scrollbars.
+  - **Pure HTML**: Static HTML for full control and offline usage.
 
 ---
 
@@ -80,88 +77,96 @@ Built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**, it prioritie
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/) (React 19)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Icons**: [FontAwesome](https://fontawesome.com/) & [Lucide React](https://lucide.dev/)
+- **Icons**: [FontAwesome](https://fontawesome.com/)
 - **Fonts**:
-  - _Kitab_ (Quranic Text | الخط القرآني)
+  - _QPC V2_ (Quranic Text | الخط القرآني من مجمع الملك فهد)
+  - _Amiri Quran_ (Quranic fallback | خط أميري للقرآن)
   - _IBM Plex Sans Arabic_ (Arabic UI | واجهة عربية)
   - _Inter_ (English UI | واجهة إنجليزية)
-- **API**: [AlQuran Cloud](https://alquran.cloud/api)
+- **API**: Quran.Foundation Content API (v4)
+- **Performance**: Secure server-side proxy with **Response Caching** (1-hour TTL) to minimize latency and upstream calls.
 
 ---
 
-## Quick Start
+## Quick Start | البدء السريع
 
-### Prerequisites
+### Prerequisites | المتطلبات الأساسية
 
 - Node.js 20+
 - npm 9+
 
-### Installation
+### Installation | التثبيت
 
-1.  **Clone the repository:**
+1.  **Clone the repository | استنساخ المستودع:**
 
     ```bash
     git clone https://github.com/AdelEnazi1117/ayat-embed.git
     cd ayat-embed
     ```
 
-2.  **Install dependencies:**
+2.  **Install dependencies | تثبيت الاعتمادات:**
 
     ```bash
     npm install
-    # or
-    yarn install
     ```
 
-3.  **Run the development server:**
+3.  **Configure Environment Variables | تهيئة متغيرات البيئة:**
+
+    Copy `env.example` → `.env.local` and set your credentials:
+    قم بنسخ `env.example` إلى `.env.local` وقم بتعيين بيانات الاعتماد الخاصة بك:
+
+    - `QF_CLIENT_ID`: Your Quran.Foundation Client ID.
+    - `QF_CLIENT_SECRET`: Your Quran.Foundation Client Secret.
+    - `QF_ENV`: `prelive` or `production`.
+
+4.  **Run the development server | تشغيل خادم التطوير:**
 
     ```bash
     npm run dev
     ```
 
-4.  **Open locally:**
+5.  **Open locally | الفتح محلياً:**
     Visit `http://localhost:3000` in your browser.
+    قم بزيارة `http://localhost:3000` في متصفحك.
 
 ---
 
-## Docker Deployment
+## Docker Deployment | النشر باستخدام دوكر
 
 The project includes a `Dockerfile` for easy containerization.
+يتضمن المشروع ملف `Dockerfile` لسهولة الحاويات.
 
-1.  **Build the image:**
+1.  **Build the image | بناء الصورة:**
 
     ```bash
     docker build -t ayat-embed .
     ```
 
-2.  **Run the container:**
+2.  **Run the container | تشغيل الحاوية:**
     ```bash
-    docker run -p 3000:3000 ayat-embed
+    docker run -p 3000:3000 --env-file .env.local ayat-embed
     ```
 
 ---
 
-## Project Structure
+## Project Structure | هيكل المشروع
 
 ```
 src/
 ├── app/
 │   ├── page.tsx            # Main Builder Dashboard
-│   ├── layout.tsx          # Root Layout (Fonts, Metadata)
-│   ├── globals.css         # Global Styles & Tailwind v4 Theme
-│   ├── how-to-use/         # "How to Use" Page
-│   ├── docs/               # Documentation Page
-│   └── embed/
-│       └── [surah]/        # Dynamic Embed Routes
-│           └── [ayah]/     # Handles single or range verses
+│   ├── layout.tsx          # Root Layout
+│   ├── globals.css         # Tailwind v4 Theme & Base Styles
+│   ├── api/quran/          # Security-hardened Proxy with Caching
+│   └── embed/              # Dynamic Embed Route System
 ├── components/
-│   ├── QuranCard.tsx       # Core component that displays the verse
+│   ├── QuranCard.tsx       # Core rendering component (Dynamic Fonts)
 │   ├── Footer.tsx          # Application footer
 │   └── LanguageToggle.tsx  # Locale switcher
 ├── lib/
-│   ├── api.ts              # API utilities
-│   ├── constants.ts        # Configuration & Helpers
-│   └── translations.ts     # UI Translation strings
+│   ├── api.ts              # API utilities & data mapping
+│   ├── quranFonts.ts       # Font loading logic for QPC V2
+│   └── constants.ts        # Style presets & Defaults
 └── types/
     └── index.ts            # TypeScript definitions
 ```
@@ -201,11 +206,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 المساهمات مرحب بها! لا تتردد في إرسال طلب سحب (Pull Request).
 
-1.  Fork the project.
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
+1.  Fork the project. (عمل نسخة من المشروع).
+2.  Create your feature branch (`git checkout -b feature/AmazingFeature`). (إنشاء فرع للميزة الجديدة).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`). (حفظ التغييرات).
+4.  Push to the branch (`git push origin feature/AmazingFeature`). (رفع التغييرات للفرع).
+5.  Open a Pull Request. (فتح طلب سحب).
 
 ---
 
@@ -230,10 +235,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Acknowledgments | شكر وتقدير
 
-- [AlQuran Cloud](https://alquran.cloud/) for the amazing API.
-
-(للواجهة البرمجية الرائعة).
-
-- [Kitab Font](https://github.com/nuqayah/kitab-font) for the beautiful Quranic typography.
-
-(للخط القرآني الجميل).
+- [Quran.Foundation](https://quran.foundation/) for the comprehensive API and QPC V2 assets.
+(شكر لمؤسسة القرآن على الواجهة البرمجية الشاملة).
+- [KFQPC](https://qurancomplex.gov.sa/) for the King Fahd Complex Quranic fonts. 
+(شكر لمجمع الملك فهد لطباعة المصحف الشريف على الخطوط القرآنية).

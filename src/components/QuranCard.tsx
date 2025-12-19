@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import type { CardStyle, VerseData } from "@/types";
 import { escapeHtml } from "@/lib/sanitize";
+import { ensureQpcV2FontsLoaded } from "@/lib/quranFonts";
 
 interface QuranCardProps {
   verses: VerseData[];
@@ -38,6 +39,22 @@ export default function QuranCard({
 
   const isDark = isColorDark(backgroundColor);
 
+  const pagesToLoad = useMemo(() => {
+    const pages = new Set<number>();
+    for (const v of verses) {
+      if (Array.isArray(v.words)) {
+        for (const w of v.words) pages.add(w.pageNumber);
+      } else if (typeof v.pageNumber === "number") {
+        pages.add(v.pageNumber);
+      }
+    }
+    return Array.from(pages);
+  }, [verses]);
+
+  useEffect(() => {
+    ensureQpcV2FontsLoaded(pagesToLoad);
+  }, [pagesToLoad]);
+
   const cardClasses = [
     "quran-card",
     showAccentLine && "show-accent-line",
@@ -55,6 +72,9 @@ export default function QuranCard({
   const fromAyah = verses.length > 0 ? verses[0].number : 1;
   const toAyah = verses.length > 0 ? verses[verses.length - 1].number : 1;
   const isSingleVerse = fromAyah === toAyah;
+  const isRange = verses.length > 1;
+  const wrapRangeWithBrackets = showBrackets && isRange;
+  const showBracketsPerVerse = showBrackets && !wrapRangeWithBrackets;
 
   const formatReference = () => {
     if (isArabicUI) {
@@ -69,6 +89,83 @@ export default function QuranCard({
       return `${surahName} (${surahNumber}:${fromAyah})`;
     }
     return `${surahName} (${surahNumber}:${fromAyah}-${toAyah})`;
+  };
+
+  const renderArabicVerseContent = (verse: VerseData) => {
+    if (Array.isArray(verse.words) && verse.words.length > 0) {
+      return verse.words.map((word, idx) => {
+        const isEndMarker = word.charTypeName === "end";
+
+        if (isEndMarker && !showVerseNumbers) {
+          return null;
+        }
+
+        if (isEndMarker) {
+          // IMPORTANT: Use Unicode font for end markers; QCF fonts render the number glyphs poorly.
+          const marker = word.textQpcHafs || "۝";
+          return (
+            <React.Fragment key={word.id ?? `${verse.number}-${idx}`}>
+              <span
+                style={{
+                  fontFamily: "UthmanicHafs, serif",
+                  color: accentColor,
+                }}
+              >
+                {marker}
+              </span>{" "}
+            </React.Fragment>
+          );
+        }
+
+        const fontFamily = word.codeV2
+          ? `"QPC Mushaf Page ${word.pageNumber}"`
+          : undefined;
+
+        const code = word.codeV2;
+        const canUseInnerHtml = typeof code === "string" && !/[<>]/.test(code);
+
+        return (
+          <React.Fragment key={word.id ?? `${verse.number}-${idx}`}>
+            {canUseInnerHtml ? (
+              <span
+                style={fontFamily ? { fontFamily } : undefined}
+                dangerouslySetInnerHTML={{ __html: code! }}
+              />
+            ) : (
+              <span style={fontFamily ? { fontFamily } : undefined}>
+                {code || word.textQpcHafs || ""}
+              </span>
+            )}{" "}
+          </React.Fragment>
+        );
+      });
+    }
+
+    // Fallback (no word-level data): render plain text and optionally append an end marker.
+    return (
+      <>
+        <span
+          style={{
+            fontFamily: `"QPC Mushaf Page ${verse.pageNumber}"`,
+          }}
+        >
+          {verse.arabicTextQpcV2 || verse.arabicText}
+        </span>
+        {showVerseNumbers && (
+          <span
+            style={{
+              fontFamily: "UthmanicHafs, serif",
+              color: accentColor,
+              marginInlineStart: 8,
+            }}
+          >
+            {" "}
+            {"۝"}
+            {verse.number.toLocaleString("ar-EG")}
+          </span>
+        )}
+      </>
+    );
   };
 
   if (isLoading) {
@@ -102,36 +199,56 @@ export default function QuranCard({
         {continuousLines ? (
           <>
             <div className="arabic-text leading-loose" dir="rtl">
+              {wrapRangeWithBrackets && (
+                <span
+                  className="inline text-2xl md:text-3xl"
+                  style={{
+                    color: accentColor,
+                    fontFamily: "'Amiri Quran', UthmanicHafs, serif",
+                  }}
+                >
+                  ﴿
+                </span>
+              )}
               {verses.map((verse) => (
                 <React.Fragment key={`ar-${verse.number}`}>
-                  {showBrackets && (
+                  {showBracketsPerVerse && (
                     <span
                       className="inline text-2xl md:text-3xl"
-                      style={{ color: accentColor }}
+                      style={{
+                        color: accentColor,
+                        fontFamily: "'Amiri Quran', UthmanicHafs, serif",
+                      }}
                     >
                       ﴿
                     </span>
                   )}
-                  {verse.arabicText}
-                  {showBrackets && (
+                  {renderArabicVerseContent(verse)}
+                  {showBracketsPerVerse && (
                     <span
                       className="inline text-2xl md:text-3xl"
-                      style={{ color: accentColor }}
+                      style={{
+                        color: accentColor,
+                        fontFamily: "'Amiri Quran', UthmanicHafs, serif",
+                      }}
                     >
-                      {showVerseNumbers && verse.number.toLocaleString("ar-EG")}
                       ﴾
                     </span>
                   )}
-                  {!showBrackets && showVerseNumbers && (
-                    <span
-                      className="inline text-lg md:text-xl opacity-60 mr-2"
-                      style={{ color: accentColor }}
-                    >
-                      ({verse.number.toLocaleString("ar-EG")})
-                    </span>
-                  )}{" "}
+                  {!showBrackets && " "}
                 </React.Fragment>
               ))}
+              {wrapRangeWithBrackets && (
+                <span
+                  className="inline text-2xl md:text-3xl"
+                  style={{
+                    color: accentColor,
+                    fontFamily: "'Amiri Quran', UthmanicHafs, serif",
+                  }}
+                >
+                  ﴾
+                </span>
+              )}
             </div>
 
             {showTranslation && (
@@ -160,31 +277,33 @@ export default function QuranCard({
           verses.map((verse, index) => (
             <div key={verse.number}>
               <div className="arabic-text" dir="rtl">
-                {showBrackets && (
-                  <span
-                    className="inline text-2xl md:text-3xl"
-                    style={{ color: accentColor }}
-                  >
-                    ﴿
-                  </span>
-                )}
-                {verse.arabicText}
-                {showBrackets && (
-                  <span
-                    className="inline text-2xl md:text-3xl"
-                    style={{ color: accentColor }}
-                  >
-                    {showVerseNumbers && verse.number.toLocaleString("ar-EG")}﴾
-                  </span>
-                )}
-                {!showBrackets && showVerseNumbers && (
-                  <span
-                    className="inline text-lg md:text-xl opacity-60 mr-2"
-                    style={{ color: accentColor }}
-                  >
-                    ({verse.number.toLocaleString("ar-EG")})
-                  </span>
-                )}
+                {showBrackets &&
+                  (showBracketsPerVerse ||
+                    (wrapRangeWithBrackets && index === 0)) && (
+                    <span
+                      className="inline text-2xl md:text-3xl"
+                      style={{
+                        color: accentColor,
+                        fontFamily: "'Amiri Quran', UthmanicHafs, serif",
+                      }}
+                    >
+                      ﴿
+                    </span>
+                  )}
+                {renderArabicVerseContent(verse)}
+                {showBrackets &&
+                  (showBracketsPerVerse ||
+                    (wrapRangeWithBrackets && index === verses.length - 1)) && (
+                    <span
+                      className="inline text-2xl md:text-3xl"
+                      style={{
+                        color: accentColor,
+                        fontFamily: "'Amiri Quran', UthmanicHafs, serif",
+                      }}
+                    >
+                      ﴾
+                    </span>
+                  )}
               </div>
 
               {showTranslation && verse.translationText && (
@@ -284,6 +403,9 @@ export function generateStaticHTML(
   const fromAyah = verses.length > 0 ? verses[0].number : 1;
   const toAyah = verses.length > 0 ? verses[verses.length - 1].number : 1;
   const isSingleVerse = fromAyah === toAyah;
+  const isRange = verses.length > 1;
+  const wrapRangeWithBrackets = showBrackets && isRange;
+  const showBracketsPerVerse = showBrackets && !wrapRangeWithBrackets;
 
   const formatReference = () => {
     if (isArabicUI) {
@@ -300,25 +422,96 @@ export function generateStaticHTML(
     return `${surahName} (${surahNumber}:${fromAyah}-${toAyah})`;
   };
 
+  const sanitizeGlyphHtml = (glyph: string) => {
+    // We intentionally allow HTML entities (e.g. &#xFxxx;) to be interpreted,
+    // but never allow raw HTML tags.
+    if (glyph.length > 2000) return "";
+    return /[<>]/.test(glyph) ? escapeHtml(glyph) : glyph;
+  };
+
+  const getVerseArabicHtml = (verse: VerseData) => {
+    if (Array.isArray(verse.words) && verse.words.length > 0) {
+      return verse.words
+        .filter((w) => (showVerseNumbers ? true : w.charTypeName !== "end"))
+        .map((w) => {
+          if (w.charTypeName === "end") {
+            const marker = escapeHtml(w.textQpcHafs || "۝");
+            return `<span style="font-family: 'UthmanicHafs', serif; color: ${accentColor};">${marker}</span>`;
+          }
+
+          const content = w.codeV2
+            ? sanitizeGlyphHtml(w.codeV2)
+            : escapeHtml(w.textQpcHafs || "");
+
+          const fontStyle = w.codeV2
+            ? `font-family: "QPC Mushaf Page ${w.pageNumber}";`
+            : "";
+
+          return `<span style="${fontStyle}">${content}</span>`;
+        })
+        .join(" ");
+    }
+
+    const fallbackText = escapeHtml(verse.arabicTextQpcV2 || verse.arabicText);
+    const page = typeof verse.pageNumber === "number" ? verse.pageNumber : 1;
+    return `<span style="font-family: 'QPC Mushaf Page ${page}'">${fallbackText}</span>`;
+  };
+
+  const uniquePages = Array.from(
+    new Set(
+      verses.flatMap((v) =>
+        Array.isArray(v.words) && v.words.length > 0
+          ? v.words.map((w) => w.pageNumber)
+          : typeof v.pageNumber === "number"
+          ? [v.pageNumber]
+          : []
+      )
+    )
+  )
+    .filter((p) => Number.isFinite(p) && p > 0)
+    .sort((a, b) => a - b);
+
+  const qcfFontFaces = uniquePages
+    .map(
+      (page) => `
+@font-face {
+  font-family: "QPC Mushaf Page ${page}";
+  src: url("https://verses.quran.foundation/fonts/quran/hafs/v2/woff2/p${page}.woff2") format("woff2");
+  font-display: swap;
+}`
+    )
+    .join("\n");
+
+  const uthmanicHafsFontFace = `
+@font-face {
+  font-family: "UthmanicHafs";
+  src: url("https://verses.quran.foundation/fonts/quran/hafs/uthmanic_hafs/UthmanicHafs1Ver18.woff2") format("woff2");
+  font-display: swap;
+}`;
+
   let versesHtml = "";
 
   if (continuousLines) {
+    const braceStyle = `color: ${accentColor}; font-size: 1.5rem; font-family: 'Amiri Quran', 'UthmanicHafs', serif;`;
+    const perVerseOpen = showBracketsPerVerse
+      ? `<span style="${braceStyle}">﴿</span>`
+      : "";
+    const perVerseClose = showBracketsPerVerse
+      ? `<span style="${braceStyle}">﴾</span>`
+      : "";
+    const rangeOpen = wrapRangeWithBrackets
+      ? `<span style="${braceStyle}">﴿</span>`
+      : "";
+    const rangeClose = wrapRangeWithBrackets
+      ? `<span style="${braceStyle}">﴾</span>`
+      : "";
+
     const arabicContent = verses
-      .map((verse) => {
-        const ayahNumberArabic = verse.number.toLocaleString("ar-EG");
-        const openBrace = showBrackets
-          ? `<span style="color: ${accentColor}; font-size: 1.5rem;">﴿</span>`
-          : "";
-        const closeBrace = showBrackets
-          ? showVerseNumbers
-            ? `<span style="color: ${accentColor}; font-size: 1.5rem;">${ayahNumberArabic}﴾</span>`
-            : `<span style="color: ${accentColor}; font-size: 1.5rem;">﴾</span>`
-          : showVerseNumbers
-          ? `<span style="color: ${accentColor}; font-size: 1.25rem; opacity: 0.6; margin-right: 8px;">(${ayahNumberArabic})</span>`
-          : "";
-        return `${openBrace}${escapeHtml(verse.arabicText)}${closeBrace}`;
-      })
+      .map(
+        (verse) => `${perVerseOpen}${getVerseArabicHtml(verse)}${perVerseClose}`
+      )
       .join(" ");
+    const wrappedArabicContent = `${rangeOpen}${arabicContent}${rangeClose}`;
 
     versesHtml = `
     <p style="
@@ -328,7 +521,7 @@ export function generateStaticHTML(
       text-align: right;
       margin: 0;
     ">
-      ${arabicContent}
+      ${wrappedArabicContent}
     </p>`;
 
     if (showTranslation) {
@@ -358,16 +551,20 @@ export function generateStaticHTML(
   } else {
     versesHtml = verses
       .map((verse, index) => {
-        const ayahNumberArabic = verse.number.toLocaleString("ar-EG");
-        const openBrace = showBrackets
-          ? `<span style="color: ${accentColor}; font-size: 1.5rem;">﴿</span>`
+        const braceStyle = `color: ${accentColor}; font-size: 1.5rem; font-family: 'Amiri Quran', 'UthmanicHafs', serif;`;
+        const isFirst = index === 0;
+        const isLast = index === verses.length - 1;
+
+        const openBrace = showBracketsPerVerse
+          ? `<span style="${braceStyle}">﴿</span>`
+          : wrapRangeWithBrackets && isFirst
+          ? `<span style="${braceStyle}">﴿</span>`
           : "";
-        const closeBrace = showBrackets
-          ? showVerseNumbers
-            ? `<span style="color: ${accentColor}; font-size: 1.5rem;">${ayahNumberArabic}﴾</span>`
-            : `<span style="color: ${accentColor}; font-size: 1.5rem;">﴾</span>`
-          : showVerseNumbers
-          ? `<span style="color: ${accentColor}; font-size: 1.25rem; opacity: 0.6; margin-right: 8px;">(${ayahNumberArabic})</span>`
+
+        const closeBrace = showBracketsPerVerse
+          ? `<span style="${braceStyle}">﴾</span>`
+          : wrapRangeWithBrackets && isLast
+          ? `<span style="${braceStyle}">﴾</span>`
           : "";
         const verseNumInTranslation = showVerseNumbers
           ? `<span style="opacity: 0.5; font-size: 0.875rem; margin-right: 8px;">(${verse.number})</span>`
@@ -381,7 +578,7 @@ export function generateStaticHTML(
       text-align: right;
       margin: 0 0 ${showTranslation ? "8px" : "0"};
     ">
-      ${openBrace}${escapeHtml(verse.arabicText)}${closeBrace}
+      ${openBrace}${getVerseArabicHtml(verse)}${closeBrace}
     </p>
     ${
       showTranslation && verse.translationText
@@ -424,11 +621,13 @@ export function generateStaticHTML(
     : "";
 
   return `<style>
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+${uthmanicHafsFontFace}
+${qcfFontFaces}
 </style>
 
 <div style="
-  font-family: 'Amiri', 'Traditional Arabic', 'Arabic Typesetting', serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background-color: ${finalBgColor};
   color: ${finalTextColor};
   padding: 24px 32px;

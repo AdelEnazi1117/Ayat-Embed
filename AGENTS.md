@@ -16,7 +16,7 @@ This file provides guidance to agents when working with code in this repository.
 - **Language**: TypeScript with React 19 (Strict mode enabled)
 - **Styling**: Tailwind CSS v4 (CSS-based configuration in `src/app/globals.css`)
 - **UI**: React 19 with client components for embed functionality
-- **Fonts**: Kitab font files in `public/fonts/` for Uthmani rendering
+- **Fonts**: QPC V2 font files in `public/fonts/qpc-v2/` for dynamic page-based rendering
 
 ## Project Specifics (Non-Obvious)
 
@@ -24,7 +24,18 @@ This file provides guidance to agents when working with code in this repository.
 
 - **Basmala Stripping**: AlQuran Cloud API includes Basmala in first verse of all surahs except Al-Fatiha. The `fetchAyah` function in [`src/lib/api.ts`](src/lib/api.ts:34) automatically strips it for Surahs 2-114.
 - **API Limits**: Hard limit of 30 verses per request via [`MAX_VERSES_LIMIT`](src/lib/api.ts:5). Larger ranges silently fail.
-- **Translation Fetch**: Separate API calls for Arabic text (`quran-uthmani` edition) and English translations (`en.sahih` edition).
+- **Translation Fetch**: Separate API calls for Arabic text and English translations.
+
+### 🛠 API Proxy & Security
+- **Path**: `src/app/api/quran/[...path]/route.ts`
+- **Security**: Strict whitelist of allowed upstream paths (`chapters`, `verses/by_key/`, `verses/by_chapter/`).
+- **Auth**: Server-side OAuth2 client credentials flow. **Never hardcode secrets**; use `QF_CLIENT_ID` and `QF_CLIENT_SECRET` env vars.
+- **Performance**: Integrated server-side caching (1-hour revalidation) via Next.js Data Cache.
+
+### 🎨 UI & Rendering
+- **Quranic Brackets**: The "Show Brackets" icon in the builder is implemented as an **SVG-wrapped text element** for pixel-perfect vertical alignment, bypassing problematic Arabic font baseline issues.
+- **Font Strategy**: Specialized QPC V2 fonts are loaded dynamically on use.
+- **Verse Numbers**: Enabled by default in the `DEFAULT_STYLE`.
 
 ### Embed System
 
@@ -36,7 +47,7 @@ This file provides guidance to agents when working with code in this repository.
 
 - **Tailwind v4 Configuration**: All theme configurations (colors, fonts, animations) are defined in [`src/app/globals.css`](src/app/globals.css) using the `@theme` block. `tailwind.config.js` does NOT exist.
 - **Color URL Params**: Embed colors must be passed as hex **without** `#` prefix (`ff97316` not `#f97316`). See [`getEmbedUrl`](src/lib/constants.ts:203).
-- **Font Requirement**: Arabic/Quranic text requires `kitab` font family (defined in CSS theme) for proper Uthmani script rendering.
+- **Font Requirement**: Arabic/Quranic text uses QPC V2 fonts, dynamically assigned via `font-family: "QPC Mushaf Page ${pageNumber}"`.
 - **Style Generation**: 70% chance of curated presets, 30% random generation. See [`generateRandomStyle`](src/lib/constants.ts:140).
 - **Custom Theme**: Navy color palette (`--color-navy-50` to `--color-navy-950`) with accent colors.
 
@@ -62,7 +73,7 @@ This file provides guidance to agents when working with code in this repository.
 
 ### Critical Gotchas
 
-- **Font Files**: Kitab font files must be in `public/fonts/` directory, not imported via CSS.
+- **Font Files**: QPC V2 font files must be in `public/fonts/qpc-v2/` directory, not imported via CSS.
 - **Embed Dependencies**: Embed components require both `embedId` prop and postMessage implementation.
 - **API Coupling**: No caching layer - each request hits external AlQuran Cloud API directly.
 - **TypeScript Strict**: All components must satisfy strict type checking with no implicit any.
@@ -106,7 +117,7 @@ The application consists of:
 
 - **No Caching**: Currently no built-in caching - each request hits AlQuran Cloud API directly
 - **Batch Requests**: `fetchVersesRange` makes parallel requests for multiple verses (max 30)
-- **Font Loading**: Kitab fonts load from `public/fonts/` - ensure files exist before deployment
+- **Font Loading**: QPC V2 fonts load from `public/fonts/qpc-v2/` - ensure files exist before deployment
 
 ### Embed Optimization
 

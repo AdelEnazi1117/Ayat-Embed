@@ -120,6 +120,12 @@ Three-tier color presets:
 - **Next.js 16**: App Router with React 19
 - **Tailwind CSS v4**: Styling system
 
+### Security & Defaults
+- **API Proxy**: Strictly whitelisted. Only authorized paths can go upstream.
+- **Caching**: 1-hour cache on all Quran data proxy requests.
+- **Default Style**: `showVerseNumbers` is now `true` by default.
+- **Environment**: Requires `QF_CLIENT_ID` and `QF_CLIENT_SECRET`.
+
 ## Analytics & Tracking
 
 The application includes comprehensive analytics via Umami:

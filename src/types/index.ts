@@ -10,6 +10,7 @@ export interface Surah {
 export interface Ayah {
   number: number;
   text: string;
+  text_qpc_v2?: string;
   numberInSurah: number;
   juz: number;
   manzil: number;
@@ -20,10 +21,32 @@ export interface Ayah {
   surah?: Surah;
 }
 
+export interface VerseWord {
+  /** Word id from Quran.Foundation (if provided) */
+  id?: number;
+  /** Word position within the verse (if provided) */
+  position?: number;
+  /** Mushaf page number (1-604 for QCF V2) */
+  pageNumber: number;
+  /** QCF V2 glyph code (may be a literal glyph or an HTML entity string) */
+  codeV2?: string;
+  /** Unicode fallback text (QPC Hafs) */
+  textQpcHafs?: string;
+  /** word | end | pause | sajdah | rub-el-hizb | ... */
+  charTypeName?: string;
+}
+
 export interface VerseData {
   number: number;
   arabicText: string;
+  arabicTextQpcV2?: string;
   translationText: string;
+  pageNumber?: number;
+  /**
+   * Word-level data for accurate QCF rendering.
+   * Needed because a single verse can span multiple Mushaf pages.
+   */
+  words?: VerseWord[];
 }
 
 export interface ApiResponse<T> {
