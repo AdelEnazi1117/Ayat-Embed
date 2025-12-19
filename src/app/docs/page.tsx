@@ -12,12 +12,7 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "@/components/LanguageToggle";
 import Footer from "@/components/Footer";
-import {
-  trackCTA,
-  trackOutbound,
-  trackSocial,
-  usePageAnalytics,
-} from "@/lib/analytics";
+import { trackCTA, trackSocial, usePageAnalytics } from "@/lib/analytics";
 
 export default function DocsPage() {
   const { t } = useLanguage();
@@ -76,50 +71,278 @@ export default function DocsPage() {
             </p>
           </div>
 
-          <div className="group bg-gradient-to-br from-navy-900/80 to-navy-950/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 hover:bg-white/5 transition-all duration-500 hover:border-accent-blue/30 hover:shadow-2xl hover:shadow-accent-blue/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          <div className="space-y-8">
+            <div className="group bg-gradient-to-br from-navy-900/80 to-navy-950/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 hover:bg-white/5 transition-all duration-500 hover:border-accent-blue/30 hover:shadow-2xl hover:shadow-accent-blue/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center">
-                  <FontAwesomeIcon
-                    icon={faCode}
-                    className="w-5 h-5 text-accent-blue"
-                  />
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center">
+                    <FontAwesomeIcon
+                      icon={faCode}
+                      className="w-5 h-5 text-accent-blue"
+                    />
+                  </div>
+                  <h2 className="text-2xl font-bold text-white">
+                    {t.docApiSection}
+                  </h2>
                 </div>
-                <h2 className="text-2xl font-bold text-white">
-                  {t.docApiSection}
-                </h2>
+              </div>
+
+              <p className="text-white/60 leading-relaxed mb-6 max-w-2xl">
+                {t.docApiProxyDesc}
+              </p>
+
+              <div className="space-y-4 mb-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-3">
+                    {t.docAvailableEndpoints}
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="bg-black/40 rounded-xl p-4 border border-white/5">
+                      <code className="text-sm font-mono text-accent-blue">
+                        /api/quran/chapters
+                      </code>
+                      <p className="text-xs text-white/50 mt-1">
+                        {t.docFetchesSurahs}
+                      </p>
+                    </div>
+                    <div className="bg-black/40 rounded-xl p-4 border border-white/5">
+                      <code className="text-sm font-mono text-accent-blue">
+                        /api/quran/verses/by_key/{`{surah}:{ayah}`}
+                      </code>
+                      <p className="text-xs text-white/50 mt-1">
+                        {t.docFetchesVerse}
+                      </p>
+                    </div>
+                    <div className="bg-black/40 rounded-xl p-4 border border-white/5">
+                      <code className="text-sm font-mono text-accent-blue">
+                        /api/quran/verses/by_chapter/{`{surah}`}
+                      </code>
+                      <p className="text-xs text-white/50 mt-1">
+                        {t.docFetchesChapter}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-navy-800/40 rounded-xl p-4 border border-accent-blue/20">
+                  <h4 className="text-sm font-semibold text-accent-blue mb-2">
+                    {t.docFeatures}
+                  </h4>
+                  <ul className="text-xs text-white/60 space-y-1 list-disc list-inside">
+                    <li>{t.docOAuth2Auth}</li>
+                    <li>{t.docCacheInfo}</li>
+                    <li>{t.docBasmalaStripping}</li>
+                    <li>{t.docMaxVerses}</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <p className="text-white/60 leading-relaxed mb-6 max-w-2xl">
-              {t.docApiDesc}
-            </p>
+            <div className="group bg-gradient-to-br from-navy-900/80 to-navy-950/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 hover:bg-white/5 transition-all duration-500 hover:border-accent-purple/30 hover:shadow-2xl hover:shadow-accent-purple/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-            <div className="bg-black/40 rounded-xl p-4 border border-white/5 flex items-center justify-between group/code hover:border-white/10 transition-colors">
-              <code className="text-sm font-mono text-accent-blue">
-                https://api.alquran.cloud/v1/surah
-              </code>
-              <a
-                href="https://alquran.cloud/api"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  trackOutbound(
-                    "alquran_api_docs",
-                    "https://alquran.cloud/api",
-                    { page: "docs" }
-                  )
-                }
-                className="flex items-center gap-2 text-xs font-medium text-white/40 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg transition-all"
-              >
-                <span>Read API Docs</span>
-                <FontAwesomeIcon
-                  icon={faArrowUpRightFromSquare}
-                  className="w-3 h-3"
-                />
-              </a>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-accent-purple/10 border border-accent-purple/20 flex items-center justify-center">
+                    <FontAwesomeIcon
+                      icon={faCode}
+                      className="w-5 h-5 text-accent-purple"
+                    />
+                  </div>
+                  <h2 className="text-2xl font-bold text-white">
+                    {t.docEmbedParams}
+                  </h2>
+                </div>
+              </div>
+
+              <p className="text-white/60 leading-relaxed mb-6 max-w-2xl">
+                {t.docEmbedParamsDesc}
+              </p>
+
+              <div className="space-y-4">
+                <div className="bg-black/40 rounded-xl p-4 border border-white/5">
+                  <h3 className="text-sm font-semibold text-white mb-3">
+                    {t.docBaseUrlFormat}
+                  </h3>
+                  <code className="text-xs font-mono text-accent-purple block mb-2 break-all">
+                    {`https://ayatembed.adelenazi.cloud/embed/{surah}/{ayah}?{params}`}
+                  </code>
+                  <p className="text-xs text-white/50">
+                    {t.docForVerseRanges}{" "}
+                    <code className="text-accent-purple">
+                      /embed/{`{surah}/{fromAyah}-{toAyah}`}
+                    </code>
+                  </p>
+                </div>
+
+                <div className="bg-black/40 rounded-xl p-4 border border-white/5">
+                  <h3 className="text-sm font-semibold text-white mb-3">
+                    {t.docAvailableParams}
+                  </h3>
+                  <div className="space-y-2 text-xs">
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        color
+                      </code>
+                      <span className="text-white/60">
+                        {t.docAccentColorDesc}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        bg
+                      </code>
+                      <span className="text-white/60">{t.docBgColorDesc}</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        text
+                      </code>
+                      <span className="text-white/60">
+                        {t.docTextColorDesc}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        theme
+                      </code>
+                      <span className="text-white/60">{t.docThemeDesc}</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        translation
+                      </code>
+                      <span className="text-white/60">
+                        {t.docTranslationDesc}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        reference
+                      </code>
+                      <span className="text-white/60">
+                        {t.docReferenceDesc}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        verseNumbers
+                      </code>
+                      <span className="text-white/60">
+                        {t.docVerseNumbersDesc}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        accentLine
+                      </code>
+                      <span className="text-white/60">
+                        {t.docAccentLineDesc}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        transparentBg
+                      </code>
+                      <span className="text-white/60">
+                        {t.docTransparentBgDesc}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        brackets
+                      </code>
+                      <span className="text-white/60">{t.docBracketsDesc}</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        continuousLines
+                      </code>
+                      <span className="text-white/60">
+                        {t.docContinuousLinesDesc}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        lang
+                      </code>
+                      <span className="text-white/60">{t.docLangDesc}</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <code className="text-accent-purple min-w-[140px]">
+                        embedId
+                      </code>
+                      <span className="text-white/60">{t.docEmbedIdDesc}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-navy-800/40 rounded-xl p-4 border border-accent-purple/20">
+                  <h4 className="text-sm font-semibold text-accent-purple mb-2">
+                    {t.docExample}
+                  </h4>
+                  <code className="text-xs font-mono text-white block break-all">
+                    {`/embed/1/1?color=f97316&bg=1c2331&text=ffffff&translation=true&reference=true&verseNumbers=true`}
+                  </code>
+                </div>
+              </div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-navy-900/80 to-navy-950/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 hover:bg-white/5 transition-all duration-500 hover:border-accent-emerald/30 hover:shadow-2xl hover:shadow-accent-emerald/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-accent-emerald/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-accent-emerald/10 border border-accent-emerald/20 flex items-center justify-center">
+                    <FontAwesomeIcon
+                      icon={faCode}
+                      className="w-5 h-5 text-accent-emerald"
+                    />
+                  </div>
+                  <h2 className="text-2xl font-bold text-white">
+                    {t.docEmbedProtocol}
+                  </h2>
+                </div>
+              </div>
+
+              <p className="text-white/60 leading-relaxed mb-6 max-w-2xl">
+                {t.docEmbedProtocolDesc}
+              </p>
+
+              <div className="space-y-4">
+                <div className="bg-black/40 rounded-xl p-4 border border-white/5">
+                  <h3 className="text-sm font-semibold text-white mb-3">
+                    {t.docHeightUpdate}
+                  </h3>
+                  <pre className="text-xs font-mono text-accent-emerald bg-black/60 p-3 rounded-lg overflow-x-auto">
+                    {`{
+  "type": "qveg:height",
+  "id": "unique-embed-id",
+  "height": 450
+}`}
+                  </pre>
+                  <p className="text-xs text-white/50 mt-2">
+                    {t.docHeightUpdateDesc}
+                  </p>
+                </div>
+
+                <div className="bg-navy-800/40 rounded-xl p-4 border border-accent-emerald/20">
+                  <h4 className="text-sm font-semibold text-accent-emerald mb-2">
+                    {t.docParentListener}
+                  </h4>
+                  <pre className="text-xs font-mono text-white bg-black/60 p-3 rounded-lg overflow-x-auto">
+                    {`window.addEventListener("message", (event) => {
+  if (event.data.type === "qveg:height" && 
+      event.data.id === "your-embed-id") {
+    const iframe = document.getElementById("your-embed-id");
+    iframe.style.height = event.data.height + "px";
+  }
+});`}
+                  </pre>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -152,6 +375,11 @@ export default function DocsPage() {
               <ParamCard
                 title={t.transparentBackground}
                 desc={t.infoTransparentBg}
+              />
+              <ParamCard title={t.showBrackets} desc={t.infoShowBrackets} />
+              <ParamCard
+                title={t.continuousLines}
+                desc={t.infoContinuousLines}
               />
             </div>
           </div>
