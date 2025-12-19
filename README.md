@@ -172,27 +172,26 @@ src/
 
 1.  **Search & Select | بحث واختيار**: Use the dropdown to find a Surah by name or number.
 
-(استخدم القائمة للبحث عن السورة بالاسم أو الرقم). 2. **Set Range | تحديد النطاق**: Choose the starting and ending Ayah.
+    (استخدم القائمة للبحث عن السورة بالاسم أو الرقم).
 
-(اختر آية البداية والنهاية). 3. **Style | التنسيق**: - Toggle _Translation_ for English meaning.
+2.  **Set Range | تحديد النطاق**: Choose the starting and ending Ayah.
 
-    (تبديل ظهور الترجمة).
+    (اختر آية البداية والنهاية).
+
+3.  **Style | التنسيق**:
+
+    - Toggle _Translation_ for English meaning.
+      (تبديل ظهور الترجمة).
     - Toggle _Verse Numbers_ or _Reference_.
-
-    (تبديل ظهور أرقام الآيات والسورة).
+      (تبديل ظهور أرقام الآيات والسورة).
     - Adjust _Accent Color_ to match your brand.
-
-    (تعديل لون التمييز ليناسبك).
+      (تعديل لون التمييز ليناسبك).
 
 4.  **Export | تصدير**:
-
     - Click **Export Code** to copy the snippet.
-
-    (اضغط على "نسخ الكود").
-
+      (اضغط على "تصدير الكود").
     - Paste it into your HTML or CMS.
-
-    (لصقه في كود HTML أو مدونتك وموقعك).
+      (لصقه في كود HTML أو مدونتك وموقعك).
 
 ---
 
