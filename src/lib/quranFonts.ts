@@ -16,11 +16,11 @@ function getStyleTag(): HTMLStyleElement {
 }
 
 function buildPageFontFace(page: number): string {
-  // CDN-first (better global caching), local fallback (keeps the app working offline / if CDN blocks).
+  // CDN only - as recommended by Quran Foundation docs
+  // "We strongly recommend against downloading and storing font files locally"
   return `@font-face {
   font-family: "QPC Mushaf Page ${page}";
-  src: url("${QPC_V2_CDN_BASE}/p${page}.woff2") format("woff2"),
-       url("/fonts/qpc-v2/p${page}.woff2") format("woff2");
+  src: url("${QPC_V2_CDN_BASE}/p${page}.woff2") format("woff2");
   font-display: swap;
 }`;
 }

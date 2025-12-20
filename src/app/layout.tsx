@@ -64,6 +64,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl" className="dark">
+      <head>
+        {/* Preload critical Quran font for faster initial render - per Quran Foundation best practices */}
+        <link
+          rel="preload"
+          href="https://verses.quran.foundation/fonts/quran/hafs/uthmanic_hafs/UthmanicHafs1Ver18.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="bg-navy-950 text-white min-h-screen font-arabic">
         {process.env.NEXT_PUBLIC_UMAMI_URL &&
           process.env.NEXT_PUBLIC_UMAMI_ID && (
