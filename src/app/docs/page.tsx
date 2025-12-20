@@ -258,14 +258,6 @@ export default function DocsPage() {
                     </div>
                     <div className="flex items-start gap-3">
                       <code className="text-accent-purple min-w-[140px]">
-                        continuousLines
-                      </code>
-                      <span className="text-white/60">
-                        {t.docContinuousLinesDesc}
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <code className="text-accent-purple min-w-[140px]">
                         lang
                       </code>
                       <span className="text-white/60">{t.docLangDesc}</span>
@@ -377,10 +369,6 @@ export default function DocsPage() {
                 desc={t.infoTransparentBg}
               />
               <ParamCard title={t.showBrackets} desc={t.infoShowBrackets} />
-              <ParamCard
-                title={t.continuousLines}
-                desc={t.infoContinuousLines}
-              />
             </div>
           </div>
 

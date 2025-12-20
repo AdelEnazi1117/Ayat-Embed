@@ -66,7 +66,6 @@ export interface CardStyle {
   showAccentLine: boolean;
   transparentBackground: boolean;
   showBrackets: boolean;
-  continuousLines: boolean;
 }
 
 export interface ColorPreset {

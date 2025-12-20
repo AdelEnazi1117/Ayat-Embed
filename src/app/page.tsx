@@ -208,14 +208,6 @@ export default function BuilderPage() {
     setStyle((prev) => ({ ...prev, ...updates }));
   };
 
-  // If user selects a range (multiple verses), automatically enable "Continuous Lines".
-  // This matches the expected UX for multi-verse embeds.
-  useEffect(() => {
-    if (toAyah > fromAyah && !style.continuousLines) {
-      setStyle((prev) => ({ ...prev, continuousLines: true }));
-    }
-  }, [fromAyah, toAyah, style.continuousLines]);
-
   const getSurahDisplayName = (surah: Surah) => {
     return isRTL ? surah.name : surah.englishName;
   };
@@ -314,9 +306,11 @@ export default function BuilderPage() {
             <div className="relative group shrink-0" ref={surahDropdownRef}>
               <button
                 onClick={() => {
-                  setIsSurahDropdownOpen(!isSurahDropdownOpen);
-                  if (!isSurahDropdownOpen) {
+                  const newState = !isSurahDropdownOpen;
+                  setIsSurahDropdownOpen(newState);
+                  if (newState) {
                     setSurahSearch("");
+                    trackCTA("open_surah_dropdown");
                   }
                 }}
                 className="dashboard-trigger flex items-center gap-3 px-3 py-2 bg-navy-800/50 hover:bg-navy-800 rounded-lg text-sm border border-white/5 hover:border-white/10 transition-all min-w-[160px] sm:min-w-[200px] justify-between"
@@ -400,7 +394,11 @@ export default function BuilderPage() {
                 </span>
                 <select
                   value={fromAyah}
-                  onChange={(e) => setFromAyah(Number(e.target.value))}
+                  onChange={(e) => {
+                    const value = Number(e.target.value);
+                    setFromAyah(value);
+                    trackCTA("change_from_ayah", { ayah: value });
+                  }}
                   className="bg-transparent text-sm font-mono text-accent-orange focus:outline-none py-1 pl-1 pr-6 cursor-pointer hover:bg-white/5 rounded appearance-none"
                   dir="ltr"
                 >
@@ -417,7 +415,11 @@ export default function BuilderPage() {
               <div className="flex items-center">
                 <select
                   value={toAyah}
-                  onChange={(e) => setToAyah(Number(e.target.value))}
+                  onChange={(e) => {
+                    const value = Number(e.target.value);
+                    setToAyah(value);
+                    trackCTA("change_to_ayah", { ayah: value });
+                  }}
                   className="bg-transparent text-sm font-mono text-accent-orange focus:outline-none py-1 pl-1 pr-2 cursor-pointer hover:bg-white/5 rounded appearance-none"
                   dir="ltr"
                 >
@@ -529,9 +531,11 @@ export default function BuilderPage() {
         >
           <div className="flex items-center gap-1 sm:gap-2">
             <button
-              onClick={() =>
-                updateStyle({ showTranslation: !style.showTranslation })
-              }
+              onClick={() => {
+                const newValue = !style.showTranslation;
+                updateStyle({ showTranslation: newValue });
+                trackCTA("toggle_translation", { enabled: newValue });
+              }}
               className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
                 style.showTranslation
                   ? "bg-navy-700 text-white shadow-sm"
@@ -547,9 +551,11 @@ export default function BuilderPage() {
             </button>
 
             <button
-              onClick={() =>
-                updateStyle({ showVerseNumbers: !style.showVerseNumbers })
-              }
+              onClick={() => {
+                const newValue = !style.showVerseNumbers;
+                updateStyle({ showVerseNumbers: newValue });
+                trackCTA("toggle_verse_numbers", { enabled: newValue });
+              }}
               className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
                 style.showVerseNumbers
                   ? "bg-navy-700 text-white shadow-sm"
@@ -566,9 +572,11 @@ export default function BuilderPage() {
             </button>
 
             <button
-              onClick={() =>
-                updateStyle({ showReference: !style.showReference })
-              }
+              onClick={() => {
+                const newValue = !style.showReference;
+                updateStyle({ showReference: newValue });
+                trackCTA("toggle_reference", { enabled: newValue });
+              }}
               className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
                 style.showReference
                   ? "bg-navy-700 text-white shadow-sm"
@@ -585,9 +593,11 @@ export default function BuilderPage() {
             </button>
 
             <button
-              onClick={() =>
-                updateStyle({ showAccentLine: !style.showAccentLine })
-              }
+              onClick={() => {
+                const newValue = !style.showAccentLine;
+                updateStyle({ showAccentLine: newValue });
+                trackCTA("toggle_accent_line", { enabled: newValue });
+              }}
               className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
                 style.showAccentLine
                   ? "bg-navy-700 text-white shadow-sm"
@@ -607,7 +617,11 @@ export default function BuilderPage() {
             </button>
 
             <button
-              onClick={() => updateStyle({ showBrackets: !style.showBrackets })}
+              onClick={() => {
+                const newValue = !style.showBrackets;
+                updateStyle({ showBrackets: newValue });
+                trackCTA("toggle_brackets", { enabled: newValue });
+              }}
               className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
                 style.showBrackets
                   ? "bg-navy-700 text-white shadow-sm"
@@ -647,30 +661,11 @@ export default function BuilderPage() {
             </button>
 
             <button
-              onClick={() =>
-                updateStyle({ continuousLines: !style.continuousLines })
-              }
-              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
-                style.continuousLines
-                  ? "bg-navy-700 text-white shadow-sm"
-                  : "text-white/40 hover:text-white"
-              }`}
-            >
-              <FontAwesomeIcon icon={faPlus} className="w-3.5 h-3.5" />
-              <span className="hidden lg:inline">{t.continuousLines}</span>
-              <div
-                className={`w-1.5 h-1.5 rounded-full ${
-                  style.continuousLines ? "bg-accent-emerald" : "bg-white/10"
-                }`}
-              />
-            </button>
-
-            <button
-              onClick={() =>
-                updateStyle({
-                  transparentBackground: !style.transparentBackground,
-                })
-              }
+              onClick={() => {
+                const newValue = !style.transparentBackground;
+                updateStyle({ transparentBackground: newValue });
+                trackCTA("toggle_background", { showBackground: !newValue });
+              }}
               className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
                 !style.transparentBackground
                   ? "bg-navy-700 text-white shadow-sm"
@@ -771,7 +766,10 @@ export default function BuilderPage() {
                 {COLOR_PRESETS.map((c) => (
                   <button
                     key={c.value}
-                    onClick={() => updateStyle({ accentColor: c.value })}
+                    onClick={() => {
+                      updateStyle({ accentColor: c.value });
+                      trackCTA("select_accent_color", { color: c.value, name: c.name });
+                    }}
                     className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
                       style.accentColor === c.value
                         ? "border-white"
@@ -788,9 +786,11 @@ export default function BuilderPage() {
                   <input
                     type="color"
                     value={style.accentColor}
-                    onChange={(e) =>
-                      updateStyle({ accentColor: e.target.value })
-                    }
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      updateStyle({ accentColor: value });
+                      trackCTA("custom_accent_color", { color: value });
+                    }}
                     className="absolute inset-0 opacity-0 w-full h-full cursor-pointer p-0 border-0"
                   />
                   <FontAwesomeIcon
@@ -809,7 +809,10 @@ export default function BuilderPage() {
                 {BACKGROUND_PRESETS.map((c) => (
                   <button
                     key={c.value}
-                    onClick={() => updateStyle({ backgroundColor: c.value })}
+                    onClick={() => {
+                      updateStyle({ backgroundColor: c.value });
+                      trackCTA("select_bg_color", { color: c.value, name: c.name });
+                    }}
                     className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
                       style.backgroundColor === c.value
                         ? "border-white h-7 w-7 ring-2 ring-white/20"
@@ -826,9 +829,11 @@ export default function BuilderPage() {
                   <input
                     type="color"
                     value={style.backgroundColor}
-                    onChange={(e) =>
-                      updateStyle({ backgroundColor: e.target.value })
-                    }
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      updateStyle({ backgroundColor: value });
+                      trackCTA("custom_bg_color", { color: value });
+                    }}
                     className="absolute inset-0 opacity-0 w-full h-full cursor-pointer p-0 border-0"
                   />
                   <FontAwesomeIcon
@@ -847,57 +852,62 @@ export default function BuilderPage() {
                 {TEXT_COLOR_PRESETS.map((c) => (
                   <button
                     key={c.value}
-                    onClick={() => updateStyle({ textColor: c.value })}
+                    onClick={() => {
+                      updateStyle({ textColor: c.value });
+                      trackCTA("select_text_color", { color: c.value, name: c.name });
+                    }}
                     className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
                       style.textColor === c.value
-                        ? "border-white"
-                        : "border-transparent"
+                        ? "border-accent-orange h-7 w-7 ring-2 ring-accent-orange/20"
+                        : "border-white/10"
                     }`}
                     style={{ backgroundColor: c.value }}
                     title={c.name}
                   />
                 ))}
                 <label
-                  className="relative w-6 h-6 rounded-full overflow-hidden cursor-pointer border border-white/20 hover:border-white hover:scale-110 transition-all flex items-center justify-center bg-gradient-to-tr from-yellow-300 via-orange-400 to-red-500"
+                  className="relative w-6 h-6 rounded-full overflow-hidden cursor-pointer border border-white/20 hover:border-white hover:scale-110 transition-all flex items-center justify-center bg-gradient-to-tr from-gray-400 via-gray-300 to-gray-200"
                   title={t.customColor}
                 >
                   <input
                     type="color"
                     value={style.textColor}
-                    onChange={(e) => updateStyle({ textColor: e.target.value })}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      updateStyle({ textColor: value });
+                      trackCTA("custom_text_color", { color: value });
+                    }}
                     className="absolute inset-0 opacity-0 w-full h-full cursor-pointer p-0 border-0"
                   />
                   <FontAwesomeIcon
                     icon={faPlus}
-                    className="w-2.5 h-2.5 text-white drop-shadow-sm"
+                    className="w-2.5 h-2.5 text-black/60 drop-shadow-sm"
                   />
                 </label>
               </div>
             </div>
 
-            <div className="flex gap-2 mt-2">
+            <div className="pt-2 border-t border-white/5 flex gap-2">
               <button
                 onClick={() => {
-                  const randomStyle = generateRandomStyle();
-                  setStyle(randomStyle);
-                  trackCTA("apply_random_style", {
-                    accentColor: randomStyle.accentColor,
-                    backgroundColor: randomStyle.backgroundColor,
-                    textColor: randomStyle.textColor,
-                    theme: randomStyle.theme,
-                  });
+                  setStyle(DEFAULT_STYLE);
+                  trackCTA("reset_styles");
                 }}
-                className="flex-1 px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-white/20"
-              >
-                <FontAwesomeIcon icon={faDice} className="w-3 h-3" />
-                <span>{t.randomStyle}</span>
-              </button>
-              <button
-                onClick={() => setStyle(DEFAULT_STYLE)}
-                className="flex-1 px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-white/20"
+                className="flex-1 px-3 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
               >
                 <FontAwesomeIcon icon={faRotateLeft} className="w-3 h-3" />
-                <span>{t.resetStyles}</span>
+                {t.resetStyles}
+              </button>
+              <button
+                onClick={() => {
+                  const newStyle = generateRandomStyle();
+                  setStyle(newStyle);
+                  trackCTA("random_style");
+                }}
+                className="flex-1 px-3 py-2 bg-accent-orange/10 hover:bg-accent-orange/20 text-accent-orange rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+              >
+                <FontAwesomeIcon icon={faDice} className="w-3 h-3" />
+                {t.randomStyle}
               </button>
             </div>
           </div>

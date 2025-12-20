@@ -32,7 +32,6 @@ export const translations = {
     showAccentLine: "إظهار الخط الجانبي",
     transparentBackground: "خلفية شفافة",
     showBrackets: "إظهار الأقواس",
-    continuousLines: "عرض متصل",
     resetStyles: "إعادة تعيين",
     randomStyle: "نمط عشوائي",
 
@@ -48,7 +47,6 @@ export const translations = {
     infoAccentColor: "اختر اللون المميز للأقواس والخط الجانبي والمرجع",
     infoBackgroundColor: "اختر لون خلفية البطاقة",
     infoExportCode: "انسخ الكود لتضمينه في موقعك",
-    infoContinuousLines: "عرض الآيات كنص واحد متصل بدلاً من آية في كل سطر",
     infoShowBrackets: "عرض الأقواس حول أرقام الآيات في النص العربي",
 
     exportCode: "تصدير الكود",
@@ -120,7 +118,6 @@ export const translations = {
     docAccentLineDesc: 'إظهار الخط الجانبي: "true" أو "false"',
     docTransparentBgDesc: 'خلفية شفافة: "true" أو "false"',
     docBracketsDesc: 'إظهار الأقواس حول أرقام الآيات: "true" أو "false"',
-    docContinuousLinesDesc: 'عرض الآيات كنص متصل: "true" أو "false"',
     docLangDesc: 'لغة الواجهة: "ar" أو "en"',
     docEmbedIdDesc: "معرف فريد للتضمين للتواصل عبر postMessage (يتم إنشاؤه تلقائياً)",
     docExample: "مثال",
@@ -190,7 +187,6 @@ export const translations = {
     showAccentLine: "Show Accent Line",
     transparentBackground: "Transparent Background",
     showBrackets: "Show Brackets",
-    continuousLines: "Continuous Lines",
     resetStyles: "Reset",
     randomStyle: "Random Style",
 
@@ -212,8 +208,6 @@ export const translations = {
       "Choose the accent color for brackets, side line, and reference",
     infoBackgroundColor: "Choose the background color for the card",
     infoExportCode: "Copy the code to embed on your website",
-    infoContinuousLines:
-      "Show verses as a single continuous text block instead of one verse per line",
     infoShowBrackets:
       "Display brackets around verse numbers in the Arabic text",
 
@@ -289,7 +283,6 @@ export const translations = {
     docAccentLineDesc: 'Show accent line: "true" or "false"',
     docTransparentBgDesc: 'Transparent background: "true" or "false"',
     docBracketsDesc: 'Show brackets around verse numbers: "true" or "false"',
-    docContinuousLinesDesc: 'Display verses as continuous text: "true" or "false"',
     docLangDesc: 'UI language: "ar" or "en"',
     docEmbedIdDesc: "Unique embed ID for postMessage communication (auto-generated)",
     docExample: "Example",

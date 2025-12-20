@@ -3,12 +3,15 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLanguage } from "@fortawesome/free-solid-svg-icons";
+import { trackCTA } from "@/lib/analytics";
 
 export default function LanguageToggle() {
   const { language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
-    setLanguage(language === "ar" ? "en" : "ar");
+    const newLang = language === "ar" ? "en" : "ar";
+    setLanguage(newLang);
+    trackCTA("language_toggle", { from: language, to: newLang });
   };
 
   return (

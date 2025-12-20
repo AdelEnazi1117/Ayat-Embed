@@ -34,8 +34,8 @@ export default function QuranCard({
     showAccentLine = true,
     transparentBackground = false,
     showBrackets = true,
-    continuousLines = false,
   } = style;
+  const continuousLines = verses.length > 1;
 
   const isDark = isColorDark(backgroundColor);
 
@@ -381,8 +381,8 @@ export function generateStaticHTML(
     showAccentLine,
     transparentBackground,
     showBrackets = true,
-    continuousLines = false,
   } = style;
+  const continuousLines = verses.length > 1;
 
   const finalBgColor = transparentBackground ? "transparent" : backgroundColor;
   const finalTextColor = textColor;
