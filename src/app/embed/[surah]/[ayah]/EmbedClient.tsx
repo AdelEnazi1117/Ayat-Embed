@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import QuranCard from "@/components/QuranCard";
 import { fetchSurahs, fetchVersesRange } from "@/lib/api";
+import { usePageAnalytics } from "@/lib/analytics";
 import type { CardStyle, Surah, VerseData } from "@/types";
 
 interface EmbedClientProps {
@@ -19,7 +20,6 @@ interface EmbedClientProps {
   showAccentLine: boolean;
   transparentBackground: boolean;
   showBrackets: boolean;
-  continuousLines: boolean;
   isArabicUI: boolean;
   embedId?: string;
 }
@@ -38,10 +38,10 @@ export default function EmbedClient({
   showAccentLine,
   transparentBackground,
   showBrackets,
-  continuousLines,
   isArabicUI,
   embedId,
 }: EmbedClientProps) {
+  usePageAnalytics({ pageName: "embed" });
   const [verses, setVerses] = useState<VerseData[]>([]);
   const [surahName, setSurahName] = useState("");
   const [surahNameArabic, setSurahNameArabic] = useState("");
@@ -60,7 +60,6 @@ export default function EmbedClient({
     showAccentLine,
     transparentBackground,
     showBrackets,
-    continuousLines,
   };
 
   // Notify parent iframe about the required height

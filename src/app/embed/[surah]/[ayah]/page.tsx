@@ -2,6 +2,10 @@ import { Metadata } from "next";
 import Script from "next/script";
 import EmbedClient from "./EmbedClient";
 
+// Enable Incremental Static Regeneration for embed pages
+// This caches the page on the server and regenerates every 1 hour
+export const revalidate = 3600;
+
 interface EmbedPageProps {
   params: Promise<{
     surah: string;
@@ -18,7 +22,6 @@ interface EmbedPageProps {
     accentLine?: string;
     transparentBg?: string;
     brackets?: string;
-    continuousLines?: string;
     lang?: string;
     embedId?: string;
   }>;
@@ -99,7 +102,6 @@ export default async function EmbedPage({
   const showAccentLine = resolvedSearchParams.accentLine !== "false";
   const transparentBackground = resolvedSearchParams.transparentBg === "true";
   const showBrackets = resolvedSearchParams.brackets !== "false";
-  const continuousLines = resolvedSearchParams.continuousLines === "true";
   const isArabicUI = resolvedSearchParams.lang === "ar";
 
   return (
@@ -118,7 +120,6 @@ export default async function EmbedPage({
         showAccentLine={showAccentLine}
         transparentBackground={transparentBackground}
         showBrackets={showBrackets}
-        continuousLines={continuousLines}
         isArabicUI={isArabicUI}
         embedId={embedId}
       />
