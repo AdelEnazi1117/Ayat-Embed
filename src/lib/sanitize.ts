@@ -75,8 +75,9 @@ export function validateAndSanitizeSurah(surah: any): boolean {
     ) {
       return false;
     }
-    // Escape even if empty (no-op).
-    surah[field] = escapeHtml(surah[field]);
+    // React handles escaping of string variables. We should not manually escape here 
+    // as it creates visual artifacts (e.g. &#039; instead of ')
+    // surah[field] = escapeHtml(surah[field]);
   }
 
   return true;

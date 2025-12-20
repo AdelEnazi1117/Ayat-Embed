@@ -37,15 +37,18 @@ function removeArabicDiacritics(text: string): string {
 }
 
 function decodeHtmlEntities(text: string): string {
-  // Minimal decoding (enough for common translation payloads)
+  if (!text || typeof text !== "string") return "";
   return text
     .replace(/&nbsp;/g, " ")
     .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
     .replace(/&apos;/g, "'")
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
+    .replace(/&gt;/g, ">")
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(parseInt(dec, 10)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) =>
+      String.fromCharCode(parseInt(hex, 16))
+    );
 }
 
 function sanitizeTranslationHtml(raw: string): string {
@@ -222,9 +225,9 @@ export async function fetchSurahs(): Promise<Surah[]> {
     for (const chapter of data.chapters) {
       const surah: Surah = {
         number: chapter.id,
-        name: chapter.name_arabic,
-        englishName: chapter.name_simple,
-        englishNameTranslation: chapter.translated_name?.name || "",
+        name: decodeHtmlEntities(chapter.name_arabic || ""),
+        englishName: decodeHtmlEntities(chapter.name_simple || ""),
+        englishNameTranslation: decodeHtmlEntities(chapter.translated_name?.name || ""),
         numberOfAyahs: chapter.verses_count,
         revelationType:
           chapter.revelation_place === "makkah" ? "Meccan" : "Medinan",
