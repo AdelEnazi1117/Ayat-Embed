@@ -156,14 +156,14 @@ export async function GET(
 
     const url = `${config.apiBase}/${fullPath}`;
 
-    // Enable caching: Quran data is stable, cache for 1 hour
+    // Enable caching: Quran data is stable, cache for 24 hours (increased from 1 hour)
     const response = await fetch(url, {
       headers: {
         "x-auth-token": token,
         "x-client-id": config.clientId,
         Accept: "application/json",
       },
-      next: { revalidate: 3600 }, // Cache for 1 hour
+      next: { revalidate: 86400 }, // Cache for 24 hours
     });
 
     if (!response.ok) {
@@ -175,10 +175,10 @@ export async function GET(
 
     const data = await response.json();
 
-    // Add cache headers to the response
+    // Add aggressive cache headers - Quran data is immutable
     return NextResponse.json(data, {
       headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800",
       },
     });
   } catch (error) {
