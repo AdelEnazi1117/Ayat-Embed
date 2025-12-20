@@ -4,6 +4,12 @@ import {
   validateAndSanitizeSurah,
   validateAyahStructure,
 } from "./sanitize";
+import {
+  getCachedSurahs,
+  setCachedSurahs,
+  getCachedVerse,
+  setCachedVerse,
+} from "./cache";
 
 // Base URL for the internal proxy
 const API_BASE = "/api/quran";
@@ -192,6 +198,12 @@ async function fetchFromProxy(path: string, options: RequestInit = {}) {
 }
 
 export async function fetchSurahs(): Promise<Surah[]> {
+  // Check cache first
+  const cached = getCachedSurahs();
+  if (cached) {
+    return cached;
+  }
+
   try {
     const response = await fetchFromProxy("chapters");
 
@@ -227,6 +239,9 @@ export async function fetchSurahs(): Promise<Surah[]> {
       throw new Error(`No valid surahs found in API response`);
     }
 
+    // Cache the result
+    setCachedSurahs(validatedSurahs);
+
     return validatedSurahs;
   } catch (error) {
     console.error("Failed to fetch Surahs:", error);
@@ -243,7 +258,7 @@ async function fetchVerseData(
   const params = new URLSearchParams({
     mushaf: String(DEFAULT_MUSHAF),
     words: "true",
-    word_fields: "code_v2,text_qpc_hafs,page_number,line_number",
+    word_fields: "code_v2,text_qpc_hafs,page_number",
     translations: String(DEFAULT_TRANSLATION_ID),
   });
 
@@ -349,13 +364,18 @@ export async function fetchAyah(
   ayahNumber: number
 ): Promise<Ayah> {
   try {
-    const verse = await fetchVerseData(surahNumber, ayahNumber);
+    // OPTIMIZED: Single API call that fetches both verse content AND metadata
+    // Previously this made TWO requests - one for fetchVerseData() and one for metadata
+    const verseKey = `${surahNumber}:${ayahNumber}`;
 
-    // Fetch full metadata (juz/manzil/etc) from the upstream verse payload.
-    // We do a lightweight request without words to reduce payload size.
-    const response = await fetchFromProxy(
-      `verses/by_key/${surahNumber}:${ayahNumber}?mushaf=${DEFAULT_MUSHAF}`
-    );
+    const params = new URLSearchParams({
+      mushaf: String(DEFAULT_MUSHAF),
+      words: "true",
+      word_fields: "code_v2,text_qpc_hafs,page_number",
+      translations: String(DEFAULT_TRANSLATION_ID),
+    });
+
+    const response = await fetchFromProxy(`verses/by_key/${verseKey}?${params}`);
 
     if (!response.ok) {
       throw new Error(`API Error: ${response.status}`);
@@ -368,22 +388,63 @@ export async function fetchAyah(
 
     const v = data.verse;
 
-    // Map to the Ayah interface expected by the app
+    // Process words from the single response
+    const rawWords = Array.isArray(v.words) ? v.words : [];
+    const mappedWords: VerseWord[] = rawWords
+      .map((w): VerseWord | null => {
+        const pageNumber =
+          typeof w.page_number === "number" && w.page_number > 0
+            ? w.page_number
+            : typeof v.page_number === "number" && v.page_number > 0
+            ? v.page_number
+            : 1;
+
+        const codeV2 = typeof w.code_v2 === "string" ? w.code_v2 : undefined;
+        const textQpcHafs =
+          typeof w.text_qpc_hafs === "string" ? w.text_qpc_hafs : undefined;
+        const charTypeName =
+          typeof w.char_type_name === "string" ? w.char_type_name : undefined;
+        const id = typeof w.id === "number" ? w.id : undefined;
+        const position = typeof w.position === "number" ? w.position : undefined;
+
+        if (!codeV2 && !textQpcHafs) return null;
+
+        return { id, position, pageNumber, codeV2, textQpcHafs, charTypeName };
+      })
+      .filter((w): w is VerseWord => Boolean(w));
+
+    const words =
+      surahNumber !== 1 && ayahNumber === 1
+        ? maybeStripBasmalaFromWords(mappedWords)
+        : mappedWords;
+
+    // Build arabic text
+    const arabicTextFromWords = buildUnicodeTextFromWords(words);
+    const arabicText =
+      surahNumber !== 1 && ayahNumber === 1
+        ? stripBasmalaFromText(arabicTextFromWords)
+        : arabicTextFromWords;
+
+    const arabicTextQpcV2 = buildQcfV2TextFromWords(words) || v.text_qpc_v2;
+
+    const pageNumber =
+      (typeof v.page_number === "number" && v.page_number > 0 && v.page_number) ||
+      words[0]?.pageNumber ||
+      1;
+
+    // Map metadata from the same response
     const hizbNumber = typeof v.hizb_number === "number" ? v.hizb_number : 1;
     const rubElHizbNumber =
       typeof v.rub_el_hizb_number === "number" ? v.rub_el_hizb_number : 1;
 
     const ayah: Ayah = {
       number: v.id,
-      text: verse.arabicText,
-      text_qpc_v2: verse.arabicTextQpcV2,
+      text: arabicText,
+      text_qpc_v2: typeof arabicTextQpcV2 === "string" ? arabicTextQpcV2 : undefined,
       numberInSurah: v.verse_number,
       juz: typeof v.juz_number === "number" ? v.juz_number : 1,
       manzil: typeof v.manzil_number === "number" ? v.manzil_number : 1,
-      page:
-        typeof v.page_number === "number"
-          ? v.page_number
-          : verse.pageNumber || 1,
+      page: pageNumber,
       ruku: typeof v.ruku_number === "number" ? v.ruku_number : 1,
       hizbQuarter: (hizbNumber - 1) * 4 + rubElHizbNumber,
       sajda: v.sajdah_number !== null && v.sajdah_number !== undefined,
@@ -459,20 +520,39 @@ export async function fetchVersesRange(
     (_, idx) => fromAyah + idx
   );
 
-  const concurrency = 6;
+  // Check cache first and identify which verses need fetching
   const results: VerseData[] = new Array(ayahNumbers.length);
+  const toFetch: { index: number; ayahNumber: number }[] = [];
+
+  for (let i = 0; i < ayahNumbers.length; i++) {
+    const cached = getCachedVerse(surahNumber, ayahNumbers[i]);
+    if (cached) {
+      results[i] = cached;
+    } else {
+      toFetch.push({ index: i, ayahNumber: ayahNumbers[i] });
+    }
+  }
+
+  // If all verses are cached, return immediately
+  if (toFetch.length === 0) {
+    return results;
+  }
+
+  // OPTIMIZED: Reduced concurrency from 6 to 3 to lower server CPU load
+  const concurrency = 3;
   let nextIndex = 0;
 
   await Promise.all(
-    Array.from({ length: Math.min(concurrency, ayahNumbers.length) }).map(
+    Array.from({ length: Math.min(concurrency, toFetch.length) }).map(
       async () => {
         while (true) {
           const current = nextIndex++;
-          if (current >= ayahNumbers.length) return;
-          results[current] = await fetchVerseData(
-            surahNumber,
-            ayahNumbers[current]
-          );
+          if (current >= toFetch.length) return;
+          const { index, ayahNumber } = toFetch[current];
+          const verse = await fetchVerseData(surahNumber, ayahNumber);
+          results[index] = verse;
+          // Cache the fetched verse
+          setCachedVerse(surahNumber, ayahNumber, verse);
         }
       }
     )
