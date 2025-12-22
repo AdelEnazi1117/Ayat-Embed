@@ -764,7 +764,10 @@ export default function BuilderPage() {
                     key={c.value}
                     onClick={() => {
                       updateStyle({ accentColor: c.value });
-                      trackCTA("select_accent_color", { color: c.value, name: c.name });
+                      trackCTA("select_accent_color", {
+                        color: c.value,
+                        name: c.name,
+                      });
                     }}
                     className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
                       style.accentColor === c.value
@@ -807,7 +810,10 @@ export default function BuilderPage() {
                     key={c.value}
                     onClick={() => {
                       updateStyle({ backgroundColor: c.value });
-                      trackCTA("select_bg_color", { color: c.value, name: c.name });
+                      trackCTA("select_bg_color", {
+                        color: c.value,
+                        name: c.name,
+                      });
                     }}
                     className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
                       style.backgroundColor === c.value
@@ -850,7 +856,10 @@ export default function BuilderPage() {
                     key={c.value}
                     onClick={() => {
                       updateStyle({ textColor: c.value });
-                      trackCTA("select_text_color", { color: c.value, name: c.name });
+                      trackCTA("select_text_color", {
+                        color: c.value,
+                        name: c.name,
+                      });
                     }}
                     className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
                       style.textColor === c.value
