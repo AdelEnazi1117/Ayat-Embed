@@ -387,52 +387,48 @@ export default function BuilderPage() {
               )}
             </div>
 
-            <div className="hidden sm:flex items-center gap-1 bg-navy-800/30 p-1 rounded-lg border border-white/5">
-              <div className="flex items-center">
-                <span className="text-[10px] uppercase tracking-wider text-white/40 px-2 font-bold">
-                  {t.ayah}
-                </span>
-                <select
-                  value={fromAyah}
-                  onChange={(e) => {
-                    const value = Number(e.target.value);
-                    setFromAyah(value);
-                    trackCTA("change_from_ayah", { ayah: value });
-                  }}
-                  className="bg-transparent text-sm font-mono text-accent-orange focus:outline-none py-1 pl-1 pr-6 cursor-pointer hover:bg-white/5 rounded appearance-none"
-                  dir="ltr"
-                >
-                  {Array.from({ length: maxAyahs }, (_, i) => i + 1).map(
-                    (num) => (
-                      <option key={num} value={num} className="bg-navy-900">
-                        {num}
-                      </option>
-                    )
-                  )}
-                </select>
-              </div>
-              <span className="text-white/20 px-1">-</span>
-              <div className="flex items-center">
-                <select
-                  value={toAyah}
-                  onChange={(e) => {
-                    const value = Number(e.target.value);
-                    setToAyah(value);
-                    trackCTA("change_to_ayah", { ayah: value });
-                  }}
-                  className="bg-transparent text-sm font-mono text-accent-orange focus:outline-none py-1 pl-1 pr-2 cursor-pointer hover:bg-white/5 rounded appearance-none"
-                  dir="ltr"
-                >
-                  {Array.from(
-                    { length: maxSelectableToAyah - fromAyah + 1 },
-                    (_, i) => fromAyah + i
-                  ).map((num) => (
+            <div className="hidden sm:flex items-center gap-1.5 bg-navy-800/30 px-2 py-1 rounded-lg border border-white/5">
+              <span className="text-[10px] uppercase tracking-wider text-white/40 font-bold">
+                {t.ayah}
+              </span>
+              <select
+                value={fromAyah}
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  setFromAyah(value);
+                  trackCTA("change_from_ayah", { ayah: value });
+                }}
+                className="bg-transparent text-sm font-mono text-accent-orange focus:outline-none py-1 px-2 cursor-pointer hover:bg-white/5 rounded appearance-none"
+                dir="ltr"
+              >
+                {Array.from({ length: maxAyahs }, (_, i) => i + 1).map(
+                  (num) => (
                     <option key={num} value={num} className="bg-navy-900">
                       {num}
                     </option>
-                  ))}
-                </select>
-              </div>
+                  )
+                )}
+              </select>
+              <span className="text-white/20">-</span>
+              <select
+                value={toAyah}
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  setToAyah(value);
+                  trackCTA("change_to_ayah", { ayah: value });
+                }}
+                className="bg-transparent text-sm font-mono text-accent-orange focus:outline-none py-1 px-2 cursor-pointer hover:bg-white/5 rounded appearance-none"
+                dir="ltr"
+              >
+                {Array.from(
+                  { length: maxSelectableToAyah - fromAyah + 1 },
+                  (_, i) => fromAyah + i
+                ).map((num) => (
+                  <option key={num} value={num} className="bg-navy-900">
+                    {num}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
