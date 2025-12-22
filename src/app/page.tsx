@@ -67,6 +67,7 @@ export default function BuilderPage() {
   const [isLoadingVerses, setIsLoadingVerses] = useState(false);
 
   const [baseUrl, setBaseUrl] = useState("");
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const stylesButtonRef = useRef<HTMLButtonElement>(null);
   const surahDropdownRef = useRef<HTMLDivElement>(null);
@@ -145,12 +146,16 @@ export default function BuilderPage() {
   const loadVerses = useCallback(async () => {
     if (selectedSurah && fromAyah && toAyah) {
       setIsLoadingVerses(true);
+      setApiError(null);
       try {
         const data = await fetchVersesRange(selectedSurah, fromAyah, toAyah);
         setVerses(data);
       } catch (error) {
         console.error("Failed to load verses:", error);
         setVerses([]);
+        const errorMessage =
+          error instanceof Error ? error.message : "Unknown error";
+        setApiError(errorMessage);
       } finally {
         setIsLoadingVerses(false);
       }
@@ -718,17 +723,34 @@ export default function BuilderPage() {
                     : "opacity-100 scale-100"
                 }`}
               >
-                <div className="backdrop-blur-sm bg-black/20 p-8 rounded-3xl border border-white/5 shadow-2xl ring-1 ring-white/5">
-                  <QuranCard
-                    verses={verses}
-                    surahName={currentSurah?.englishName || "Al-Fatiha"}
-                    surahNameArabic={currentSurah?.name || "الفاتحة"}
-                    surahNumber={selectedSurah}
-                    style={style}
-                    isLoading={isLoadingVerses}
-                    isArabicUI={isRTL}
-                  />
-                </div>
+                {apiError ? (
+                  <div className="backdrop-blur-sm bg-red-950/20 p-8 rounded-3xl border border-red-500/20 shadow-2xl ring-1 ring-red-500/10">
+                    <div className="text-center">
+                      <div className="text-red-400 text-lg font-medium mb-2">
+                        Failed to load verses
+                      </div>
+                      <p className="text-white/60 text-sm mb-4">{apiError}</p>
+                      <button
+                        onClick={() => loadVerses()}
+                        className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg text-sm font-medium transition-colors"
+                      >
+                        Try again
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="backdrop-blur-sm bg-black/20 p-8 rounded-3xl border border-white/5 shadow-2xl ring-1 ring-white/5">
+                    <QuranCard
+                      verses={verses}
+                      surahName={currentSurah?.englishName || "Al-Fatiha"}
+                      surahNameArabic={currentSurah?.name || "الفاتحة"}
+                      surahNumber={selectedSurah}
+                      style={style}
+                      isLoading={isLoadingVerses}
+                      isArabicUI={isRTL}
+                    />
+                  </div>
+                )}
 
                 <p className="text-center mt-6 text-white/20 text-sm font-mono tracking-widest uppercase">
                   {t.livePreview} •{" "}

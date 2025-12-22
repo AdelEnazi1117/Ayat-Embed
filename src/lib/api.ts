@@ -214,7 +214,23 @@ export async function fetchSurahs(): Promise<Surah[]> {
       throw new Error(`API Error: ${response.status}`);
     }
 
-    const data = await response.json();
+    // Check for empty response
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error(`API returned non-JSON response`);
+    }
+
+    const text = await response.text();
+    if (!text || text.trim().length === 0) {
+      throw new Error(`API returned empty response`);
+    }
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (parseError) {
+      throw new Error(`Failed to parse API response`);
+    }
 
     if (!data || !data.chapters || !Array.isArray(data.chapters)) {
       throw new Error(`Invalid API response structure`);
@@ -271,7 +287,24 @@ async function fetchVerseData(
     throw new Error(`API Error: ${response.status}`);
   }
 
-  const data = (await response.json()) as Partial<QfVerseByKeyResponse>;
+  // Check for empty response
+  const contentType = response.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
+    throw new Error(`API returned non-JSON response`);
+  }
+
+  const text = await response.text();
+  if (!text || text.trim().length === 0) {
+    throw new Error(`API returned empty response for verse ${verseKey}`);
+  }
+
+  let data: Partial<QfVerseByKeyResponse>;
+  try {
+    data = JSON.parse(text) as Partial<QfVerseByKeyResponse>;
+  } catch (parseError) {
+    throw new Error(`Failed to parse API response for verse ${verseKey}`);
+  }
+
   if (!data?.verse) {
     throw new Error(`Invalid API response structure`);
   }
@@ -384,7 +417,24 @@ export async function fetchAyah(
       throw new Error(`API Error: ${response.status}`);
     }
 
-    const data = (await response.json()) as Partial<QfVerseByKeyResponse>;
+    // Check for empty response
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error(`API returned non-JSON response`);
+    }
+
+    const text = await response.text();
+    if (!text || text.trim().length === 0) {
+      throw new Error(`API returned empty response for verse ${verseKey}`);
+    }
+
+    let data: Partial<QfVerseByKeyResponse>;
+    try {
+      data = JSON.parse(text) as Partial<QfVerseByKeyResponse>;
+    } catch (parseError) {
+      throw new Error(`Failed to parse API response for verse ${verseKey}`);
+    }
+
     if (!data?.verse) {
       throw new Error(`Invalid API response structure`);
     }
@@ -477,7 +527,23 @@ export async function fetchTranslation(
       throw new Error(`API Error: ${response.status}`);
     }
 
-    const data = (await response.json()) as Partial<QfVerseByKeyResponse>;
+    // Check for empty response
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error(`API returned non-JSON response`);
+    }
+
+    const text = await response.text();
+    if (!text || text.trim().length === 0) {
+      throw new Error(`API returned empty response`);
+    }
+
+    let data: Partial<QfVerseByKeyResponse>;
+    try {
+      data = JSON.parse(text) as Partial<QfVerseByKeyResponse>;
+    } catch (parseError) {
+      throw new Error(`Failed to parse API response`);
+    }
 
     if (!data?.verse) {
       throw new Error(`Invalid API response structure`);

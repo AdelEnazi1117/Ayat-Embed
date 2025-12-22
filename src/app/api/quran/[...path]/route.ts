@@ -173,7 +173,33 @@ export async function GET(
       );
     }
 
-    const data = await response.json();
+    // Check if response body exists before parsing JSON
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      return NextResponse.json(
+        { error: "Upstream API returned non-JSON response" },
+        { status: 502 }
+      );
+    }
+
+    const text = await response.text();
+    if (!text || text.trim().length === 0) {
+      return NextResponse.json(
+        { error: "Upstream API returned empty response" },
+        { status: 502 }
+      );
+    }
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (parseError) {
+      console.error("Failed to parse upstream API response:", parseError);
+      return NextResponse.json(
+        { error: "Failed to parse upstream API response" },
+        { status: 502 }
+      );
+    }
 
     // Add aggressive cache headers - Quran data is immutable
     return NextResponse.json(data, {
