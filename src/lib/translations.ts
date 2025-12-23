@@ -155,6 +155,34 @@ export const translations = {
     ready: "جاهز",
     version: "نسخة",
     developer: "المطور",
+
+    notFound: {
+      title: "الصفحة غير موجودة",
+      description: "عذراً، لم نتمكن من العثور على الصفحة التي تبحث عنها.",
+      backToBuilder: "العودة للرئيسية",
+    },
+
+    embedError: {
+      title: "رابط تضمين غير صحيح",
+      description: "يرجى استخدام الرابط بالتنسيق الصحيح لتضمين الآيات القرآنية.",
+      exampleFormat: "مثال:",
+      exampleUrl: "/embed/1/1 (سورة 1، آية 1)",
+      orRange: "أو للنطاقات:",
+      exampleRangeUrl: "/embed/2/1-5 (سورة 2، آيات 1-5)",
+    },
+
+    serverError: {
+      title: "خطأ في الخادم",
+      description: "عذراً، حدث خطأ غير متوقع. نحن نعمل على إصلاحه.",
+      tryAgain: "حاول مرة أخرى",
+      reportIssue: "الإبلاغ عن المشكلة",
+    },
+
+    generalError: {
+      title: "حدث خطأ ما",
+      description: "عذراً، حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      reset: "إعادة المحاولة",
+    },
   },
   en: {
     appTitle: "Ayat Embed",
@@ -320,6 +348,34 @@ export const translations = {
     ready: "Ready",
     version: "Version",
     developer: "Developer",
+
+    notFound: {
+      title: "Page Not Found",
+      description: "Sorry, we couldn't find the page you're looking for.",
+      backToBuilder: "Back to Builder",
+    },
+
+    embedError: {
+      title: "Invalid Embed URL",
+      description: "Please use the correct URL format to embed Quranic verses.",
+      exampleFormat: "Example:",
+      exampleUrl: "/embed/1/1 (Surah 1, Ayah 1)",
+      orRange: "Or for ranges:",
+      exampleRangeUrl: "/embed/2/1-5 (Surah 2, Ayahs 1-5)",
+    },
+
+    serverError: {
+      title: "Server Error",
+      description: "Sorry, an unexpected error occurred. We're working on fixing it.",
+      tryAgain: "Try Again",
+      reportIssue: "Report Issue",
+    },
+
+    generalError: {
+      title: "Something Went Wrong",
+      description: "Sorry, an unexpected error occurred. Please try again.",
+      reset: "Try Again",
+    },
   },
 } as const;
 
