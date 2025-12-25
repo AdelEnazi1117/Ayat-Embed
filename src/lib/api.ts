@@ -10,6 +10,7 @@ import {
   getCachedVerse,
   setCachedVerse,
 } from "./cache";
+import { AL_FATIHA_VERSES } from "./alFatihaData";
 
 // Base URL for the internal proxy
 const API_BASE = "/api/quran";
@@ -582,6 +583,26 @@ export async function fetchVersesRange(
   fromAyah: number,
   toAyah: number
 ): Promise<VerseData[]> {
+  // HARD-CODED FAST PATH: Al-Fatiha is always available instantly
+  // No API calls needed - this is permanent data
+  if (surahNumber === 1) {
+    const startIndex = Math.max(0, fromAyah - 1);
+    const endIndex = Math.min(AL_FATIHA_VERSES.length, toAyah);
+
+    // Ensure request is within Al-Fatiha bounds (verses 1-7)
+    if (fromAyah >= 1 && toAyah <= 7 && fromAyah <= toAyah) {
+      const verses = AL_FATIHA_VERSES.slice(startIndex, endIndex);
+
+      // Populate cache so subsequent requests are also instant
+      verses.forEach((verse, index) => {
+        setCachedVerse(surahNumber, fromAyah + index, verse);
+      });
+
+      return verses;
+    }
+    // If out of bounds, fall through to normal error handling below
+  }
+
   const actualTo = Math.min(toAyah, fromAyah + MAX_VERSES_LIMIT - 1);
 
   const ayahNumbers = Array.from(
