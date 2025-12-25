@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
+import MobileWarning from "@/components/MobileWarning";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://ayatembed.adelenazi.cloud";
@@ -65,6 +67,41 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className="dark">
       <head>
+        {/* Prevent browser extension errors from breaking the app */}
+        <Script id="suppress-extension-errors" strategy="beforeInteractive">
+          {`
+            (function() {
+              // Suppress errors from browser extensions (ethereum, web3, etc.)
+              const originalConsoleError = console.error;
+              console.error = function(...args) {
+                const message = args[0]?.toString?.() || '';
+                if (message.includes('ethereum') || message.includes('web3')) {
+                  return;
+                }
+                originalConsoleError.apply(console, args);
+              };
+
+              // Global error handler to suppress ethereum/web3 errors
+              window.addEventListener('error', function(event) {
+                const message = event.message || '';
+                if (message.includes('ethereum') || message.includes('web3')) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  return true;
+                }
+              }, true);
+
+              // Suppress unhandled promise rejections from extensions
+              window.addEventListener('unhandledrejection', function(event) {
+                const message = event.reason?.toString?.() || '';
+                if (message.includes('ethereum') || message.includes('web3')) {
+                  event.preventDefault();
+                  return true;
+                }
+              }, true);
+            })();
+          `}
+        </Script>
         {/* Preload critical Quran font for faster initial render - per Quran Foundation best practices */}
         <link
           rel="preload"
@@ -75,6 +112,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-navy-950 text-white min-h-screen font-arabic">
+        <MobileWarning />
         {process.env.NEXT_PUBLIC_UMAMI_URL &&
           process.env.NEXT_PUBLIC_UMAMI_ID && (
             <Script
@@ -83,7 +121,9 @@ export default function RootLayout({
               strategy="afterInteractive"
             />
           )}
-        <Providers>{children}</Providers>
+        <ErrorBoundary>
+          <Providers>{children}</Providers>
+        </ErrorBoundary>
       </body>
     </html>
   );
