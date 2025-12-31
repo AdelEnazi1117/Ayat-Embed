@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function MobileWarning() {
+  const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [dismissed, setDismissed] = useState(false);
@@ -26,6 +28,8 @@ export default function MobileWarning() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Don't show warning on embed routes
+  if (pathname?.startsWith('/embed')) return null;
   if (!mounted || !isMobile || dismissed) return null;
 
   return (
