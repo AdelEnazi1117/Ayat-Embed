@@ -6,7 +6,9 @@
       "Bash(npm run dev:*)",
       "Bash(npx eslint:*)",
       "Skill(osgrep)",
-      "Bash(osgrep:*)"
+      "Bash(osgrep:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
