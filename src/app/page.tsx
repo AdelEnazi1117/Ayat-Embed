@@ -13,7 +13,6 @@ import {
   faMinus,
   faBookOpen,
   faEye,
-  faPlus,
   faCircleQuestion,
   faBook,
   faRotateLeft,
@@ -21,10 +20,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Footer from "@/components/Footer";
-import QuranCard, { generateStaticHTML } from "@/components/QuranCard";
+import QuranCard from "@/components/QuranCard";
 import LanguageToggle from "@/components/LanguageToggle";
+import ToggleButton from "@/components/ToggleButton";
+import ColorPickerGroup from "@/components/ColorPickerGroup";
+import { generateStaticHTML } from "@/lib/html-generator";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { fetchSurahs, fetchVersesRange, MAX_VERSES_LIMIT } from "@/lib/api";
+import { fetchSurahs, fetchVersesRange, MAX_VERSES_LIMIT, removeArabicDiacritics } from "@/lib/api";
 import {
   trackCTA,
   trackProfileInteraction,
@@ -86,13 +88,6 @@ export default function BuilderPage() {
     maxAyahs,
     fromAyah + MAX_VERSES_LIMIT - 1
   );
-
-  const removeArabicDiacritics = (text: string): string => {
-    return text
-      .normalize("NFD")
-      .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, "")
-      .normalize("NFC");
-  };
 
   const filteredSurahs = surahs.filter((surah) => {
     const normalizedSearch = removeArabicDiacritics(surahSearch);
@@ -531,158 +526,55 @@ export default function BuilderPage() {
           dir={isRTL ? "rtl" : "ltr"}
         >
           <div className="flex items-center gap-1 sm:gap-2">
-            <button
-              onClick={() => {
-                const newValue = !style.showTranslation;
-                updateStyle({ showTranslation: newValue });
-                trackCTA("toggle_translation", { enabled: newValue });
-              }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
-                style.showTranslation
-                  ? "bg-navy-700 text-white shadow-sm"
-                  : "text-white/40 hover:text-white"
-              }`}
-            >
-              {t.showTranslation}
-              <div
-                className={`w-1.5 h-1.5 rounded-full ${
-                  style.showTranslation ? "bg-accent-emerald" : "bg-white/10"
-                }`}
-              />
-            </button>
+            <ToggleButton
+              label={t.showTranslation}
+              active={style.showTranslation}
+              onClick={() => updateStyle({ showTranslation: !style.showTranslation })}
+              trackingKey="toggle_translation"
+              iconOnly
+            />
 
-            <button
-              onClick={() => {
-                const newValue = !style.showVerseNumbers;
-                updateStyle({ showVerseNumbers: newValue });
-                trackCTA("toggle_verse_numbers", { enabled: newValue });
-              }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
-                style.showVerseNumbers
-                  ? "bg-navy-700 text-white shadow-sm"
-                  : "text-white/40 hover:text-white"
-              }`}
-            >
-              <FontAwesomeIcon icon={faHashtag} className="w-3.5 h-3.5" />
-              <span className="hidden lg:inline">{t.showVerseNumbers}</span>
-              <div
-                className={`w-1.5 h-1.5 rounded-full ${
-                  style.showVerseNumbers ? "bg-accent-emerald" : "bg-white/10"
-                }`}
-              />
-            </button>
+            <ToggleButton
+              icon={faHashtag}
+              label={t.showVerseNumbers}
+              active={style.showVerseNumbers}
+              onClick={() => updateStyle({ showVerseNumbers: !style.showVerseNumbers })}
+              trackingKey="toggle_verse_numbers"
+            />
 
-            <button
-              onClick={() => {
-                const newValue = !style.showReference;
-                updateStyle({ showReference: newValue });
-                trackCTA("toggle_reference", { enabled: newValue });
-              }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
-                style.showReference
-                  ? "bg-navy-700 text-white shadow-sm"
-                  : "text-white/40 hover:text-white"
-              }`}
-            >
-              <FontAwesomeIcon icon={faBookOpen} className="w-3.5 h-3.5" />
-              <span className="hidden lg:inline">{t.showReference}</span>
-              <div
-                className={`w-1.5 h-1.5 rounded-full ${
-                  style.showReference ? "bg-accent-emerald" : "bg-white/10"
-                }`}
-              />
-            </button>
+            <ToggleButton
+              icon={faBookOpen}
+              label={t.showReference}
+              active={style.showReference}
+              onClick={() => updateStyle({ showReference: !style.showReference })}
+              trackingKey="toggle_reference"
+            />
 
-            <button
-              onClick={() => {
-                const newValue = !style.showAccentLine;
-                updateStyle({ showAccentLine: newValue });
-                trackCTA("toggle_accent_line", { enabled: newValue });
-              }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
-                style.showAccentLine
-                  ? "bg-navy-700 text-white shadow-sm"
-                  : "text-white/40 hover:text-white"
-              }`}
-            >
-              <FontAwesomeIcon
-                icon={faMinus}
-                className="w-3.5 h-3.5 rotate-90"
-              />
-              <span className="hidden lg:inline">{t.showAccentLine}</span>
-              <div
-                className={`w-1.5 h-1.5 rounded-full ${
-                  style.showAccentLine ? "bg-accent-emerald" : "bg-white/10"
-                }`}
-              />
-            </button>
+            <ToggleButton
+              icon={faMinus}
+              label={t.showAccentLine}
+              active={style.showAccentLine}
+              onClick={() => updateStyle({ showAccentLine: !style.showAccentLine })}
+              trackingKey="toggle_accent_line"
+              trackingData={{ rotate: 90 }}
+            />
 
-            <button
-              onClick={() => {
-                const newValue = !style.showBrackets;
-                updateStyle({ showBrackets: newValue });
-                trackCTA("toggle_brackets", { enabled: newValue });
-              }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
-                style.showBrackets
-                  ? "bg-navy-700 text-white shadow-sm"
-                  : "text-white/40 hover:text-white"
-              }`}
-            >
-              <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 text-current opacity-90"
-                  style={{
-                    fontFamily: "'Amiri Quran', UthmanicHafs, serif",
-                  }}
-                >
-                  <text
-                    x="50%"
-                    y="55%"
-                    dominantBaseline="middle"
-                    textAnchor="middle"
-                    fontSize="18"
-                    fill="currentColor"
-                    style={{
-                      direction: "rtl",
-                      unicodeBidi: "bidi-override",
-                    }}
-                  >
-                    ﴿﴾
-                  </text>
-                </svg>
-              </div>
-              <span className="hidden lg:inline">{t.showBrackets}</span>
-              <div
-                className={`w-1.5 h-1.5 rounded-full ${
-                  style.showBrackets ? "bg-accent-emerald" : "bg-white/10"
-                }`}
-              />
-            </button>
+            <ToggleButton
+              icon="﴿﴾"
+              label={t.showBrackets}
+              active={style.showBrackets}
+              onClick={() => updateStyle({ showBrackets: !style.showBrackets })}
+              trackingKey="toggle_brackets"
+            />
 
-            <button
-              onClick={() => {
-                const newValue = !style.transparentBackground;
-                updateStyle({ transparentBackground: newValue });
-                trackCTA("toggle_background", { showBackground: !newValue });
-              }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${
-                !style.transparentBackground
-                  ? "bg-navy-700 text-white shadow-sm"
-                  : "text-white/40 hover:text-white"
-              }`}
-            >
-              <FontAwesomeIcon icon={faEye} className="w-3.5 h-3.5" />
-              <span className="hidden lg:inline">{t.showBackground}</span>
-              <div
-                className={`w-1.5 h-1.5 rounded-full ${
-                  !style.transparentBackground
-                    ? "bg-accent-emerald"
-                    : "bg-white/10"
-                }`}
-              />
-            </button>
+            <ToggleButton
+              icon={faEye}
+              label={t.showBackground}
+              active={!style.transparentBackground}
+              onClick={() => updateStyle({ transparentBackground: !style.transparentBackground })}
+              trackingKey="toggle_background"
+              trackingData={{ showBackground: style.transparentBackground }}
+            />
 
             <button
               ref={stylesButtonRef}
@@ -776,143 +668,35 @@ export default function BuilderPage() {
           }}
         >
           <div className="grid gap-4">
-            <div className="space-y-2">
-              <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">
-                {t.accentColor}
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {COLOR_PRESETS.map((c) => (
-                  <button
-                    key={c.value}
-                    onClick={() => {
-                      updateStyle({ accentColor: c.value });
-                      trackCTA("select_accent_color", {
-                        color: c.value,
-                        name: c.name,
-                      });
-                    }}
-                    className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
-                      style.accentColor === c.value
-                        ? "border-white"
-                        : "border-transparent"
-                    }`}
-                    style={{ backgroundColor: c.value }}
-                    title={c.name}
-                  />
-                ))}
-                <label
-                  className="relative w-6 h-6 rounded-full overflow-hidden cursor-pointer border border-white/20 hover:border-white hover:scale-110 transition-all flex items-center justify-center bg-gradient-to-tr from-pink-500 via-purple-500 to-blue-500"
-                  title={t.customColor}
-                >
-                  <input
-                    type="color"
-                    value={style.accentColor}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      updateStyle({ accentColor: value });
-                      trackCTA("custom_accent_color", { color: value });
-                    }}
-                    className="absolute inset-0 opacity-0 w-full h-full cursor-pointer p-0 border-0"
-                  />
-                  <FontAwesomeIcon
-                    icon={faPlus}
-                    className="w-2.5 h-2.5 text-white drop-shadow-sm"
-                  />
-                </label>
-              </div>
-            </div>
+            <ColorPickerGroup
+              label={t.accentColor}
+              presets={COLOR_PRESETS}
+              selected={style.accentColor}
+              onSelect={(color) => updateStyle({ accentColor: color })}
+              trackingKey="select_accent_color"
+              customGradient="from-pink-500 via-purple-500 to-blue-500"
+              customIconColor="text-white"
+            />
 
-            <div className="space-y-2">
-              <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">
-                {t.backgroundColor}
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {BACKGROUND_PRESETS.map((c) => (
-                  <button
-                    key={c.value}
-                    onClick={() => {
-                      updateStyle({ backgroundColor: c.value });
-                      trackCTA("select_bg_color", {
-                        color: c.value,
-                        name: c.name,
-                      });
-                    }}
-                    className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
-                      style.backgroundColor === c.value
-                        ? "border-white h-7 w-7 ring-2 ring-white/20"
-                        : "border-white/10"
-                    }`}
-                    style={{ backgroundColor: c.value }}
-                    title={c.name}
-                  />
-                ))}
-                <label
-                  className="relative w-6 h-6 rounded-full overflow-hidden cursor-pointer border border-white/20 hover:border-white hover:scale-110 transition-all flex items-center justify-center bg-gradient-to-tr from-gray-700 via-gray-600 to-gray-500"
-                  title={t.customColor}
-                >
-                  <input
-                    type="color"
-                    value={style.backgroundColor}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      updateStyle({ backgroundColor: value });
-                      trackCTA("custom_bg_color", { color: value });
-                    }}
-                    className="absolute inset-0 opacity-0 w-full h-full cursor-pointer p-0 border-0"
-                  />
-                  <FontAwesomeIcon
-                    icon={faPlus}
-                    className="w-2.5 h-2.5 text-white drop-shadow-sm"
-                  />
-                </label>
-              </div>
-            </div>
+            <ColorPickerGroup
+              label={t.backgroundColor}
+              presets={BACKGROUND_PRESETS}
+              selected={style.backgroundColor}
+              onSelect={(color) => updateStyle({ backgroundColor: color })}
+              trackingKey="select_bg_color"
+              customGradient="from-gray-700 via-gray-600 to-gray-500"
+              customIconColor="text-white"
+            />
 
-            <div className="space-y-2">
-              <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">
-                {t.textColor}
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {TEXT_COLOR_PRESETS.map((c) => (
-                  <button
-                    key={c.value}
-                    onClick={() => {
-                      updateStyle({ textColor: c.value });
-                      trackCTA("select_text_color", {
-                        color: c.value,
-                        name: c.name,
-                      });
-                    }}
-                    className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
-                      style.textColor === c.value
-                        ? "border-accent-orange h-7 w-7 ring-2 ring-accent-orange/20"
-                        : "border-white/10"
-                    }`}
-                    style={{ backgroundColor: c.value }}
-                    title={c.name}
-                  />
-                ))}
-                <label
-                  className="relative w-6 h-6 rounded-full overflow-hidden cursor-pointer border border-white/20 hover:border-white hover:scale-110 transition-all flex items-center justify-center bg-gradient-to-tr from-gray-400 via-gray-300 to-gray-200"
-                  title={t.customColor}
-                >
-                  <input
-                    type="color"
-                    value={style.textColor}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      updateStyle({ textColor: value });
-                      trackCTA("custom_text_color", { color: value });
-                    }}
-                    className="absolute inset-0 opacity-0 w-full h-full cursor-pointer p-0 border-0"
-                  />
-                  <FontAwesomeIcon
-                    icon={faPlus}
-                    className="w-2.5 h-2.5 text-black/60 drop-shadow-sm"
-                  />
-                </label>
-              </div>
-            </div>
+            <ColorPickerGroup
+              label={t.textColor}
+              presets={TEXT_COLOR_PRESETS}
+              selected={style.textColor}
+              onSelect={(color) => updateStyle({ textColor: color })}
+              trackingKey="select_text_color"
+              customGradient="from-gray-400 via-gray-300 to-gray-200"
+              customIconColor="text-black/60"
+            />
 
             <div className="pt-2 border-t border-white/5 flex gap-2">
               <button
